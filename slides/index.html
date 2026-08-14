@@ -1,0 +1,320 @@
+<!doctype html>
+<!-- @dsCard group="Slides" name="Slide Deck — Brand Dossier" subtitle="6 editorial slide templates (1920×1080)" viewport="1280x720" -->
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Spacio AM — Slide templates</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  /* Slide-local sizing — deck-stage scales 1920x1080 to viewport */
+  deck-stage { --pad: 96px; }
+
+  section[data-screen-label] {
+    width: 1920px; height: 1080px;
+    background: var(--alabaster);
+    color: var(--ink);
+    font-family: var(--sans);
+    position: relative; overflow: hidden;
+    box-sizing: border-box;
+    padding: var(--pad);
+  }
+  /* logo bottom-right corner */
+  .corner-mark {
+    position: absolute; bottom: 48px; right: 56px;
+    display: flex; flex-direction: column; align-items: center; gap: 4px;
+    color: var(--ink); opacity: .9;
+  }
+  .corner-mark .star { width: 12px; height: 12px; }
+  .corner-mark .word { font-family: var(--serif); font-size: 22px; letter-spacing: 0.06em; line-height: 1; }
+  .corner-mark .am { font-family: var(--sans); font-size: 9px; letter-spacing: 0.32em; display:flex; align-items:center; gap:6px; }
+  .corner-mark .am .rule { width: 26px; height:1px; background: currentColor; display: inline-block;}
+
+  .page-num {
+    position: absolute; bottom: 56px; left: 56px;
+    font-family: var(--sans); font-size: 12px; letter-spacing: 0.32em; color: var(--earth); text-transform: uppercase;
+  }
+
+  .brush-bg {
+    position: absolute; pointer-events: none; user-select: none;
+  }
+
+  .eyebrow {
+    font-family: var(--sans); font-size: 18px; font-weight: 500;
+    letter-spacing: 0.32em; text-transform: uppercase; color: var(--earth);
+  }
+  h1.display {
+    font-family: var(--serif); font-weight: 400;
+    font-size: 184px; line-height: 0.98; letter-spacing: -0.018em; color: var(--ink);
+    margin: 0; text-wrap: balance;
+  }
+  h1.display em { font-style: italic; font-weight: 300; }
+  h2.lg {
+    font-family: var(--serif); font-weight: 400;
+    font-size: 124px; line-height: 1.02; letter-spacing: -0.015em; margin: 0;
+  }
+  h3.md {
+    font-family: var(--serif); font-weight: 400;
+    font-size: 64px; line-height: 1.08; letter-spacing: -0.01em; margin: 0;
+  }
+  p.body {
+    font-family: var(--sans); font-size: 22px; font-weight: 400;
+    letter-spacing: 0.14em; line-height: 1.7; color: var(--ink); margin: 0; max-width: 780px;
+  }
+  p.muted { color: var(--earth); }
+  .rule { width: 64px; height: 1px; background: var(--ink); }
+  .accent-dot { width: 12px; height: 12px; border-radius: 50%; background: var(--peach); display: inline-block; }
+
+  /* Slide 1 — Title */
+  .slide-title { display: flex; flex-direction: column; justify-content: space-between; }
+  .slide-title .head { display: flex; justify-content: space-between; align-items: flex-start; }
+  .slide-title .heroline { margin-top: auto; padding-bottom: 32px; }
+  .slide-title .big-star { width: 56px; height: 56px; color: var(--ink); display: block; margin-bottom: 36px; }
+
+  /* Slide 2 — Quote */
+  .slide-quote { display: flex; align-items: center; justify-content: center; background: var(--beige-soft); text-align: center; }
+  .slide-quote h1 { font-family: var(--serif); font-weight: 300; font-style: italic; font-size: 124px; line-height: 1.12; letter-spacing: -0.018em; color: var(--ink); margin: 32px 0 0; text-wrap: balance; max-width: 1500px;}
+  .slide-quote .star { width: 56px; height: 56px; color: var(--ink); margin: 0 auto; display: block; }
+  .slide-quote .attrib { margin-top: 56px; font-family: var(--sans); font-size: 18px; letter-spacing: 0.32em; text-transform: uppercase; color: var(--earth); }
+  .slide-quote .rule { margin: 32px auto 24px; }
+
+  /* Slide 3 — Image + caption (top-rounded image) */
+  .slide-feature { display: grid; grid-template-columns: 1.1fr 1fr; gap: 96px; align-items: end; }
+  .slide-feature .img-wrap { border-radius: 56px 56px 0 0; overflow: hidden; height: 880px; align-self: end;}
+  .slide-feature .img-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .slide-feature .copy { padding-bottom: 80px; display: flex; flex-direction: column; gap: 32px; }
+
+  /* Slide 4 — Services / Three column */
+  .slide-services .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; margin-top: 72px; }
+  .slide-services .col {
+    background: var(--beige-soft); border-radius: 32px; padding: 56px 48px;
+    display: flex; flex-direction: column; gap: 28px; min-height: 600px;
+  }
+  .slide-services .col.featured { background: var(--ink); color: var(--alabaster); }
+  .slide-services .col .pct {
+    font-family: var(--sans); font-weight: 300; font-size: 124px; line-height: 0.9; letter-spacing: -0.02em;
+  }
+  .slide-services .col .pct sup { font-size: 36px; opacity: 0.6; }
+  .slide-services .col .name { font-family: var(--sans); font-size: 16px; letter-spacing: 0.32em; text-transform: uppercase; color: inherit; opacity: 0.7;}
+  .slide-services .col .desc { font-family: var(--serif); font-size: 38px; line-height: 1.18; letter-spacing: -0.01em; }
+  .slide-services .col .features { display: flex; flex-direction: column; gap: 12px; margin-top: auto; padding-top: 32px; border-top: 1px solid currentColor; }
+  .slide-services .col .features li { font-family: var(--sans); font-size: 17px; letter-spacing: 0.14em; list-style: none; }
+  .slide-services .col.featured .features { border-color: rgba(216,212,206, 0.25); }
+
+  /* Slide 5 — Timeline */
+  .slide-timeline { display: flex; flex-direction: column; gap: 96px; }
+  .slide-timeline .track { position: relative; padding: 80px 0; }
+  .slide-timeline .track .brush-line { position: absolute; left: -120px; right: -120px; top: 50%; transform: translateY(-50%); height: 220px; opacity: 0.6; }
+  .slide-timeline .nodes { position: relative; display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+  .slide-timeline .node {
+    background: var(--alabaster); border-radius: 24px; padding: 36px 32px;
+    box-shadow: 0 12px 40px rgba(62,63,63,0.08); position: relative; z-index: 2;
+    display: flex; flex-direction: column; gap: 14px;
+  }
+  .slide-timeline .node .date { font-family: var(--sans); font-weight: 500; font-size: 22px; letter-spacing: 0.24em; text-transform: uppercase; color: var(--peach); line-height: 1; }
+  .slide-timeline .node .label { font-family: var(--sans); font-size: 13px; letter-spacing: 0.32em; text-transform: uppercase; color: var(--earth); }
+  .slide-timeline .node .title { font-family: var(--serif); font-size: 32px; line-height: 1.15; color: var(--ink); }
+  .slide-timeline .node .body { font-family: var(--sans); font-size: 15px; letter-spacing: 0.10em; line-height: 1.7; color: var(--earth); margin: 0; }
+
+  /* Slide 6 — Contact */
+  .slide-contact { display: grid; grid-template-columns: 1fr 1fr; gap: 96px; align-items: center;}
+  .slide-contact .right { display: flex; flex-direction: column; gap: 36px; }
+  .slide-contact .right .row { display: flex; flex-direction: column; gap: 8px; }
+  .slide-contact .right .row .lbl { font-family: var(--sans); font-size: 14px; letter-spacing: 0.32em; text-transform: uppercase; color: var(--earth); }
+  .slide-contact .right .row .val { font-family: var(--serif); font-size: 48px; color: var(--ink); }
+</style>
+</head>
+<body class="spacio">
+  <deck-stage>
+
+    <!-- 01 — TITLE -->
+    <section data-screen-label="01 Title" class="slide-title">
+      <svg class="brush-bg" style="top:-200px; left:-200px; width: 2200px; opacity:0.55;" viewBox="0 0 1200 600" aria-hidden="true">
+        <use href="#brush-defs"></use>
+        <path d="M 60 380 C 220 120, 520 80, 760 240 S 1080 520, 1140 220" stroke="#F5F3F0" stroke-width="120" fill="none" stroke-linecap="round" opacity="0.8"/>
+      </svg>
+      <div class="head">
+        <div class="eyebrow">Boutique hospitality · Guatemala · 2026</div>
+        <div class="eyebrow">Dossier de marca</div>
+      </div>
+      <div class="heroline">
+        <svg class="big-star" viewBox="0 0 100 100" fill="currentColor"><path d="M50 4 C 52 32, 58 42, 96 50 C 58 58, 52 68, 50 96 C 48 68, 42 58, 4 50 C 42 42, 48 32, 50 4 Z"/></svg>
+        <h1 class="display">Hay espacios <em>en donde sueñas</em><br>con volver a despertar.</h1>
+        <div style="margin-top: 56px; display:flex; align-items:center; gap:24px;">
+          <span class="rule"></span>
+          <span style="font-family: var(--sans); font-size: 18px; letter-spacing: 0.32em; text-transform: uppercase; color: var(--earth);">Spacio AM · Filosofía y servicios</span>
+        </div>
+      </div>
+      <div class="page-num">01 / 06</div>
+      <div class="corner-mark">
+        <svg class="star" viewBox="0 0 100 100" fill="currentColor"><path d="M50 4 C 52 32, 58 42, 96 50 C 58 58, 52 68, 50 96 C 48 68, 42 58, 4 50 C 42 42, 48 32, 50 4 Z"/></svg>
+        <div class="word">SPACIO</div>
+        <div class="am"><span>A</span><span class="rule"></span><span>M</span></div>
+      </div>
+    </section>
+
+    <!-- 02 — QUOTE -->
+    <section data-screen-label="02 Quote" class="slide-quote">
+      <svg class="brush-bg" style="top:20%; left:-200px; width: 2400px; opacity:0.6;" viewBox="0 0 1200 600" aria-hidden="true">
+        <path d="M 60 380 C 220 120, 520 80, 760 240 S 1080 520, 1140 220" stroke="#FAFAFA" stroke-width="100" fill="none" stroke-linecap="round" opacity="0.9"/>
+      </svg>
+      <div style="position:relative; z-index:2; max-width: 1500px;">
+        <svg class="star" viewBox="0 0 100 100" fill="currentColor"><path d="M50 4 C 52 32, 58 42, 96 50 C 58 58, 52 68, 50 96 C 48 68, 42 58, 4 50 C 42 42, 48 32, 50 4 Z"/></svg>
+        <h1>"En este espacio de ensueño, cada rincón es un relato esperando ser desvelado."</h1>
+        <div class="rule"></div>
+        <div class="attrib">Filosofía Spacio AM</div>
+      </div>
+      <div class="page-num">02 / 06</div>
+      <div class="corner-mark">
+        <svg class="star" viewBox="0 0 100 100" fill="currentColor"><path d="M50 4 C 52 32, 58 42, 96 50 C 58 58, 52 68, 50 96 C 48 68, 42 58, 4 50 C 42 42, 48 32, 50 4 Z"/></svg>
+        <div class="word">SPACIO</div>
+        <div class="am"><span>A</span><span class="rule"></span><span>M</span></div>
+      </div>
+    </section>
+
+    <!-- 03 — IMAGE + CAPTION -->
+    <section data-screen-label="03 Feature" class="slide-feature">
+      <div class="img-wrap">
+        <img src="../assets/amenities-bath-02.jpeg" alt="Suite de Spacio AM con luz dorada">
+      </div>
+      <div class="copy">
+        <div class="eyebrow">Propiedad destacada · Antigua Guatemala</div>
+        <h2 class="lg">Casa de la Luz Dorada.</h2>
+        <p class="body">Una suite curada con luz natural, lino crudo, madera clara y un baño con amenidades editoriales. Diseñada para que el huésped sienta que ya conocía este lugar.</p>
+        <div style="display:flex; align-items:center; gap:24px; margin-top: 24px;">
+          <span class="accent-dot"></span>
+          <span style="font-family: var(--sans); font-size: 16px; letter-spacing: 0.24em; text-transform: uppercase; color: var(--ink);">Disponible · Q 1,400 / noche</span>
+        </div>
+      </div>
+      <div class="page-num">03 / 06</div>
+      <div class="corner-mark">
+        <svg class="star" viewBox="0 0 100 100" fill="currentColor"><path d="M50 4 C 52 32, 58 42, 96 50 C 58 58, 52 68, 50 96 C 48 68, 42 58, 4 50 C 42 42, 48 32, 50 4 Z"/></svg>
+        <div class="word">SPACIO</div>
+        <div class="am"><span>A</span><span class="rule"></span><span>M</span></div>
+      </div>
+    </section>
+
+    <!-- 04 — SERVICES -->
+    <section data-screen-label="04 Services" class="slide-services" style="background: var(--alabaster);">
+      <div style="display:flex; justify-content:space-between; align-items:end;">
+        <div>
+          <div class="eyebrow">Servicios</div>
+          <h2 class="lg" style="margin-top: 18px;">Tres formas <em style="font-style:italic; font-weight:300;">de cuidar</em> tu propiedad.</h2>
+        </div>
+        <div style="font-family: var(--sans); font-size: 16px; letter-spacing: 0.24em; text-transform: uppercase; color: var(--earth);">2026 ·  Tarifas vigentes</div>
+      </div>
+      <div class="grid">
+        <div class="col">
+          <div class="pct">10<sup>%</sup></div>
+          <div class="name">Contact Center</div>
+          <div class="desc">Atendemos a tus huéspedes.</div>
+          <ul class="features">
+            <li>· Inbox unificado</li>
+            <li>· Reservas y soporte 24/7</li>
+            <li>· Reportes mensuales</li>
+          </ul>
+        </div>
+        <div class="col featured">
+          <div class="pct">15<sup>%</sup></div>
+          <div class="name">Gestión Operativa</div>
+          <div class="desc">Operamos el día a día.</div>
+          <ul class="features">
+            <li>· Limpiezas + check-ins</li>
+            <li>· Mantenimiento preventivo</li>
+            <li>· Control de inventarios</li>
+          </ul>
+        </div>
+        <div class="col">
+          <div class="pct">20<sup>%</sup></div>
+          <div class="name">Full Management</div>
+          <div class="desc">La convertimos en marca.</div>
+          <ul class="features">
+            <li>· Interiorismo editorial</li>
+            <li>· Fotografía y branding</li>
+            <li>· Pricing y distribución</li>
+          </ul>
+        </div>
+      </div>
+      <div class="page-num">04 / 06</div>
+      <div class="corner-mark">
+        <svg class="star" viewBox="0 0 100 100" fill="currentColor"><path d="M50 4 C 52 32, 58 42, 96 50 C 58 58, 52 68, 50 96 C 48 68, 42 58, 4 50 C 42 42, 48 32, 50 4 Z"/></svg>
+        <div class="word">SPACIO</div>
+        <div class="am"><span>A</span><span class="rule"></span><span>M</span></div>
+      </div>
+    </section>
+
+    <!-- 05 — TIMELINE -->
+    <section data-screen-label="05 Timeline" class="slide-timeline" style="background: var(--beige-soft);">
+      <div>
+        <div class="eyebrow">Setup inicial · Onboarding del propietario</div>
+        <h2 class="lg" style="margin-top: 24px;">De la llave al primer huésped, en cuatro tiempos.</h2>
+      </div>
+      <div class="track">
+        <svg class="brush-line" viewBox="0 0 2400 220" preserveAspectRatio="none" aria-hidden="true">
+          <path d="M 0 110 C 400 30, 800 200, 1200 90 S 2000 30, 2400 130" stroke="#FAFAFA" stroke-width="60" fill="none" stroke-linecap="round" opacity="0.85"/>
+        </svg>
+        <div class="nodes">
+          <div class="node">
+            <div class="label">Día 01</div>
+            <div class="date">Auditoría</div>
+            <div class="title">Visitamos la propiedad.</div>
+            <p class="body">Levantamos un brief editorial: luz, plano, narrativa, audiencia.</p>
+          </div>
+          <div class="node">
+            <div class="label">Día 04</div>
+            <div class="date">Diseño</div>
+            <div class="title">Estilismo y compras.</div>
+            <p class="body">Curamos lino, cerámica, madera clara, libros y aromas. Una capa a la vez.</p>
+          </div>
+          <div class="node">
+            <div class="label">Día 09</div>
+            <div class="date">Captura</div>
+            <div class="title">Fotografía editorial.</div>
+            <p class="body">Sesión en hora dorada con personas reales. Nunca propiedades vacías.</p>
+          </div>
+          <div class="node">
+            <div class="label">Día 14</div>
+            <div class="date">Lanzamiento</div>
+            <div class="title">Primer huésped.</div>
+            <p class="body">Listings publicados, pricing definido y bienvenida lista.</p>
+          </div>
+        </div>
+      </div>
+      <div class="page-num">05 / 06</div>
+      <div class="corner-mark">
+        <svg class="star" viewBox="0 0 100 100" fill="currentColor"><path d="M50 4 C 52 32, 58 42, 96 50 C 58 58, 52 68, 50 96 C 48 68, 42 58, 4 50 C 42 42, 48 32, 50 4 Z"/></svg>
+        <div class="word">SPACIO</div>
+        <div class="am"><span>A</span><span class="rule"></span><span>M</span></div>
+      </div>
+    </section>
+
+    <!-- 06 — CONTACT -->
+    <section data-screen-label="06 Contact" class="slide-contact">
+      <div>
+        <div class="eyebrow">Hablemos despacio</div>
+        <h2 class="lg" style="margin-top: 24px;">Nos llena de emoción <em style="font-style:italic; font-weight:300;">la posibilidad</em> de compartir este espacio contigo.</h2>
+        <div style="margin-top: 56px; display:flex; align-items:center; gap:18px;">
+          <span class="rule"></span>
+          <span style="font-family: var(--sans); font-size: 16px; letter-spacing: 0.32em; text-transform: uppercase; color: var(--earth);">spacioam.com</span>
+        </div>
+      </div>
+      <div class="right">
+        <div class="row"><div class="lbl">Escribe</div><div class="val">hola@spacioam.com</div></div>
+        <div class="row"><div class="lbl">Llama</div><div class="val">+502 5690 9499</div></div>
+        <div class="row"><div class="lbl">Visita</div><div class="val">Ciudad de Guatemala · Antigua</div></div>
+        <div class="row"><div class="lbl">Síguenos</div><div class="val">@spacioam · Instagram</div></div>
+      </div>
+      <div class="page-num">06 / 06</div>
+      <div class="corner-mark">
+        <svg class="star" viewBox="0 0 100 100" fill="currentColor"><path d="M50 4 C 52 32, 58 42, 96 50 C 58 58, 52 68, 50 96 C 48 68, 42 58, 4 50 C 42 42, 48 32, 50 4 Z"/></svg>
+        <div class="word">SPACIO</div>
+        <div class="am"><span>A</span><span class="rule"></span><span>M</span></div>
+      </div>
+    </section>
+
+  </deck-stage>
+
+  <script src="deck-stage.js"></script>
+</body>
+</html>
