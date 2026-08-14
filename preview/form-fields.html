@@ -1,0 +1,36 @@
+<!doctype html>
+<!-- @dsCard group="Components" name="Form Fields" subtitle="Underlined inputs, select, toggle" viewport="700x300" -->
+<html lang="en"><head>
+<meta charset="utf-8">
+<title>Spacio AM — Form fields</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  html, body { margin:0; background: var(--alabaster); }
+  .card { width:700px; padding:32px; box-sizing:border-box; display:grid; grid-template-columns: 1fr 1fr; gap:22px 28px; }
+  .field { display:flex; flex-direction:column; gap:8px; }
+  .label { font-family: var(--sans); font-size:10px; letter-spacing:.32em; text-transform:uppercase; color: var(--earth); }
+  .input { font-family: var(--sans); font-size:14px; letter-spacing:.06em; color: var(--ink); padding:14px 0 12px; border:none; border-bottom: 1px solid var(--ink); background: transparent; outline:none; }
+  .input::placeholder { color: var(--earth); }
+  .input.focused { border-bottom-color: var(--peach); }
+  .helper { font-family: var(--sans); font-size:10px; letter-spacing:.18em; color: var(--earth); }
+  .select { font-family: var(--sans); font-size:14px; color: var(--ink); padding:14px 16px; background: var(--beige-soft); border-radius:14px; display:flex; justify-content:space-between; align-items:center; }
+  .chev { width:8px; height:8px; border-right:1px solid var(--ink); border-bottom:1px solid var(--ink); transform: rotate(45deg); margin-top:-4px; }
+  .toggle { display:flex; gap:8px; align-items:center;}
+  .switch { width:36px; height:20px; background: var(--ink); border-radius:999px; position:relative; }
+  .switch::after { content:""; position:absolute; top:2px; left:18px; width:16px; height:16px; background: var(--alabaster); border-radius:50%; }
+  .switch.off { background: var(--warm-grey); }
+  .switch.off::after { left:2px; }
+  .switch-label { font-family: var(--sans); font-size:11px; letter-spacing:.18em; color: var(--ink); }
+</style>
+</head>
+<body class="spacio">
+  <div class="card">
+    <div class="field"><div class="label">Nombre</div><input class="input" value="María José" /></div>
+    <div class="field"><div class="label">Correo</div><input class="input focused" value="maria@spacioam.com" /><div class="helper">— enfocado: peach</div></div>
+    <div class="field"><div class="label">Propiedad</div><div class="select">Antigua Suite Editorial<div class="chev"></div></div></div>
+    <div class="field"><div class="label">Fechas</div><input class="input" placeholder="Selecciona tus fechas" /></div>
+    <div class="field"><div class="label">Newsletter</div><div class="toggle"><div class="switch"></div><div class="switch-label">Inscrito</div></div></div>
+    <div class="field"><div class="label">Marketing</div><div class="toggle"><div class="switch off"></div><div class="switch-label">Apagado</div></div></div>
+  </div>
+</body></html>

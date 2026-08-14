@@ -1,0 +1,49 @@
+<!doctype html>
+<!-- @dsCard group="Colors" name="Color Palette" subtitle="Marca + accesibles + estados" viewport="820x360" -->
+<html lang="es"><head>
+<meta charset="utf-8">
+<title>Spacio AM v2 — Paleta</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  html,body{ margin:0; background:var(--alabaster); }
+  .card{ width:820px; padding:32px; box-sizing:border-box; display:flex; flex-direction:column; gap:22px; }
+  .row{ display:flex; gap:14px; flex-wrap:wrap; }
+  .sw{ width:120px; }
+  .chip{ height:64px; border-radius:14px; box-shadow: inset 0 0 0 1px var(--ink-08); }
+  .nm{ font-family:var(--sans); font-size:11px; letter-spacing:.06em; color:var(--ink); margin-top:8px; }
+  .hx{ font-family:var(--sans); font-size:10px; letter-spacing:.04em; color:var(--fg-muted); }
+  .lbl{ font-family:var(--sans); font-size:10px; letter-spacing:.24em; text-transform:uppercase; color:var(--fg-muted); }
+</style></head>
+<body class="spacio">
+  <div class="card">
+    <div>
+      <div class="lbl" style="margin-bottom:12px">Marca (base — del Dashboard)</div>
+      <div class="row">
+        <div class="sw"><div class="chip" style="background:var(--ink)"></div><div class="nm">--ink / --fg</div><div class="hx">#3E3F3F</div></div>
+        <div class="sw"><div class="chip" style="background:var(--alabaster)"></div><div class="nm">--alabaster / --bg</div><div class="hx">#FAFAFA</div></div>
+        <div class="sw"><div class="chip" style="background:var(--beige-soft)"></div><div class="nm">--beige-soft</div><div class="hx">#F5F3F0</div></div>
+        <div class="sw"><div class="chip" style="background:var(--earth)"></div><div class="nm">--earth / subtle</div><div class="hx">#938B8A</div></div>
+        <div class="sw"><div class="chip" style="background:var(--warm-grey)"></div><div class="nm">--warm-grey</div><div class="hx">#D8D4CE</div></div>
+        <div class="sw"><div class="chip" style="background:var(--peach)"></div><div class="nm">--peach (gráfico)</div><div class="hx">#E9826A</div></div>
+      </div>
+    </div>
+    <div>
+      <div class="lbl" style="margin-bottom:12px">Accesibles (nuevos v2)</div>
+      <div class="row">
+        <div class="sw"><div class="chip" style="background:var(--graphite)"></div><div class="nm">--graphite / fg-muted</div><div class="hx">#6F6867 · 5.2:1</div></div>
+        <div class="sw"><div class="chip" style="background:var(--peach-deep)"></div><div class="nm">--peach-deep / solid</div><div class="hx">#C83E1E · 5.0:1</div></div>
+      </div>
+    </div>
+    <div>
+      <div class="lbl" style="margin-bottom:12px">Estados (escala de faroles)</div>
+      <div class="row">
+        <div class="sw"><div class="chip" style="background:var(--success)"></div><div class="nm">--success</div><div class="hx">#3d6b52</div></div>
+        <div class="sw"><div class="chip" style="background:var(--warning)"></div><div class="nm">--warning</div><div class="hx">#9a5020</div></div>
+        <div class="sw"><div class="chip" style="background:var(--error)"></div><div class="nm">--error</div><div class="hx">#8a3030</div></div>
+        <div class="sw"><div class="chip" style="background:var(--info)"></div><div class="nm">--info</div><div class="hx">#3B6691</div></div>
+        <div class="sw"><div class="chip" style="background:var(--pending)"></div><div class="nm">--pending</div><div class="hx">#6F6867</div></div>
+      </div>
+    </div>
+  </div>
+</body></html>

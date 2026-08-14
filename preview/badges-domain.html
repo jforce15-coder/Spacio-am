@@ -1,0 +1,32 @@
+<!doctype html>
+<!-- @dsCard group="Components" name="Domain Badges (EPI)" subtitle="Capa de dominio · fórmula única · AA >=4.5" viewport="720x260" -->
+<html lang="es"><head>
+<meta charset="utf-8">
+<title>Spacio AM v2 — Domain Badges</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  html,body{ margin:0; background:var(--alabaster); }
+  .card{ width:720px; padding:32px; box-sizing:border-box; display:flex; flex-direction:column; gap:16px; }
+  .row{ display:flex; gap:10px; flex-wrap:wrap; align-items:center; }
+  .bdg{ font-family:var(--sans); font-size:11px; font-weight:600; letter-spacing:.02em; padding:4px 10px; border-radius:var(--r-pill); }
+  .note{ font-family:var(--sans); font-size:11px; letter-spacing:.02em; color:var(--fg-muted); line-height:1.6; }
+</style></head>
+<body class="spacio">
+  <div class="card">
+    <div class="row">
+      <span class="bdg" style="background:#E8F3ED;color:#317754">Limpieza tradicional</span>
+      <span class="bdg" style="background:#E8F3F0;color:#317766">Limpieza profunda</span>
+      <span class="bdg" style="background:#E8EDF3;color:#3B6691">Mantenimiento</span>
+      <span class="bdg" style="background:#F3EEE8;color:#866537">Nuevo producto</span>
+      <span class="bdg" style="background:#F3F1E8;color:#776C31">Ajuste</span>
+    </div>
+    <div class="row">
+      <span class="bdg" style="background:#F3E9E8;color:#91473B">Reporte de daños</span>
+      <span class="bdg" style="background:#EEE8F3;color:#6D3B91">Supervisión</span>
+      <span class="bdg" style="background:#F3E8ED;color:#913B66">Cancelación</span>
+      <span class="bdg" style="background:#E8F1F3;color:#357682">Wi-Fi</span>
+    </div>
+    <div class="note">Capa de <b>dominio de EPI</b> (no va en el core global). Cada categoría se genera con la misma fórmula — fondo tinte (S30/L93), texto del mismo tono a una luminosidad que pasa <b>AA ≥4.5</b>. Otras apps no cargan esta capa.</div>
+  </div>
+</body></html>

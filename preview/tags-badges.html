@@ -1,0 +1,35 @@
+<!doctype html>
+<!-- @dsCard group="Components" name="Tags & Badges" subtitle="Outline, solid, beige, peach" viewport="700x160" -->
+<html lang="en"><head>
+<meta charset="utf-8">
+<title>Spacio AM — Tags & Badges</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  html, body { margin:0; background: var(--alabaster); }
+  .card { width:700px; padding:32px; box-sizing:border-box; display:flex; flex-wrap:wrap; gap:10px 12px; align-items:center; }
+  .tag { font-family: var(--sans); font-size:10px; letter-spacing:.24em; text-transform:uppercase; padding:8px 14px; border-radius:999px;}
+  .outline { color: var(--ink); box-shadow: inset 0 0 0 1px var(--warm-grey);}
+  .solid { background: var(--ink); color: var(--alabaster);}
+  .beige { background: var(--beige-soft); color: var(--ink);}
+  .peach { background: var(--peach-12); color: var(--peach);}
+  .dotted { color: var(--ink); display:inline-flex; align-items:center; gap:8px; padding-left:10px;}
+  .dotted::before { content:""; width:6px; height:6px; border-radius:50%; background: var(--peach); display:inline-block;}
+  .price { font-family: var(--sans); font-weight:500; font-size:12px; padding:8px 14px; border-radius:999px; background: var(--beige-soft); color: var(--ink); letter-spacing:.14em;}
+</style>
+</head>
+<body class="spacio">
+  <div class="card">
+    <span class="tag outline">Disponible</span>
+    <span class="tag solid">Editor's pick</span>
+    <span class="tag beige">Antigua Guatemala</span>
+    <span class="tag peach">Solo 2 fechas</span>
+    <span class="tag dotted">Hora dorada</span>
+    <span class="tag outline">2 hab · 4 huéspedes</span>
+    <span class="tag beige">Setup inicial</span>
+    <span class="price">Q 1,400 / noche</span>
+    <span class="tag solid">Full Management · 20%</span>
+    <span class="tag outline">Próximamente</span>
+    <span class="tag dotted">Reservas Q3</span>
+  </div>
+</body></html>

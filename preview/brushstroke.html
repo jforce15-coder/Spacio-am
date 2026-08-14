@@ -1,0 +1,32 @@
+<!doctype html>
+<!-- @dsCard group="Brand" name="PETMA Brushstroke" subtitle="Organic line motif at 30% opacity" viewport="700x310" -->
+<html lang="en"><head>
+<meta charset="utf-8">
+<title>Spacio AM — Brushstroke Motif</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  html, body { margin:0; background: var(--alabaster); }
+  .card { width:700px; padding:28px 32px; box-sizing:border-box; position:relative; overflow:hidden; }
+  .stage { position:relative; height:230px; border-radius:18px; background: var(--alabaster); overflow:hidden; box-shadow: inset 0 0 0 1px var(--ink-08); padding:24px;}
+  .brush { position:absolute; inset:0; width:100%; height:100%; pointer-events:none; }
+  .brush img { width:100%; height:100%; display:block; }
+  .block { position:relative; z-index:2; background: var(--alabaster); border-radius:14px; box-shadow: 0 4px 16px rgba(62,63,63,0.05); padding:16px 20px; max-width:280px; }
+  .block .eye { font-family: var(--sans); font-size:10px; letter-spacing:.32em; text-transform:uppercase; color: var(--earth);}
+  .block .h { font-family: var(--serif); font-weight:400; font-size:22px; color: var(--ink); letter-spacing:-.01em; margin:6px 0 0;}
+  .legend { font-family: var(--sans); font-size:10px; letter-spacing:.24em; text-transform:uppercase; color: var(--earth); margin-top: 14px; display:flex; justify-content:space-between;}
+  /* float a second block behind the line on the right */
+  .stage .right { position:absolute; right:20px; bottom:20px; z-index:1; background: var(--beige-soft); border-radius:14px; padding:14px 18px; max-width: 220px; }
+  .right .cap { font-family: var(--sans); font-size:11px; letter-spacing:.14em; color: var(--ink); line-height:1.6;}
+</style>
+</head>
+<body class="spacio">
+  <div class="card">
+    <div class="stage">
+      <div class="brush"><img src="../assets/brushstroke.svg" alt="" /></div>
+      <div class="block"><div class="eye">Filosofía</div><div class="h">Una línea que respira.</div></div>
+      <div class="right"><div class="cap">Línea envolvente tipo PETMA · Beige #F5F3F0 · 30% opacidad</div></div>
+    </div>
+    <div class="legend"><div>Brushstroke motif</div><div>Atraviesa detrás de un bloque y reaparece delante de otro.</div></div>
+  </div>
+</body></html>

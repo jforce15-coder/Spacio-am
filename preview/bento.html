@@ -1,0 +1,39 @@
+<!doctype html>
+<!-- @dsCard group="Patterns" name="Bento Menu" subtitle="Pantalla de inicio · imagen + botón · cara de marca" viewport="720x460" -->
+<html lang="es"><head>
+<meta charset="utf-8">
+<title>Spacio AM v2 — Bento</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  html,body{ margin:0; background:var(--alabaster); }
+  .card{ width:720px; padding:28px; box-sizing:border-box; }
+  .bento{ display:grid; grid-template-columns:repeat(4,1fr); grid-auto-rows:120px; gap:14px; grid-auto-flow:dense; }
+  .tile{ border-radius:18px; overflow:hidden; position:relative; box-shadow:var(--shadow-sm); display:flex; align-items:flex-end; padding:14px;
+         font-family:var(--sans); font-size:12px; font-weight:600; letter-spacing:.02em; }
+  .img{ background-size:cover; background-position:center; color:#fff; }
+  .img::after{ content:""; position:absolute; inset:0; background:linear-gradient(180deg,transparent 45%,rgba(62,63,63,.55)); }
+  .img span{ position:relative; z-index:1; }
+  .solid{ background:var(--beige-soft); color:var(--ink); }
+  .ink{ background:var(--ink); color:var(--alabaster); }
+  .peach{ background:var(--peach-12); color:var(--peach-deep); }
+  .w2{ grid-column:span 2; } .h2{ grid-row:span 2; }
+  .lbl{ font-family:var(--sans); font-size:10px; letter-spacing:.24em; text-transform:uppercase; color:var(--fg-muted); margin-bottom:14px; }
+  .dot{ position:absolute; top:12px; right:12px; width:20px; height:20px; }
+</style></head>
+<body class="spacio">
+  <div class="card">
+    <div class="lbl">Bento — inicio de la Guest App</div>
+    <div class="bento">
+      <div class="tile img w2 h2" style="background-image:url('../assets/lifestyle-portrait-01.jpeg')"><span>Tu estadía</span>
+        <svg class="dot" viewBox="0 0 100 100" fill="#E9826A" aria-hidden="true"><path d="M50 4 C 52 32, 58 42, 96 50 C 58 58, 52 68, 50 96 C 48 68, 42 58, 4 50 C 42 42, 48 32, 50 4 Z"/></svg>
+      </div>
+      <div class="tile solid">Check-in</div>
+      <div class="tile ink">Guía</div>
+      <div class="tile img" style="background-image:url('../assets/lifestyle-team-01.jpeg')"><span>Antigua</span></div>
+      <div class="tile peach">Wi-Fi</div>
+      <div class="tile solid w2">Recomendaciones cerca</div>
+      <div class="tile img" style="background-image:url('../assets/lifestyle-portrait-02.jpeg')"><span>Rooftop</span></div>
+    </div>
+  </div>
+</body></html>

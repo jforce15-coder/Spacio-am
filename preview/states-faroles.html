@@ -1,0 +1,33 @@
+<!doctype html>
+<!-- @dsCard group="Components" name="Faroles & States" subtitle="Escala única de estado · todos AA" viewport="720x240" -->
+<html lang="es"><head>
+<meta charset="utf-8">
+<title>Spacio AM v2 — Faroles</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  html,body{ margin:0; background:var(--alabaster); }
+  .card{ width:720px; padding:32px; box-sizing:border-box; display:flex; flex-direction:column; gap:20px; }
+  .row{ display:flex; gap:12px; flex-wrap:wrap; align-items:center; }
+  .lbl{ font-family:var(--sans); font-size:10px; letter-spacing:.24em; text-transform:uppercase; color:var(--fg-muted); }
+  .note{ font-family:var(--sans); font-size:11px; letter-spacing:.02em; color:var(--fg-muted); line-height:1.6; }
+</style></head>
+<body class="spacio">
+  <div class="card">
+    <div class="lbl">Farol con etiqueta (píldora)</div>
+    <div class="row">
+      <span class="farol farol--success">Al día</span>
+      <span class="farol farol--warning">Por vencer</span>
+      <span class="farol farol--error">Vencido</span>
+      <span class="farol farol--info">En progreso</span>
+      <span class="farol farol--pending">Pendiente</span>
+    </div>
+    <div class="lbl">Punto (listas densas)</div>
+    <div class="row">
+      <span style="display:inline-flex;align-items:center;gap:8px;font-family:var(--sans);font-size:12px;color:var(--ink)"><i style="width:9px;height:9px;border-radius:50%;background:var(--success)"></i> Torrenova 4B</span>
+      <span style="display:inline-flex;align-items:center;gap:8px;font-family:var(--sans);font-size:12px;color:var(--ink)"><i style="width:9px;height:9px;border-radius:50%;background:var(--warning)"></i> Brunelo 2A</span>
+      <span style="display:inline-flex;align-items:center;gap:8px;font-family:var(--sans);font-size:12px;color:var(--ink)"><i style="width:9px;height:9px;border-radius:50%;background:var(--error)"></i> Beitá 7C</span>
+    </div>
+    <div class="note">Una sola escala en las 3 apps. Rojo = vencido/daño, ámbar = por vencer, verde = al día. <b>El peach nunca es un farol.</b> Los estados temporales de EPI ("hace 3+ semanas", etc.) se mapean a warning/error.</div>
+  </div>
+</body></html>

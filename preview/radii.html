@@ -1,0 +1,26 @@
+<!doctype html>
+<!-- @dsCard group="Spacing" name="Corner Radii" subtitle="Botón=pill · input/card=14 · card-top" viewport="760x200" -->
+<html lang="es"><head>
+<meta charset="utf-8">
+<title>Spacio AM v2 — Radii</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  html,body{ margin:0; background:var(--alabaster); }
+  .card{ width:760px; padding:28px 32px; box-sizing:border-box; display:grid; grid-template-columns:repeat(6,1fr); gap:18px; }
+  .item{ display:flex; flex-direction:column; align-items:center; gap:10px; }
+  .box{ width:88px; height:88px; background:var(--beige-soft); box-shadow: inset 0 0 0 1px var(--ink-08); }
+  .lbl{ font-family:var(--sans); font-size:10px; letter-spacing:.2em; text-transform:uppercase; color:var(--fg-muted); }
+  .num{ font-family:var(--sans); font-size:11px; letter-spacing:.06em; color:var(--ink); }
+  .top-only{ border-radius:var(--r-card-top); background:linear-gradient(180deg,var(--beige-soft) 70%,var(--warm-grey)); }
+</style></head>
+<body class="spacio">
+  <div class="card">
+    <div class="item"><div class="box" style="border-radius:var(--r-sm)"></div><div class="lbl">r-sm</div><div class="num">10</div></div>
+    <div class="item"><div class="box" style="border-radius:var(--r-md)"></div><div class="lbl">r-md · input/card</div><div class="num">14</div></div>
+    <div class="item"><div class="box" style="border-radius:var(--r-lg)"></div><div class="lbl">r-lg</div><div class="num">18</div></div>
+    <div class="item"><div class="box" style="border-radius:var(--r-xl)"></div><div class="lbl">r-xl · modal</div><div class="num">28</div></div>
+    <div class="item"><div class="box" style="border-radius:var(--r-pill)"></div><div class="lbl">pill · botón</div><div class="num">999</div></div>
+    <div class="item"><div class="box top-only"></div><div class="lbl">card-top</div><div class="num">28·28·0·0</div></div>
+  </div>
+</body></html>

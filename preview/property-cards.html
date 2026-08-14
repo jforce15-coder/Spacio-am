@@ -1,0 +1,43 @@
+<!doctype html>
+<!-- @dsCard group="Components" name="Property Cards" subtitle="Top-rounded image + caption block" viewport="700x340" -->
+<html lang="en"><head>
+<meta charset="utf-8">
+<title>Spacio AM — Property Card</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  html, body { margin:0; background: var(--beige-soft); }
+  .card-wrap { width:700px; padding:28px 32px; box-sizing:border-box; display:grid; grid-template-columns: 1fr 1fr; gap:22px; }
+  .prop { background: var(--alabaster); border-radius: 18px; overflow:hidden; box-shadow: 0 4px 16px rgba(62,63,63,0.05); display:flex; flex-direction:column;}
+  .img { aspect-ratio: 4/3; background-size: cover; background-position: center; border-radius: 18px 18px 0 0;}
+  .meta { padding: 16px 18px 20px; }
+  .eye { font-family: var(--sans); font-size:9.5px; letter-spacing:.32em; text-transform:uppercase; color: var(--earth);}
+  .t   { font-family: var(--serif); font-weight:400; font-size:22px; color: var(--ink); line-height:1.15; margin: 8px 0 0; letter-spacing:-.01em;}
+  .rule{ height:1px; background: var(--warm-grey); margin: 14px 0 12px;}
+  .row { display:flex; justify-content:space-between; align-items:center; }
+  .row .cap { font-family: var(--sans); font-size:11px; letter-spacing:.18em; color: var(--earth);}
+  .dot { width:6px; height:6px; border-radius:50%; background: var(--peach); display:inline-block; margin-right:8px; vertical-align:middle;}
+</style>
+</head>
+<body class="spacio">
+  <div class="card-wrap">
+    <div class="prop">
+      <div class="img" style="background-image:url('../assets/lifestyle-portrait-01.jpeg')"></div>
+      <div class="meta">
+        <div class="eye">Antigua Guatemala</div>
+        <div class="t">Casa de la Luz Dorada</div>
+        <div class="rule"></div>
+        <div class="row"><div class="cap">2 hab · 4 huéspedes</div><div class="cap"><span class="dot"></span>Disponible</div></div>
+      </div>
+    </div>
+    <div class="prop">
+      <div class="img" style="background-image:url('../assets/lifestyle-team-01.jpeg')"></div>
+      <div class="meta">
+        <div class="eye">Ciudad de Guatemala</div>
+        <div class="t">Suite Editorial nº 04</div>
+        <div class="rule"></div>
+        <div class="row"><div class="cap">Estudio · 2 huéspedes</div><div class="cap">Reservas Q3 →</div></div>
+      </div>
+    </div>
+  </div>
+</body></html>
