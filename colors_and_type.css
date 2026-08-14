@@ -1,0 +1,147 @@
+/* ============================================================
+   Spacio AM — Design System v2 · colors_and_type.css
+   Archivo canónico. Enlázalo primero en cualquier proyecto.
+   Fuente de verdad de los valores: tokens.json (genera este CSS).
+   "Hay espacios en donde sueñas con volver a despertar."
+   ============================================================ */
+
+/* ---------- Fuentes ----------
+   Valky self-hosted (fonts/); Montserrat + Cormorant Garamond desde Google Fonts.
+   Añade en cada HTML:
+   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet">
+*/
+@font-face { font-family:"Valky"; src:url("fonts/Valky-Light.otf")    format("opentype"); font-weight:300; font-style:normal; font-display:swap; }
+@font-face { font-family:"Valky"; src:url("fonts/Valky-Regular.otf")  format("opentype"); font-weight:400; font-style:normal; font-display:swap; }
+@font-face { font-family:"Valky"; src:url("fonts/Valky-Semibold.otf") format("opentype"); font-weight:600; font-style:normal; font-display:swap; }
+@font-face { font-family:"Valky"; src:url("fonts/Valky-Bold.otf")     format("opentype"); font-weight:700; font-style:normal; font-display:swap; }
+
+:root {
+  /* ========== COLOR — capa base (marca) ==========
+     Los 6 hex de marca vienen del Dashboard = base del sistema. */
+  --ink:        #3E3F3F;   /* texto primario · 10.1:1 sobre alabaster */
+  --alabaster:  #FAFAFA;   /* fondo primario */
+  --beige-soft: #F5F3F0;   /* fondo secundario / relleno de brushstroke */
+  --earth:      #938B8A;   /* swatch de marca · texto SOLO >=18px o decorativo */
+  --warm-grey:  #D8D4CE;   /* divisores · nunca texto */
+  --peach:      #E9826A;   /* acento GRÁFICO · nunca texto ni relleno con texto */
+  --peach-deep: #C83E1E;   /* NUEVO v2 · acento sólido accesible · texto blanco 5.0:1 */
+  --graphite:   #6F6867;   /* NUEVO v2 · texto secundario accesible · 5.2:1 */
+
+  /* tintes / utilidades */
+  --ink-08:   rgba(62,63,63,0.08);
+  --ink-16:   rgba(62,63,63,0.16);
+  --ink-60:   rgba(62,63,63,0.60);
+  --peach-12: rgba(233,130,106,0.12);
+  --beige-30: rgba(245,243,240,0.30);
+
+  /* ========== COLOR — estados (escala única de faroles · NUEVO v2) ========== */
+  --success:      #3d6b52;  --success-tint: #E8F2ED;
+  --warning:      #9a5020;  --warning-tint: #F5EBE5;
+  --error:        #8a3030;  --error-tint:   #F5E5E5;
+  --info:         #3B6691;  --info-tint:    #E8EDF3;
+  --pending:      #6F6867;  --pending-tint: #F5F3F0;
+
+  /* ========== COLOR — capa semántica (por rol · consumir ESTO) ========== */
+  --bg:              var(--alabaster);
+  --bg-alt:          var(--beige-soft);
+  --surface:         #FFFFFF;
+  --fg:              var(--ink);
+  --fg-muted:        var(--graphite);   /* v2: texto secundario accesible (antes era earth) */
+  --fg-subtle:       var(--earth);      /* SOLO >=18px / decorativo */
+  --accent:          var(--peach);      /* uso gráfico */
+  --accent-solid:    var(--peach-deep); /* botón/relleno de acento con texto */
+  --accent-contrast: #FFFFFF;
+  --divider:         var(--warm-grey);
+  --border:          1px solid var(--warm-grey);
+  --border-soft:     1px solid var(--ink-08);
+  --focus-ring:      0 0 0 3px rgba(233,130,106,0.35);
+
+  /* ========== TIPOGRAFÍA ========== */
+  --serif: "Valky", "Cormorant Garamond", Georgia, serif;      /* v2: fuera Playfair */
+  --sans:  "Montserrat", "Helvetica Neue", Arial, sans-serif;
+
+  --t-display: clamp(56px, 9vw, 144px);
+  --t-h1:      clamp(40px, 6vw,  88px);
+  --t-h2:      clamp(28px, 4vw,  56px);
+  --t-h3:      clamp(22px, 2.4vw, 32px);
+  --t-h4:      18px;
+  --t-body:    15px;
+  --t-small:   12px;
+  --t-eyebrow: 11px;
+
+  --tr-tight:  -0.01em;
+  --tr-normal:  0.02em;
+  --tr-wide:    0.14em;
+  --tr-eyebrow: 0.32em;
+
+  --lh-display: 1.02;
+  --lh-heading: 1.12;
+  --lh-body:    1.7;
+
+  /* ========== ESPACIADO (base 8) ========== */
+  --s-1:4px; --s-2:8px; --s-3:16px; --s-4:24px; --s-5:32px;
+  --s-6:48px; --s-7:64px; --s-8:96px; --s-9:128px; --s-10:192px;
+
+  /* ========== LAYOUT (NUEVO v2) ========== */
+  --bp-sm: 480px; --bp-md: 780px; --bp-lg: 1080px;
+  --container-narrow: 640px; --container-standard: 1080px;
+
+  /* ========== RADIOS (v2: botones/badges=pill, inputs/cards=md 14) ========== */
+  --r-sm: 10px; --r-md: 14px; --r-lg: 18px; --r-xl: 28px; --r-2xl: 40px;
+  --r-pill: 999px; --r-card-top: 28px 28px 0 0;
+
+  /* ========== SOMBRAS ========== */
+  --shadow-xs: 0 1px 2px rgba(62,63,63,0.04);
+  --shadow-sm: 0 4px 16px rgba(62,63,63,0.05);
+  --shadow-md: 0 12px 40px rgba(62,63,63,0.07);
+  --shadow-lg: 0 28px 80px rgba(62,63,63,0.10);
+
+  /* ========== MOVIMIENTO ========== */
+  --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --d-fast: 180ms; --d-med: 360ms; --d-slow: 720ms;
+
+  /* ========== ÍCONOS (NUEVO v2) ========== */
+  --icon-stroke: 1.5; --icon-sm: 20px; --icon-md: 24px;
+}
+
+/* ============================================================
+   Clases tipográficas semánticas
+   ============================================================ */
+.t-display { font-family:var(--serif); font-weight:400; font-size:var(--t-display); line-height:var(--lh-display); letter-spacing:var(--tr-tight); color:var(--fg); text-wrap:balance; }
+.t-h1, h1 { font-family:var(--serif); font-weight:400; font-size:var(--t-h1); line-height:var(--lh-heading); letter-spacing:var(--tr-tight); color:var(--fg); text-wrap:balance; margin:0; }
+.t-h2, h2 { font-family:var(--serif); font-weight:400; font-size:var(--t-h2); line-height:var(--lh-heading); letter-spacing:var(--tr-tight); color:var(--fg); text-wrap:balance; margin:0; }
+.t-h3, h3 { font-family:var(--serif); font-weight:500; font-size:var(--t-h3); line-height:var(--lh-heading); color:var(--fg); margin:0; }
+.t-h4, h4 { font-family:var(--sans); font-weight:500; font-size:var(--t-h4); letter-spacing:var(--tr-wide); text-transform:uppercase; color:var(--fg); margin:0; }
+.t-eyebrow { font-family:var(--sans); font-weight:500; font-size:var(--t-eyebrow); letter-spacing:var(--tr-eyebrow); text-transform:uppercase; color:var(--fg-muted); }
+.t-body, p { font-family:var(--sans); font-weight:400; font-size:var(--t-body); line-height:var(--lh-body); letter-spacing:var(--tr-wide); color:var(--fg); text-wrap:pretty; }
+.t-small, small { font-family:var(--sans); font-weight:400; font-size:var(--t-small); letter-spacing:var(--tr-wide); color:var(--fg-muted); }
+.t-quote { font-family:var(--serif); font-weight:300; font-style:italic; font-size:var(--t-h2); line-height:1.25; letter-spacing:var(--tr-tight); color:var(--fg); text-wrap:balance; }
+.t-num { font-family:var(--sans); font-variant-numeric:tabular-nums; }  /* números SIEMPRE en sans */
+
+/* ============================================================
+   Faroles (semáforos de estado) — escala única · NUEVO v2
+   <span class="farol farol--success">Al día</span>
+   ============================================================ */
+.farol { display:inline-flex; align-items:center; gap:var(--s-2); font-family:var(--sans); font-size:var(--t-small); font-weight:600; letter-spacing:var(--tr-wide); padding:var(--s-1) var(--s-3); border-radius:var(--r-pill); }
+.farol::before { content:""; width:8px; height:8px; border-radius:50%; background:currentColor; }
+.farol--success { color:var(--success); background:var(--success-tint); }
+.farol--warning { color:var(--warning); background:var(--warning-tint); }
+.farol--error   { color:var(--error);   background:var(--error-tint); }
+.farol--info    { color:var(--info);    background:var(--info-tint); }
+.farol--pending { color:var(--pending); background:var(--pending-tint); }
+
+/* ============================================================
+   Reset de página + helpers
+   ============================================================ */
+.spacio body, body.spacio {
+  background:var(--bg); color:var(--fg); font-family:var(--sans);
+  font-size:var(--t-body); line-height:var(--lh-body); letter-spacing:var(--tr-wide);
+  -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+}
+.accent  { color:var(--accent); }
+.muted   { color:var(--fg-muted); }
+.divider { border:0; border-top:var(--border); }
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation:none !important; transition:none !important; }
+}
