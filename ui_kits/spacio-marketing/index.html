@@ -1,0 +1,270 @@
+<!doctype html>
+<!-- @dsCard group="UI Kit — Spacio Marketing" name="Marketing Website" subtitle="Full editorial marketing page — hero, properties, tiers, contact" viewport="1280x1000" -->
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Spacio AM — Boutique hospitality & interiorismo editorial</title>
+<link rel="stylesheet" href="../../colors_and_type.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<style>
+  html, body { margin:0; background: var(--alabaster); }
+  body { font-family: var(--sans); color: var(--ink); }
+  section { position: relative; }
+  .container { max-width: 1280px; margin: 0 auto; padding: 0 56px; }
+  .hero-img { aspect-ratio: 4/5; border-radius: 28px 28px 0 0; overflow: hidden; background-size: cover; background-position: center; }
+  .grid-2 { display:grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+  .grid-3 { display:grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+  a { color: inherit; }
+  .pulse-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--peach); display: inline-block; animation: pulse 2.4s var(--ease) infinite;}
+  @keyframes pulse { 0%,100% { opacity:.5 } 50% { opacity:1 } }
+</style>
+</head>
+<body class="spacio">
+  <div id="app"></div>
+
+  <script type="text/babel" src="components.jsx"></script>
+  <script type="text/babel">
+    const { useState } = React;
+
+    function Hero() {
+      return (
+        <section style={{ paddingTop: 140, paddingBottom: 120, position: "relative", overflow: "hidden" }}>
+          <Brush style={{ top: 40, left: "-10%", width: "120%", maxWidth: "none", height: "auto", opacity: 0.6, transform: "rotate(-2deg)" }} />
+          <div className="container" style={{ position: "relative", zIndex: 2 }}>
+            <Eyebrow>Boutique hospitality · Guatemala</Eyebrow>
+            <div style={{ marginTop: 28, display: "grid", gridTemplateColumns: "1.4fr 1fr", gap: 64, alignItems: "end" }}>
+              <Display size={112} style={{ marginTop: 0 }}>
+                Hay espacios <span style={{ fontStyle: "italic", fontWeight: 300 }}>en donde sueñas</span> con volver a despertar.
+              </Display>
+              <div style={{ display: "flex", flexDirection: "column", gap: 28, paddingBottom: 18 }}>
+                <Body>
+                  Diseño, hospitalidad y experiencias que se sienten como hogar. Gestionamos propiedades de corta estancia con una estética editorial y una mirada profundamente humana.
+                </Body>
+                <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
+                  <Button variant="primary" arrow>Conoce nuestras propiedades</Button>
+                  <Button variant="text">Hablemos →</Button>
+                </div>
+              </div>
+            </div>
+
+            <div style={{ marginTop: 80, display: "grid", gridTemplateColumns: "2fr 1fr 1fr", gap: 14 }}>
+              <div className="hero-img" style={{ backgroundImage: "url('../../assets/amenities-bath-02.jpeg')", aspectRatio: "16/10" }}></div>
+              <div className="hero-img" style={{ backgroundImage: "url('../../assets/lifestyle-portrait-03.jpeg')", aspectRatio: "16/10" }}></div>
+              <div className="hero-img" style={{ backgroundImage: "url('../../assets/amenities-bath-03.jpeg')", aspectRatio: "16/10" }}></div>
+            </div>
+
+            <div style={{
+              marginTop: 28, display: "flex", justifyContent: "space-between", alignItems: "center",
+              fontFamily: "var(--sans)", fontSize: 10.5, letterSpacing: "0.32em", textTransform: "uppercase", color: "var(--earth)"
+            }}>
+              <span><span className="pulse-dot" style={{ marginRight: 10 }}></span>3 propiedades disponibles esta semana</span>
+              <span>Antigua · Ciudad · Atitlán</span>
+            </div>
+          </div>
+        </section>
+      );
+    }
+
+    function Philosophy() {
+      return (
+        <section style={{ background: "var(--beige-soft)", padding: "120px 0", position: "relative", overflow: "hidden" }}>
+          <Brush flip style={{ bottom: "-20%", right: "-20%", width: "100%", opacity: 0.5 }} />
+          <div className="container" style={{ position: "relative", zIndex: 2 }}>
+            <div className="grid-2">
+              <div>
+                <Eyebrow>Filosofía</Eyebrow>
+                <Display size={72} style={{ marginTop: 22 }}>
+                  Cada rincón es un relato esperando ser desvelado.
+                </Display>
+                <Body style={{ marginTop: 28 }}>
+                  Curamos cada propiedad con la misma intención editorial con la que se escribe una carta: luz, textura, silencio y un detalle peach que invita a mirar dos veces.
+                </Body>
+                <div style={{ marginTop: 36 }}>
+                  <Button variant="secondary" arrow>Leer la filosofía completa</Button>
+                </div>
+              </div>
+              <div style={{ position: "relative" }}>
+                <div style={{
+                  aspectRatio: "3/4", borderRadius: "28px 28px 0 0", overflow: "hidden",
+                  boxShadow: "0 28px 80px rgba(62,63,63,0.10)"
+                }}>
+                  <img src="../../assets/amenities-bath-02.jpeg" style={{ width:"100%", height:"100%", objectFit:"cover", display:"block" }} alt="Editorial bathroom" />
+                </div>
+                <div style={{
+                  position: "absolute", left: -28, bottom: 80, background: "var(--alabaster)",
+                  borderRadius: 18, padding: "18px 22px", boxShadow: "0 12px 40px rgba(62,63,63,0.07)",
+                  maxWidth: 260
+                }}>
+                  <Eyebrow>Soft morning light</Eyebrow>
+                  <div style={{ fontFamily: "var(--serif)", fontSize: 22, color: "var(--ink)", marginTop: 8, lineHeight: 1.15 }}>
+                    07:42 · Antigua
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      );
+    }
+
+    function Properties() {
+      const items = [
+        { image:"../../assets/amenities-bath-02.jpeg", location:"Antigua Guatemala", name:"Casa de la Luz Dorada", beds:"2 hab · 4 huéspedes", price:"Desde Q 1,400 / noche" },
+        { image:"../../assets/amenities-bath-03.jpeg", location:"Ciudad de Guatemala", name:"Suite Editorial nº 04", beds:"Estudio · 2 huéspedes", price:"Desde Q 980 / noche" },
+        { image:"../../assets/lifestyle-team-02.jpeg", location:"Atitlán", name:"Pabellón del Lago", beds:"3 hab · 6 huéspedes", price:"Desde Q 2,100 / noche" },
+      ];
+      return (
+        <section style={{ padding: "120px 0" }}>
+          <div className="container">
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "end", marginBottom: 56 }}>
+              <div>
+                <Eyebrow>Propiedades</Eyebrow>
+                <Display size={64} style={{ marginTop: 18 }}>Espacios curados.</Display>
+              </div>
+              <Button variant="text">Ver el portafolio completo</Button>
+            </div>
+            <div className="grid-3">
+              {items.map(p => <PropertyCard key={p.name} {...p} />)}
+            </div>
+          </div>
+        </section>
+      );
+    }
+
+    function Services() {
+      return (
+        <section style={{ padding: "120px 0", background: "var(--alabaster)" }}>
+          <div className="container">
+            <div style={{ textAlign: "center", marginBottom: 64 }}>
+              <Eyebrow>Servicios</Eyebrow>
+              <Display size={64} style={{ marginTop: 18, maxWidth: 760, margin: "18px auto 0" }}>
+                Tres formas de cuidar tu propiedad.
+              </Display>
+            </div>
+            <div className="grid-3">
+              <TierCard
+                tier="Contact Center"
+                percent="10"
+                title="Atendemos a tus huéspedes."
+                description="Comunicación 24/7, reservas y soporte. Tú mantienes el control operativo, nosotros la voz."
+                features={["Inbox unificado", "Onboarding del huésped", "Reportes mensuales", "Setup en 7 días"]}
+              />
+              <TierCard
+                featured
+                tier="Gestión Operativa"
+                percent="15"
+                title="Operamos el día a día."
+                description="Limpiezas, mantenimientos, inventario y check-ins coordinados. Tu propiedad funciona sola."
+                features={["Equipo de hospitalidad propio", "Control de inventarios", "Mantenimiento preventivo", "Reportes quincenales"]}
+              />
+              <TierCard
+                tier="Full Management"
+                percent="20"
+                title="Nosotros la convertimos en marca."
+                description="Estilismo, fotografía editorial, listings, pricing y gestión integral. El proyecto completo."
+                features={["Interiorismo editorial", "Fotografía y branding", "Estrategia de pricing", "Distribución multi-canal"]}
+              />
+            </div>
+            <div style={{ marginTop: 56, textAlign: "center" }}>
+              <Body max={620} style={{ margin: "0 auto", color: "var(--earth)" }}>
+                Cada propuesta se adapta a la propiedad. Nos llena de emoción la posibilidad de compartir este espacio contigo.
+              </Body>
+              <div style={{ marginTop: 28 }}>
+                <Button variant="primary" arrow>Agenda una conversación</Button>
+              </div>
+            </div>
+          </div>
+        </section>
+      );
+    }
+
+    function Quote() {
+      return (
+        <section style={{ background: "var(--beige-soft)", padding: "140px 0", textAlign: "center", position: "relative", overflow: "hidden" }}>
+          <Brush style={{ top: "10%", left: "-10%", width: "120%", opacity: 0.7 }} />
+          <div className="container" style={{ position: "relative", zIndex: 2, maxWidth: 920 }}>
+            <Sparkle size={28} />
+            <Display size={64} italic style={{ marginTop: 24, fontWeight: 300 }}>
+              "El corazón ya empezó a sentir que este viaje está por empezar."
+            </Display>
+            <div style={{ width: 36, height: 1, background: "var(--ink)", margin: "32px auto 14px" }}></div>
+            <Eyebrow>Carta de bienvenida · Spacio AM</Eyebrow>
+          </div>
+        </section>
+      );
+    }
+
+    function Contact() {
+      const [sent, setSent] = useState(false);
+      return (
+        <section style={{ padding: "120px 0" }}>
+          <div className="container" style={{ maxWidth: 880 }}>
+            <div style={{ textAlign: "center", marginBottom: 56 }}>
+              <Eyebrow>Contacto</Eyebrow>
+              <Display size={56} style={{ marginTop: 18 }}>Hablemos despacio.</Display>
+              <Body style={{ margin: "20px auto 0", textAlign: "center" }}>
+                Cuéntanos sobre tu propiedad, tu fecha o el viaje que estás imaginando.
+              </Body>
+            </div>
+            <form onSubmit={(e) => { e.preventDefault(); setSent(true); }} style={{
+              display: "grid", gridTemplateColumns: "1fr 1fr", gap: 28
+            }}>
+              <Field label="Nombre" placeholder="Tu nombre" />
+              <Field label="Correo" placeholder="tu@correo.com" />
+              <Field label="Propiedad o interés" placeholder="Antigua · Estancia · Gestión" full />
+              <Field label="Mensaje" placeholder="Cuéntanos…" full multiline />
+              <div style={{ gridColumn: "1 / -1", display: "flex", justifyContent: "space-between", alignItems: "center", marginTop: 12 }}>
+                <small style={{ fontFamily: "var(--sans)", fontSize: 10.5, letterSpacing: "0.18em", color: "var(--earth)" }}>
+                  hola@spacioam.com · +502 5690 9499
+                </small>
+                <Button variant="primary" arrow>{sent ? "Mensaje enviado ✓" : "Enviar"}</Button>
+              </div>
+            </form>
+          </div>
+        </section>
+      );
+    }
+
+    function Field({ label, placeholder, full, multiline }) {
+      const [focused, setFocused] = useState(false);
+      const common = {
+        fontFamily: "var(--sans)", fontSize: 14, letterSpacing: "0.06em",
+        color: "var(--ink)", padding: "14px 0 12px", border: "none",
+        borderBottom: `1px solid ${focused ? "var(--peach)" : "var(--ink)"}`,
+        background: "transparent", outline: "none", width: "100%",
+        transition: "border-color .18s var(--ease)"
+      };
+      return (
+        <div style={{ gridColumn: full ? "1 / -1" : "auto", display: "flex", flexDirection: "column", gap: 8 }}>
+          <span style={{ fontFamily: "var(--sans)", fontSize: 10, letterSpacing: "0.32em", textTransform: "uppercase", color: "var(--earth)" }}>{label}</span>
+          {multiline
+            ? <textarea rows={3} placeholder={placeholder} style={common} onFocus={() => setFocused(true)} onBlur={() => setFocused(false)} />
+            : <input placeholder={placeholder} style={common} onFocus={() => setFocused(true)} onBlur={() => setFocused(false)} />}
+        </div>
+      );
+    }
+
+    function App() {
+      return (
+        <>
+          <Nav />
+          <Hero />
+          <Philosophy />
+          <Properties />
+          <Services />
+          <Quote />
+          <Contact />
+          <Footer />
+        </>
+      );
+    }
+
+    ReactDOM.createRoot(document.getElementById("app")).render(<App />);
+  </script>
+</body>
+</html>
