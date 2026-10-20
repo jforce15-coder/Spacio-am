@@ -1,0 +1,47 @@
+<!-- @dsCard group="EPI App" viewport="1080x800" name="EPI App" subtitle="Agenda con faroles y badges de dominio, modal de trabajo, adelantos" -->
+<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Spacio AM — EPI App</title>
+<link rel="stylesheet" href="../../styles.css">
+<style>
+html,body{margin:0;background:var(--bg)}
+.epi-tabs{max-width:var(--container-standard);margin:0 auto;padding:var(--s-4) var(--s-4) 0;display:flex;align-items:center;justify-content:space-between;gap:var(--s-3);flex-wrap:wrap}
+.epi-main{max-width:var(--container-standard);margin:0 auto;padding:var(--s-5) var(--s-4) var(--s-7);position:relative;overflow-x:hidden}
+img,svg,table{max-width:100%}
+.epi-grid{display:grid;grid-template-columns:1.6fr 1fr;gap:var(--s-5);align-items:start}
+.epi-jobs{display:flex;flex-direction:column;gap:var(--s-2)}
+.epi-job{display:flex;align-items:center;gap:var(--s-3)}
+.epi-job-time{display:flex;align-items:center;gap:10px;min-width:74px}
+.epi-job-right{display:flex;align-items:center;gap:10px;margin-left:auto}
+.epi-aside{display:flex;flex-direction:column;gap:var(--s-3)}
+.epi-mini-kpis{display:grid;grid-template-columns:1fr 1fr;gap:var(--s-2)}
+.epi-form{display:grid;grid-template-columns:1fr 1fr;gap:var(--s-3) var(--s-4);align-items:start}
+.epi-form>*:last-child{grid-column:span 2}
+.epi-row{display:flex;align-items:center;justify-content:space-between;gap:var(--s-3);padding:12px 14px;background:var(--bg-alt);border-radius:var(--r-md)}
+.epi-footer{display:flex;align-items:center;justify-content:space-between;gap:var(--s-3);flex-wrap:wrap;border-top:1px solid var(--divider);margin-top:var(--s-7);padding-top:var(--s-4)}
+.epi-alert{display:flex;align-items:center;gap:10px;background:var(--attention-tint);color:var(--attention-text);border-radius:var(--r-md);padding:12px 16px;font-family:var(--font-sans);font-size:12.5px;font-weight:600;letter-spacing:var(--tr-normal);margin-bottom:var(--s-4)}
+.epi-deposit{display:flex;align-items:flex-end;justify-content:space-between;gap:var(--s-4);flex-wrap:wrap;padding-bottom:var(--s-4);border-bottom:1px solid var(--divider);margin-bottom:var(--s-4)}
+.epi-kpirow{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:var(--s-2);margin-bottom:var(--s-4)}
+.epi-filters{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:var(--s-3);margin-bottom:var(--s-3)}
+.epi-toolbar{display:flex;align-items:center;gap:var(--s-3);flex-wrap:wrap;margin-bottom:var(--s-3)}
+.epi-bulk{display:flex;align-items:center;gap:var(--s-3);flex-wrap:wrap;background:var(--color-success-tint);color:var(--color-success);border-radius:var(--r-md);padding:12px 14px;font-family:var(--font-sans);font-size:12.5px;letter-spacing:var(--tr-normal);margin-bottom:var(--s-4)}
+.epi-form-screen{max-width:var(--container-narrow);margin:0 auto}
+.epi-form-two{display:grid;grid-template-columns:1fr 1fr;gap:var(--s-3) var(--s-4);align-items:start}
+.epi-drop{width:96px;height:96px;border:1px dashed var(--divider);border-radius:var(--r-md);background:var(--bg-alt);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;cursor:pointer;font-family:var(--font-sans);font-size:10.5px;letter-spacing:var(--tr-wide);text-transform:uppercase;color:var(--fg-muted)}
+.epi-drop--req{border-color:var(--accent);background:var(--color-peach-12);color:var(--fg)}
+.epi-drop--wide{width:100%;height:56px;flex-direction:row}
+@media(max-width:780px){.epi-grid,.epi-form,.epi-form-two,.epi-kpirow,.epi-filters{grid-template-columns:1fr}.epi-main{padding:var(--s-4) var(--s-3) 110px}.epi-form>*:last-child{grid-column:span 1}.epi-job-right span{display:none}.epi-job-right{gap:4px}}
+</style>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="../../_ds_bundle.js"></script>
+<script src="data.js"></script>
+</head><body class="spacio"><div id="root"></div>
+<script type="text/babel" src="Dashboard.jsx"></script>
+<script type="text/babel" src="Formulario.jsx"></script>
+<script type="text/babel" src="Calidad.jsx"></script>
+<script type="text/babel" src="Agenda.jsx"></script>
+<script type="text/babel" src="JobDetail.jsx"></script>
+<script type="text/babel" src="Adelantos.jsx"></script>
+<script type="text/babel" src="EpiApp.jsx"></script>
+</body></html>

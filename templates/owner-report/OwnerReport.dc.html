@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<!-- @template name="Reporte de propietario" description="Página editorial de cierre de mes: hero con brushstroke, KPIs, gráfica y tabla-resumen." -->
+<helmet><script src="./ds-base.js"></script><link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;1,300&display=swap" rel="stylesheet"><style>body{margin:0;background:#FAFAFA}</style></helmet>
+<div style="max-width:1080px;margin:0 auto;padding:48px 24px 96px;font-family:'Montserrat',Arial,sans-serif">
+<div style="display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-bottom:48px">
+<x-import component-from-global-scope="SpacioAMDesignSystem_2c08fe.Wordmark" variant="stacked" height="76" base="../.." hint-size="120px,76px"></x-import>
+<div style="font-family:'Montserrat',Arial,sans-serif;font-size:11px;font-weight:500;letter-spacing:0.32em;text-transform:uppercase;color:#6F6867">Agosto 2026 · Casa de la Luz Dorada</div>
+</div>
+<div style="display:grid;grid-template-columns:1.25fr 1fr;gap:48px;align-items:center;margin-bottom:64px">
+<x-import component-from-global-scope="SpacioAMDesignSystem_2c08fe.Brushstroke" base="../.." src="../../assets/photos/living.jpeg" height="240" radius="28px" hint-size="100%,240px"></x-import>
+<div>
+<div style="font-family:'Montserrat',Arial,sans-serif;font-size:11px;font-weight:500;letter-spacing:0.32em;text-transform:uppercase;color:#6F6867">Cierre de mes</div>
+<p style="font-family:'Valky','Cormorant Garamond',Georgia,serif;font-weight:300;font-size:27px;line-height:1.25;letter-spacing:-0.01em;color:#3E3F3F;margin:16px 0 0;text-wrap:pretty">Tu mejor agosto: Q 48,320 netos con 87% de ocupación ajustada.</p>
+</div>
+</div>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:16px;margin-bottom:96px">
+<x-import component-from-global-scope="SpacioAMDesignSystem_2c08fe.KpiCard" big="{{ true }}" accent="{{ true }}" label="Ingreso neto" value="Q 48,320" trend="{{ trendNeto }}" help="Después de comisión y gastos operativos." hint-size="100%,150px"></x-import>
+<x-import component-from-global-scope="SpacioAMDesignSystem_2c08fe.KpiCard" label="Ocupación" value="87%" trend="{{ trendOcc }}" hint-size="100%,120px"></x-import>
+<x-import component-from-global-scope="SpacioAMDesignSystem_2c08fe.KpiCard" label="ADR" value="Q 640" trend="{{ trendAdr }}" hint-size="100%,120px"></x-import>
+</div>
+<div style="margin-bottom:24px">
+<div style="font-family:'Montserrat',Arial,sans-serif;font-size:11px;font-weight:500;letter-spacing:0.32em;text-transform:uppercase;color:#6F6867">Financiero</div>
+<h2 style="font-family:'Valky','Cormorant Garamond',Georgia,serif;font-weight:400;font-size:34px;line-height:1.12;letter-spacing:-0.01em;color:#3E3F3F;margin:12px 0 0">Cómo se movió el mes</h2>
+</div>
+<x-import component-from-global-scope="SpacioAMDesignSystem_2c08fe.Card" hint-size="100%,320px">
+<x-import component-from-global-scope="SpacioAMDesignSystem_2c08fe.LineChart" series="{{ series }}" labels="{{ labels }}" height="240" hint-size="100%,240px"></x-import>
+</x-import>
+<div style="margin:96px 0 24px">
+<div style="font-family:'Montserrat',Arial,sans-serif;font-size:11px;font-weight:500;letter-spacing:0.32em;text-transform:uppercase;color:#6F6867">Detalle</div>
+<h2 style="font-family:'Valky','Cormorant Garamond',Georgia,serif;font-weight:400;font-size:34px;line-height:1.12;letter-spacing:-0.01em;color:#3E3F3F;margin:12px 0 0">Propiedad por propiedad</h2>
+</div>
+<x-import component-from-global-scope="SpacioAMDesignSystem_2c08fe.SummaryTable" columns="{{ columns }}" rows="{{ rows }}" hint-size="100%,180px"></x-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      trendNeto: 12.4, trendOcc: -3.1, trendAdr: 4.8,
+      labels: ["Mar", "Abr", "May", "Jun", "Jul", "Ago"],
+      series: [
+        { name: "Ingreso bruto", values: [48200, 51400, 49800, 52100, 56400, 61900] },
+        { name: "Ingreso neto", values: [36800, 39900, 38100, 39000, 43000, 48320], accent: true }
+      ],
+      columns: [
+        { key: "p", header: "Propiedad" },
+        { key: "neto", header: "Neto", num: true },
+        { key: "occ", header: "Ocupación", num: true },
+        { key: "adr", header: "ADR", num: true }
+      ],
+      rows: [
+        { p: "Casa de la Luz Dorada", neto: "Q 18,420", occ: "91%", adr: "Q 705" },
+        { p: "Suite Editorial nº 04", neto: "Q 12,180", occ: "84%", adr: "Q 588" },
+        { p: "Nook Antigua", neto: "Q 9,640", occ: "78%", adr: "Q 512" }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

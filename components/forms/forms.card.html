@@ -1,0 +1,43 @@
+<!-- @dsCard group="Components" viewport="700x340" name="Forms · Input, Select, Toggle, Checkbox" subtitle="Caja y editorial, densidades y estados" -->
+<!doctype html><html lang="es"><head><meta charset="utf-8"><title>Forms</title>
+<link rel="stylesheet" href="../../styles.css">
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="../../_ds_bundle.js"></script>
+<style>html,body{margin:0;background:var(--bg)}.wrap{width:700px;box-sizing:border-box;padding:24px 26px;display:grid;grid-template-columns:1fr 1fr;gap:22px 26px;align-items:start}.lbl{font-family:var(--font-sans);font-size:9.5px;letter-spacing:var(--tr-eyebrow);text-transform:uppercase;color:var(--fg-muted);margin-bottom:12px}</style>
+</head><body class="spacio"><div id="root"></div>
+<script type="text/babel">
+const { Input, Select, Toggle, Checkbox } = window.SpacioAMDesignSystem_2c08fe;
+const { useState } = React;
+function Demo(){
+  const [v,setV]=useState("hola@spacioam.com");
+  const [p,setP]=useState("all");
+  const [on,setOn]=useState(true);
+  const [ck,setCk]=useState(true);
+  return (
+    <div className="wrap">
+      <div>
+        <div className="lbl">Input · caja</div>
+        <div style={{display:"flex",flexDirection:"column",gap:16}}>
+          <Input label="Correo" value={v} onChange={setV} icon="mail" helper="Lo usamos para enviarte el cierre de mes." />
+          <Input label="Monto" density="compact" value="Q 3,450.00" onChange={()=>{}} />
+          <Input label="Contraseña" type="password" value="1234" onChange={()=>{}} error="Datos incorrectos. Revisa e intenta de nuevo." />
+        </div>
+      </div>
+      <div>
+        <div className="lbl">Editorial · Select · Controles</div>
+        <div style={{display:"flex",flexDirection:"column",gap:20}}>
+          <Input variant="underline" label="Tu nombre" value="Ana Morales" onChange={()=>{}} />
+          <Select icon="home" value={p} onChange={setP} minWidth={230}
+            options={[{value:"all",label:"Todas las propiedades",sub:"12 propiedades"},{value:"p1",label:"Casa de la Luz",sub:"Antigua"}]} />
+          <Toggle checked={on} onChange={setOn} label="Sincronización automática" />
+          <Checkbox checked={ck} onChange={setCk} label="Acepto las reglas de la casa" />
+          <Toggle checked={false} onChange={()=>{}} disabled label="Deshabilitado" />
+        </div>
+      </div>
+    </div>
+  );
+}
+ReactDOM.createRoot(document.getElementById("root")).render(<Demo />);
+</script></body></html>

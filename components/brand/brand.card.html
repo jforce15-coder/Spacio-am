@@ -1,0 +1,32 @@
+<!-- @dsCard group="Components" viewport="700x300" name="Brand · Logo, Sparkle, Brushstroke, Icons" subtitle="Marca oficial, firma de imagen y set de íconos 1.5" -->
+<!doctype html><html lang="es"><head><meta charset="utf-8"><title>Brand</title>
+<link rel="stylesheet" href="../../styles.css">
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="../../_ds_bundle.js"></script>
+<style>html,body{margin:0;background:var(--bg)}.wrap{width:700px;box-sizing:border-box;padding:24px 26px;display:grid;grid-template-columns:1fr 1fr;gap:22px;align-items:start}.lbl{font-family:var(--font-sans);font-size:9.5px;letter-spacing:var(--tr-eyebrow);text-transform:uppercase;color:var(--fg-muted);margin-bottom:12px}.icons{display:grid;grid-template-columns:repeat(8,1fr);gap:12px;color:var(--fg)}</style>
+</head><body class="spacio"><div id="root"></div>
+<script type="text/babel">
+const { Wordmark, Sparkle, Brushstroke, Icon } = window.SpacioAMDesignSystem_2c08fe;
+const names = ["calendar","home","coins","wrench","wifi","bed","guests","star","alert","check","refresh","pin","mail","file","grid","settings"];
+ReactDOM.createRoot(document.getElementById("root")).render(
+  <div className="wrap">
+    <div>
+      <div className="lbl">Logo · lockups</div>
+      <div style={{display:"flex",alignItems:"flex-end",gap:22,marginBottom:22}}>
+        <Wordmark variant="stacked" height={72} base="../.." />
+        <Wordmark variant="stamp" height={46} base="../.." />
+        <Wordmark variant="monogram" height={44} base="../.." />
+        <Sparkle size={16} />
+      </div>
+      <div className="lbl">Íconos · Lucide curado · 1.5</div>
+      <div className="icons">{names.map(n => <Icon key={n} name={n} size={20} />)}</div>
+    </div>
+    <div>
+      <div className="lbl">Brushstroke · firma de imagen</div>
+      <Brushstroke base="../.." src="../../assets/photos/living.jpeg" alt="Sala" height={180} />
+    </div>
+  </div>
+);
+</script></body></html>

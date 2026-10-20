@@ -1,0 +1,51 @@
+<!-- @dsCard group="Components" viewport="700x460" name="Data · KPIs, Gráficas, Tabla, Calendario" subtitle="Resúmenes numéricos, dataviz accesible y densidad" -->
+<!doctype html><html lang="es"><head><meta charset="utf-8"><title>Data</title>
+<link rel="stylesheet" href="../../styles.css">
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="../../_ds_bundle.js"></script>
+<style>html,body{margin:0;background:var(--bg)}.wrap{width:700px;box-sizing:border-box;padding:24px 26px;display:flex;flex-direction:column;gap:20px}.lbl{font-family:var(--font-sans);font-size:9.5px;letter-spacing:var(--tr-eyebrow);text-transform:uppercase;color:var(--fg-muted);margin-bottom:10px}</style>
+</head><body class="spacio"><div id="root"></div>
+<script type="text/babel">
+const { KpiCard, LineChart, Gauge, BarChart, SummaryTable, Calendar, Card } = window.SpacioAMDesignSystem_2c08fe;
+ReactDOM.createRoot(document.getElementById("root")).render(
+  <div className="wrap">
+    <div>
+      <div className="lbl">KPIs editoriales</div>
+      <div style={{display:"grid",gridTemplateColumns:"1.3fr 1fr 1fr",gap:12}}>
+        <KpiCard big accent label="Ingreso neto" value="Q 48,320" trend={12.4} help="Después de comisión y gastos." />
+        <KpiCard label="Ocupación" value="87%" trend={-3.1} />
+        <KpiCard label="ADR" value="Q 640" trend={4.8} />
+      </div>
+    </div>
+    <div style={{display:"grid",gridTemplateColumns:"1.5fr 1fr",gap:18}}>
+      <Card>
+        <div className="lbl">Ingreso · 6 meses</div>
+        <LineChart height={150} labels={["Mar","Abr","May","Jun","Jul","Ago"]} formatY={v=>"Q"+Math.round(v/1000)+"k"}
+          series={[{name:"Ingreso bruto",values:[38000,41000,39500,46000,44000,52000]},
+                   {name:"Ingreso neto",values:[31000,34000,32800,39000,37500,48320],accent:true}]} />
+      </Card>
+      <Card style={{display:"flex",flexDirection:"column",alignItems:"center"}}>
+        <div className="lbl" style={{alignSelf:"flex-start"}}>Ocupación ajustada</div>
+        <Gauge value={87} size={140} sub="Este mes" accent />
+      </Card>
+    </div>
+    <div style={{display:"grid",gridTemplateColumns:"1.4fr 1fr",gap:18,alignItems:"start"}}>
+      <div>
+        <div className="lbl">Tabla-resumen (escritorio denso)</div>
+        <SummaryTable columns={[{key:"p",header:"Propiedad"},{key:"n",header:"Neto",num:true},{key:"o",header:"Ocup.",num:true}]}
+          rows={[{p:"Casa de la Luz",n:"Q 18,420",o:"91%"},{p:"Suite Editorial 04",n:"Q 12,180",o:"84%"},{p:"Nook Antigua",n:"Q 9,640",o:"78%"}]} />
+      </div>
+      <div>
+        <div className="lbl">Calendario · faroles por día</div>
+        <Calendar year={2026} month={7} today={14} selected={18} days={{4:"success",9:"warning",14:"info",22:"error",27:"pending"}} onSelect={()=>{}} />
+      </div>
+    </div>
+    <div>
+      <div className="lbl">Columnas mensuales</div>
+      <BarChart height={130} data={[{label:"Mar",value:74},{label:"Abr",value:80},{label:"May",value:77},{label:"Jun",value:85},{label:"Jul",value:82},{label:"Ago",value:87,highlight:true}]} />
+    </div>
+  </div>
+);
+</script></body></html>
