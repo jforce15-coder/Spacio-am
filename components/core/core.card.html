@@ -1,0 +1,56 @@
+<!-- @dsCard group="Components" viewport="700x380" name="Core · Botones, Cards, Faroles, Badges" subtitle="Variantes, estados y la escala única de estado" -->
+<!doctype html><html lang="es"><head><meta charset="utf-8"><title>Core</title>
+<link rel="stylesheet" href="../../styles.css">
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="../../_ds_bundle.js"></script>
+<style>html,body{margin:0;background:var(--bg)}.wrap{width:700px;box-sizing:border-box;padding:24px 26px;display:flex;flex-direction:column;gap:20px}.row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}.lbl{font-family:var(--font-sans);font-size:9.5px;letter-spacing:var(--tr-eyebrow);text-transform:uppercase;color:var(--fg-muted);margin-bottom:10px}</style>
+</head><body class="spacio"><div id="root"></div>
+<script type="text/babel">
+const { Button, Card, Farol, DomainBadge, Eyebrow, PropertyCard } = window.SpacioAMDesignSystem_2c08fe;
+ReactDOM.createRoot(document.getElementById("root")).render(
+  <div className="wrap">
+    <div>
+      <div className="lbl">Botón · variantes y estados</div>
+      <div className="row">
+        <Button variant="primary">Primario</Button>
+        <Button variant="accent">Acento</Button>
+        <Button variant="secondary">Secundario</Button>
+        <Button variant="danger">Peligro</Button>
+        <Button variant="text" uppercase={false}>Enlace de acción</Button>
+      </div>
+      <div className="row" style={{marginTop:10}}>
+        <Button size="sm" iconRight="arrowRight">Small</Button>
+        <Button size="lg" icon="coins">Large</Button>
+        <Button disabled>Disabled</Button>
+        <Button loading>Cargando</Button>
+      </div>
+    </div>
+    <div>
+      <div className="lbl">Farol · escala única · Badge de dominio (EPI)</div>
+      <div className="row">
+        <Farol state="success">Al día</Farol><Farol state="warning">Por vencer</Farol>
+        <Farol state="error">Vencido</Farol><Farol state="info">En progreso</Farol>
+        <Farol state="pending">Pendiente</Farol>
+      </div>
+      <div className="row" style={{marginTop:10}}>
+        <DomainBadge category="limpieza-tradicional" /><DomainBadge category="limpieza-profunda" />
+        <DomainBadge category="mantenimiento" /><DomainBadge category="danos" />
+        <DomainBadge category="supervision" /><DomainBadge category="wifi" />
+      </div>
+    </div>
+    <div style={{display:"grid",gridTemplateColumns:"1.1fr 1fr",gap:18,alignItems:"start"}}>
+      <div>
+        <div className="lbl">Card · plana / elevada</div>
+        <Card variant="flat" style={{marginBottom:12}}><Eyebrow>Plana</Eyebrow><div style={{fontFamily:"var(--font-serif)",fontSize:20,marginTop:6}}>Borde suave</div></Card>
+        <Card variant="elevated"><Eyebrow>Elevada</Eyebrow><div style={{fontFamily:"var(--font-serif)",fontSize:20,marginTop:6}}>Sombra sm</div></Card>
+      </div>
+      <div>
+        <div className="lbl">Property card</div>
+        <PropertyCard base="../.." image="../../assets/photos/bedroom.jpeg" location="Antigua Guatemala" name="Casa de la Luz" meta="2 hab · 4 huéspedes" status="Al día" />
+      </div>
+    </div>
+  </div>
+);
+</script></body></html>

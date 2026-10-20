@@ -1,0 +1,53 @@
+<!-- @dsCard group="Components" viewport="700x430" name="Navigation · TopBar, PillNav, Bento, Collapsible" subtitle="Chrome de producto, nav editorial y bento de inicio" -->
+<!doctype html><html lang="es"><head><meta charset="utf-8"><title>Navigation</title>
+<link rel="stylesheet" href="../../styles.css">
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="../../_ds_bundle.js"></script>
+<style>html,body{margin:0;background:var(--bg)}.wrap{width:700px;box-sizing:border-box;display:flex;flex-direction:column;gap:16px;padding-bottom:20px}.pad{padding:0 26px}.lbl{font-family:var(--font-sans);font-size:9.5px;letter-spacing:var(--tr-eyebrow);text-transform:uppercase;color:var(--fg-muted);margin-bottom:10px}</style>
+</head><body class="spacio"><div id="root"></div>
+<script type="text/babel">
+const { TopBar, PillNav, Bento, BentoTile, Collapsible, Button, Farol } = window.SpacioAMDesignSystem_2c08fe;
+const { useState } = React;
+function Demo(){
+  const [m,setM]=useState("2026-08");
+  const [c,setC]=useState("GTQ");
+  const [l,setL]=useState("es");
+  return (
+    <div className="wrap">
+      <TopBar base="../.." month={m} onMonth={setM} months={[{value:"2026-08",label:"Agosto 2026"},{value:"2026-07",label:"Julio 2026"}]}
+        currency={c} onCurrency={setC} lang={l} onLang={setL} initials="AM" alert="Factura pendiente" />
+      <div className="pad" style={{marginTop:-6}}>
+        <div className="lbl">Nav editorial (marketing / Guest)</div>
+        <PillNav base="../.." links={["Filosofía","Propiedades","Servicios","Diario"]} active="Propiedades" cta={<Button size="sm">Reservar</Button>} />
+      </div>
+      <div className="pad" style={{display:"grid",gridTemplateColumns:"1.2fr 1fr",gap:24,alignItems:"start"}}>
+        <div>
+          <div className="lbl">Bento · inicio de Guest</div>
+          <Bento style={{gridTemplateColumns:"repeat(4,1fr)",gridAutoRows:"78px"}}>
+            <BentoTile image="../../assets/photos/living.jpeg" label="Tu estadía" span={2} rows={2} sparkle onClick={()=>{}} />
+            <BentoTile label="Check-in" onClick={()=>{}} />
+            <BentoTile label="Guía" tone="ink" onClick={()=>{}} />
+            <BentoTile label="Wi-Fi" tone="peach" onClick={()=>{}} />
+            <BentoTile image="../../assets/photos/rooftop.jpeg" label="Rooftop" onClick={()=>{}} />
+            <BentoTile label="Recomendaciones cerca" span={2} onClick={()=>{}} />
+          </Bento>
+        </div>
+        <div>
+          <div className="lbl">Colapsable</div>
+          <Collapsible title="Pendientes" meta="3 ítems">
+            <div style={{display:"flex",flexDirection:"column",gap:8}}>
+              <Farol state="error">Filtro de agua vencido</Farol>
+              <Farol state="warning">Supervisión por vencer</Farol>
+              <Farol state="success">Limpieza al día</Farol>
+            </div>
+          </Collapsible>
+          <Collapsible title="Filtros avanzados" defaultOpen={false} />
+        </div>
+      </div>
+    </div>
+  );
+}
+ReactDOM.createRoot(document.getElementById("root")).render(<Demo />);
+</script></body></html>
