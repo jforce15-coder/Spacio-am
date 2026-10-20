@@ -9,8 +9,8 @@ Apps revisadas: Hub, Hola, Epi, Mi, Docs y Grow (repos `jforce15-coder/*-spacioa
 ## Qué hay aquí
 
 - `informes/AAAA-MM-DD.md` — el informe de cada revisión, para leer.
-- `informes/AAAA-MM-DD.json` — las mismas propuestas en datos. Es lo que leerá el
-  panel del Hub en la fase 2.
+- `informes/AAAA-MM-DD.json` — las mismas propuestas en datos. Es lo mismo que se
+  publicó en el panel del Hub.
 - `decisiones.json` — lo que el administrador decide sobre cada propuesta.
 - `excepciones.json` — diferencias aprobadas como propias de una sola app. La
   revisión no las vuelve a proponer.
