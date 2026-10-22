@@ -1,0 +1,647 @@
+[
+ {
+  "id": "P-2026-10-22-01",
+  "titulo": "Centro de notificaciones estilo iOS: 6 copias y ninguna en el design system",
+  "tipo": "componente",
+  "origen": "hub",
+  "apps_con_el_cambio": [
+   "hub",
+   "hola",
+   "epi",
+   "mi",
+   "docs",
+   "grow"
+  ],
+  "apps_afectadas": [
+   "hub",
+   "hola",
+   "epi",
+   "mi",
+   "docs",
+   "grow"
+  ],
+  "estado_en_ds": "no existe",
+  "impacto": "alto",
+  "recomendacion": "estandarizar",
+  "motivo": "Las seis apps traen su propio noti-center.jsx (NotiBell, NotiCenter, NotiToast) en 4 versiones distintas. Hub, Epi y Grow pintan la campana con el azul info del DS (#3B6691); Hola, Mi y Docs la dejaron en azul iOS #0088FF, fuera de la paleta y con 3.5:1 de contraste. Conviene subirlo al DS como componente (feedback/NotiCenter) con la campana en --color-info y un solo archivo para todas.",
+  "evidencia": [
+   {
+    "app": "hub",
+    "archivo": "js/noti-center.jsx",
+    "detalle": "NotiBell: var col = props.color || \"#3B6691\""
+   },
+   {
+    "app": "grow",
+    "archivo": "noti-center.jsx",
+    "detalle": "<Icon name=\"alert\" … stroke=\"#3B6691\"/>"
+   },
+   {
+    "app": "docs",
+    "archivo": "noti-center.jsx:52",
+    "detalle": "svg stroke:\"#0088FF\" (mismo archivo en mi/noti-center.jsx)"
+   },
+   {
+    "app": "hola",
+    "archivo": "app/noti-center.jsx",
+    "detalle": "stroke #0088FF y la campana se muestra aun con 0 pendientes"
+   },
+   {
+    "app": "epi",
+    "archivo": "app.jsx:9737",
+    "detalle": "campana propia: stroke var(--color-info,#3B6691), activo #B4553C"
+   },
+   {
+    "app": "ds",
+    "archivo": "components/feedback/",
+    "detalle": "solo Modal, LoadingScreen y Skeleton: no hay centro de notificaciones"
+   }
+  ],
+  "vistas": [
+   {
+    "etiqueta": "Hub · Epi · Grow (azul info del DS)",
+    "app": "hub",
+    "alto": 330,
+    "html": "<div class=\"wrap\"><div><div class=\"bar\"><b>Reservas</b><span class=\"bell\"><svg width=\"23\" height=\"23\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#3B6691\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M12 3.2L2.4 19.6a1 1 0 00.87 1.5h17.46a1 1 0 00.87-1.5L12 3.2z\"/><path d=\"M12 9v5\"/><path d=\"M12 17.2v.05\"/></svg><span class=\"cnt\">3</span></span></div><p style=\"font-size:11px;color:var(--fg-muted);letter-spacing:.06em;margin:0\">Campana en --color-info #3B6691 (5.8:1).</p></div>\n<div class=\"panel\"><div class=\"h\">Necesita tu acción · 2</div><div class=\"row\"><p>Falta el depósito de la reserva HMX4Q2<small>Casa Ceiba · llega el viernes</small></p><i>9:40</i></div><div class=\"row\"><p>Check-in sin documento<small>Loft Cayalá · Ana Morales</small></p><i>ayer</i></div></div></div>",
+    "css": "\n.wrap{padding:20px;font-family:var(--font-sans);background:var(--bg);display:flex;flex-direction:column;gap:14px}.wrap>div:first-child{display:flex;align-items:center;gap:14px;flex-wrap:wrap}\n.bar{display:flex;align-items:center;gap:10px;background:var(--surface);border:var(--border-soft);border-radius:var(--r-pill);padding:6px 8px 6px 18px;box-shadow:var(--shadow-xs)}\n.bar b{font-family:var(--font-serif);font-weight:400;font-size:18px;color:var(--fg)}\n.bell{position:relative;width:40px;height:40px;display:inline-flex;align-items:center;justify-content:center}\n.cnt{position:absolute;top:-1px;right:-1px;min-width:18px;height:18px;padding:0 5px;box-sizing:border-box;border-radius:999px;background:#E9826A;color:#fff;font-size:10.5px;font-weight:700;display:flex;align-items:center;justify-content:center;box-shadow:0 1px 3px rgba(0,0,0,.28)}\n.panel{flex:1;background:linear-gradient(160deg,#5b5754,#3e3f3f);border-radius:var(--r-lg);padding:14px;display:flex;flex-direction:column;gap:8px}\n.h{color:rgba(255,255,255,.9);font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;padding:2px 4px}\n.row{border-radius:22px;padding:12px 16px;background:rgba(72,72,74,.42);border:1px solid rgba(255,255,255,.14);box-shadow:0 8px 24px rgba(0,0,0,.18),inset 0 1px 0 rgba(255,255,255,.42);display:flex;gap:10px}\n.row p{margin:0;flex:1;color:rgba(255,255,255,.98);font-size:13px;line-height:1.4}\n.row small{display:block;color:rgba(255,255,255,.68);font-size:11px;margin-top:3px}\n.row i{font-style:normal;color:rgba(255,255,255,.6);font-size:10.5px}\n"
+   },
+   {
+    "etiqueta": "Hola · Mi · Docs (azul iOS)",
+    "app": "docs",
+    "alto": 330,
+    "html": "<div class=\"wrap\"><div><div class=\"bar\"><b>Reservas</b><span class=\"bell\"><svg width=\"23\" height=\"23\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#0088FF\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M12 3.2L2.4 19.6a1 1 0 00.87 1.5h17.46a1 1 0 00.87-1.5L12 3.2z\"/><path d=\"M12 9v5\"/><path d=\"M12 17.2v.05\"/></svg><span class=\"cnt\">3</span></span></div><p style=\"font-size:11px;color:var(--fg-muted);letter-spacing:.06em;margin:0\">Campana en #0088FF, fuera de paleta (3.5:1).</p></div>\n<div class=\"panel\"><div class=\"h\">Necesita tu acción · 2</div><div class=\"row\"><p>Falta el depósito de la reserva HMX4Q2<small>Casa Ceiba · llega el viernes</small></p><i>9:40</i></div><div class=\"row\"><p>Check-in sin documento<small>Loft Cayalá · Ana Morales</small></p><i>ayer</i></div></div></div>",
+    "css": "\n.wrap{padding:20px;font-family:var(--font-sans);background:var(--bg);display:flex;flex-direction:column;gap:14px}.wrap>div:first-child{display:flex;align-items:center;gap:14px;flex-wrap:wrap}\n.bar{display:flex;align-items:center;gap:10px;background:var(--surface);border:var(--border-soft);border-radius:var(--r-pill);padding:6px 8px 6px 18px;box-shadow:var(--shadow-xs)}\n.bar b{font-family:var(--font-serif);font-weight:400;font-size:18px;color:var(--fg)}\n.bell{position:relative;width:40px;height:40px;display:inline-flex;align-items:center;justify-content:center}\n.cnt{position:absolute;top:-1px;right:-1px;min-width:18px;height:18px;padding:0 5px;box-sizing:border-box;border-radius:999px;background:#E9826A;color:#fff;font-size:10.5px;font-weight:700;display:flex;align-items:center;justify-content:center;box-shadow:0 1px 3px rgba(0,0,0,.28)}\n.panel{flex:1;background:linear-gradient(160deg,#5b5754,#3e3f3f);border-radius:var(--r-lg);padding:14px;display:flex;flex-direction:column;gap:8px}\n.h{color:rgba(255,255,255,.9);font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;padding:2px 4px}\n.row{border-radius:22px;padding:12px 16px;background:rgba(72,72,74,.42);border:1px solid rgba(255,255,255,.14);box-shadow:0 8px 24px rgba(0,0,0,.18),inset 0 1px 0 rgba(255,255,255,.42);display:flex;gap:10px}\n.row p{margin:0;flex:1;color:rgba(255,255,255,.98);font-size:13px;line-height:1.4}\n.row small{display:block;color:rgba(255,255,255,.68);font-size:11px;margin-top:3px}\n.row i{font-style:normal;color:rgba(255,255,255,.6);font-size:10.5px}\n"
+   }
+  ]
+ },
+ {
+  "id": "P-2026-10-22-02",
+  "titulo": "Select con buscador y multi-selección (PillSelect): mismo componente en Mi, Hola y Docs, distinto al del DS",
+  "tipo": "componente",
+  "origen": "mi",
+  "apps_con_el_cambio": [
+   "mi",
+   "hola",
+   "docs"
+  ],
+  "apps_afectadas": [
+   "hub",
+   "epi",
+   "grow"
+  ],
+  "estado_en_ds": "distinto",
+  "impacto": "alto",
+  "recomendacion": "estandarizar",
+  "motivo": "El Select del DS solo elige una opción. Mi, Hola y Docs usan la misma evolución: buscador cuando hay más de 6 opciones, multi-selección con casillas y contador en el disparador. La pieza ya ganó en tres apps, pero con radios fuera de escala (panel 16, opción 11). Propuesta: sumar searchable y multi al Select del DS con los radios del sistema (--r-lg 18 / --r-sm 10).",
+  "evidencia": [
+   {
+    "app": "mi",
+    "archivo": "ui.jsx:180-240",
+    "detalle": "showSearch, multi, borderRadius: 16 (panel) y 11 (opción)"
+   },
+   {
+    "app": "hola",
+    "archivo": "app/shell.jsx:186",
+    "detalle": "function PillSelect({ … multi, searchable … }) · borderRadius: 16"
+   },
+   {
+    "app": "docs",
+    "archivo": "panel-ui.jsx:62-70",
+    "detalle": "PanelSelect: panel borderRadius: 16, buscador sticky"
+   },
+   {
+    "app": "mi",
+    "archivo": "sa-combo.jsx:30",
+    "detalle": ".sac-pop { border-radius: 14px } — tercera variante dentro de la misma app"
+   },
+   {
+    "app": "ds",
+    "archivo": "components/forms/Select.jsx",
+    "detalle": "panel var(--r-lg), opción var(--r-sm), sin búsqueda ni multi"
+   }
+  ],
+  "vistas": [
+   {
+    "etiqueta": "Design system hoy",
+    "app": "ds",
+    "alto": 290,
+    "html": "<div class=\"wrap\"><div class=\"trg\"><span>Casa Ceiba</span><i class=\"chev\"></i></div>\n<div class=\"pop\" style=\"border-radius:var(--r-lg)\"><div class=\"opt\" style=\"border-radius:var(--r-sm)\">Todas las propiedades</div><div class=\"opt on\" style=\"border-radius:var(--r-sm)\">Casa Ceiba<span class=\"ck\">✓</span></div><div class=\"opt\" style=\"border-radius:var(--r-sm)\">Loft Cayalá</div><div class=\"opt\" style=\"border-radius:var(--r-sm)\">Estudio Zona 10</div></div></div>",
+    "css": "\n.wrap{padding:20px;background:var(--bg);font-family:var(--font-sans)}\n.trg{display:inline-flex;align-items:center;gap:10px;background:var(--bg);border:1px solid var(--color-ink-08);border-radius:999px;padding:10px 14px 10px 16px;font-size:12px;font-weight:500;color:var(--fg);box-shadow:var(--shadow-xs);min-width:200px}\n.trg span{flex:1}.chev{width:8px;height:8px;border-right:1.5px solid var(--fg-muted);border-bottom:1.5px solid var(--fg-muted);transform:rotate(225deg);margin-top:4px}\n.pop{margin-top:8px;width:250px;background:var(--bg);border:1px solid var(--color-ink-08);box-shadow:var(--shadow-md);padding:6px}\n.opt{display:flex;align-items:center;gap:10px;padding:11px 12px;font-size:12.5px;color:var(--fg)}\n.opt.on{background:var(--bg-alt);font-weight:500}\n.ck{margin-left:auto;color:var(--accent);font-size:14px}\n"
+   },
+   {
+    "etiqueta": "Mi · Hola · Docs (PillSelect)",
+    "app": "mi",
+    "alto": 330,
+    "html": "<div class=\"wrap\"><div class=\"trg\"><span>Propiedades</span><b class=\"n\">2</b><i class=\"chev\"></i></div>\n<div class=\"pop\" style=\"border-radius:16px\"><div class=\"srch\">⌕&nbsp; Buscar…</div>\n<div class=\"opt\" style=\"border-radius:11px\"><i class=\"bx\"></i>Todas las propiedades</div>\n<div class=\"opt on\" style=\"border-radius:11px\"><i class=\"bx on\">✓</i>Casa Ceiba</div>\n<div class=\"opt on\" style=\"border-radius:11px\"><i class=\"bx on\">✓</i>Loft Cayalá</div>\n<div class=\"opt\" style=\"border-radius:11px\"><i class=\"bx\"></i>Estudio Zona 10</div></div></div>",
+    "css": "\n.wrap{padding:20px;background:var(--bg);font-family:var(--font-sans)}\n.trg{display:inline-flex;align-items:center;gap:10px;background:var(--bg);border:1px solid var(--color-ink-08);border-radius:999px;padding:10px 14px 10px 16px;font-size:12px;font-weight:500;color:var(--fg);box-shadow:var(--shadow-xs);min-width:200px}\n.trg span{flex:1}.chev{width:8px;height:8px;border-right:1.5px solid var(--fg-muted);border-bottom:1.5px solid var(--fg-muted);transform:rotate(225deg);margin-top:4px}\n.pop{margin-top:8px;width:250px;background:var(--bg);border:1px solid var(--color-ink-08);box-shadow:var(--shadow-md);padding:6px}\n.opt{display:flex;align-items:center;gap:10px;padding:11px 12px;font-size:12.5px;color:var(--fg)}\n.opt.on{background:var(--bg-alt);font-weight:500}\n.ck{margin-left:auto;color:var(--accent);font-size:14px}\n\n.n{min-width:17px;height:17px;padding:0 5px;border-radius:999px;background:var(--accent);color:#fff;font-size:9.5px;font-weight:700;display:inline-flex;align-items:center;justify-content:center}\n.srch{margin:4px 4px 8px;background:var(--bg-alt);border:1px solid var(--color-ink-08);border-radius:10px;padding:9px 11px;font-size:12.5px;color:var(--fg-muted)}\n.bx{width:17px;height:17px;border-radius:5px;border:1.5px solid var(--divider);display:inline-flex;align-items:center;justify-content:center;font-style:normal;font-size:11px;color:#fff;box-sizing:border-box}\n.bx.on{background:var(--accent);border-color:var(--accent)}\n"
+   }
+  ]
+ },
+ {
+  "id": "P-2026-10-22-03",
+  "titulo": "Toast de confirmación: píldora centrada en Hub, Hola y Grow; rectángulo en la esquina en Docs",
+  "tipo": "componente",
+  "origen": "hub",
+  "apps_con_el_cambio": [
+   "hub",
+   "hola",
+   "grow"
+  ],
+  "apps_afectadas": [
+   "docs",
+   "mi",
+   "epi"
+  ],
+  "estado_en_ds": "no existe",
+  "impacto": "medio",
+  "recomendacion": "estandarizar",
+  "motivo": "El DS no tiene toast y cada app lo resolvió a su manera. Tres coinciden en lo esencial (píldora ink, abajo al centro, 12.5px), pero cada una con sombra distinta (.18, .24, shadow-md). Docs usa un bloque recto abajo a la derecha. Propuesta: componente Toast en el DS con la píldora y --shadow-md, y alinear Docs.",
+  "evidencia": [
+   {
+    "app": "hub",
+    "archivo": "index.html:570",
+    "detalle": "border-radius:999px; background:#3E3F3F; bottom:calc(24px + safe-area); box-shadow:0 12px 40px rgba(62,63,63,.18)"
+   },
+   {
+    "app": "hola",
+    "archivo": "app/screens-admin.jsx:1336",
+    "detalle": "borderRadius: 999, bottom: 28, boxShadow: 0 12px 40px rgba(62,63,63,.24), ícono mail peach"
+   },
+   {
+    "app": "grow",
+    "archivo": "Spacio-AM-Gestion.dc.html:140",
+    "detalle": "border-radius:999px; letter-spacing:0.06em; box-shadow:var(--shadow-md)"
+   },
+   {
+    "app": "docs",
+    "archivo": "styles.css:612",
+    "detalle": ".toast { bottom:24px; right:24px; sin radio; letter-spacing: var(--tr-wide) }"
+   }
+  ],
+  "vistas": [
+   {
+    "etiqueta": "Hub · Hola · Grow (píldora)",
+    "app": "hub",
+    "alto": 170,
+    "html": "<div class=\"wrap\"><div class=\"ghost\"></div><div class=\"t\">✓&nbsp; Reserva guardada · Casa Ceiba</div></div>",
+    "css": ".wrap{position:relative;height:100%;min-height:150px;background:var(--bg-alt);font-family:var(--font-sans);overflow:hidden}.ghost{position:absolute;left:20px;right:20px;top:18px;height:56px;border-radius:var(--r-md);background:var(--surface);box-shadow:var(--shadow-xs)}.t{position:absolute;left:50%;bottom:20px;transform:translateX(-50%);white-space:nowrap;padding:10px 18px;border-radius:999px;background:var(--fg);color:var(--fg-inverse);font-size:12.5px;letter-spacing:.02em;box-shadow:0 12px 40px rgba(62,63,63,.18)}"
+   },
+   {
+    "etiqueta": "Docs (bloque en la esquina)",
+    "app": "docs",
+    "alto": 170,
+    "html": "<div class=\"wrap\"><div class=\"ghost\"></div><div class=\"t\">✓&nbsp; Reserva guardada · Casa Ceiba</div></div>",
+    "css": ".wrap{position:relative;height:100%;min-height:150px;background:var(--bg-alt);font-family:var(--font-sans);overflow:hidden}.ghost{position:absolute;left:20px;right:20px;top:18px;height:56px;border-radius:var(--r-md);background:var(--surface);box-shadow:var(--shadow-xs)}.t{position:absolute;right:20px;bottom:20px;max-width:240px;padding:16px 22px;background:var(--fg);color:var(--fg-inverse);font-size:12px;letter-spacing:var(--tr-wide);box-shadow:var(--shadow-md)}"
+   }
+  ]
+ },
+ {
+  "id": "P-2026-10-22-04",
+  "titulo": "Verde de éxito escrito a mano: #1F8A5B en Hub y Hola, #5B8A6B en Mi",
+  "tipo": "token",
+  "origen": "hola",
+  "apps_con_el_cambio": [
+   "hola",
+   "hub",
+   "mi"
+  ],
+  "apps_afectadas": [
+   "hola",
+   "hub",
+   "mi"
+  ],
+  "estado_en_ds": "distinto",
+  "impacto": "medio",
+  "recomendacion": "revertir",
+  "motivo": "El DS define --color-success #3D6B52 (6.1:1). Hola (38 usos) y Hub usan #1F8A5B / #177A4F, y Mi #5B8A6B (16 usos), que mide 3.97:1 y no pasa AA como texto. Son tres verdes para el mismo significado. Lo sano es volver al token.",
+  "evidencia": [
+   {
+    "app": "hola",
+    "archivo": "app/screens-admin.jsx:1412",
+    "detalle": "done: { fg: \"#177A4F\", dot: \"#1F8A5B\", bg: \"rgba(31,138,91,.1)\" }"
+   },
+   {
+    "app": "hub",
+    "archivo": "index.html:4701",
+    "detalle": "background:' + (done ? \"#1F8A5B\" : \"#938B8A\")"
+   },
+   {
+    "app": "mi",
+    "archivo": "pedidosya.jsx:555",
+    "detalle": "<Icon name=\"check\" stroke=\"#5B8A6B\" /> (16 usos, también pedidosya-ui.jsx y retencion-batch.jsx)"
+   },
+   {
+    "app": "ds",
+    "archivo": "tokens/colors.css",
+    "detalle": "--color-success: #3d6b52; --color-success-tint: #E8F2ED"
+   }
+  ],
+  "vistas": [
+   {
+    "etiqueta": "Design system hoy",
+    "app": "ds",
+    "alto": 190,
+    "html": "<div class=\"wrap\"><div class=\"card\"><div class=\"ey\">Check-in · Casa Ceiba</div><div class=\"st\" style=\"color:var(--color-success);background:var(--color-success-tint)\"><i style=\"background:var(--color-success)\"></i>Completo</div><div class=\"ok\" style=\"color:var(--color-success)\">✓ Documento verificado</div><div class=\"meta\">--color-success #3D6B52 · 6.1:1 sobre blanco</div></div></div>",
+    "css": ".wrap{padding:20px;background:var(--bg);font-family:var(--font-sans)}.card{background:var(--surface);border-radius:var(--r-md);padding:18px 20px;box-shadow:var(--shadow-sm)}.ey{font-size:11px;letter-spacing:var(--tr-eyebrow);text-transform:uppercase;color:var(--fg-muted);margin-bottom:12px}.st{display:inline-flex;align-items:center;gap:7px;padding:5px 12px;border-radius:999px;font-size:11.5px;font-weight:500}.st i{width:7px;height:7px;border-radius:50%}.ok{margin-top:12px;font-size:12.5px;letter-spacing:.02em}.meta{margin-top:12px;font-size:10.5px;color:var(--fg-subtle);letter-spacing:.06em}"
+   },
+   {
+    "etiqueta": "Hola · Hub",
+    "app": "hola",
+    "alto": 190,
+    "html": "<div class=\"wrap\"><div class=\"card\"><div class=\"ey\">Check-in · Casa Ceiba</div><div class=\"st\" style=\"color:#1F8A5B;background:rgba(31,138,91,.1)\"><i style=\"background:#1F8A5B\"></i>Completo</div><div class=\"ok\" style=\"color:#1F8A5B\">✓ Documento verificado</div><div class=\"meta\">#1F8A5B · 4.3:1 sobre blanco</div></div></div>",
+    "css": ".wrap{padding:20px;background:var(--bg);font-family:var(--font-sans)}.card{background:var(--surface);border-radius:var(--r-md);padding:18px 20px;box-shadow:var(--shadow-sm)}.ey{font-size:11px;letter-spacing:var(--tr-eyebrow);text-transform:uppercase;color:var(--fg-muted);margin-bottom:12px}.st{display:inline-flex;align-items:center;gap:7px;padding:5px 12px;border-radius:999px;font-size:11.5px;font-weight:500}.st i{width:7px;height:7px;border-radius:50%}.ok{margin-top:12px;font-size:12.5px;letter-spacing:.02em}.meta{margin-top:12px;font-size:10.5px;color:var(--fg-subtle);letter-spacing:.06em}"
+   },
+   {
+    "etiqueta": "Mi",
+    "app": "mi",
+    "alto": 190,
+    "html": "<div class=\"wrap\"><div class=\"card\"><div class=\"ey\">Check-in · Casa Ceiba</div><div class=\"st\" style=\"color:#5B8A6B;background:rgba(91,138,107,.1)\"><i style=\"background:#5B8A6B\"></i>Completo</div><div class=\"ok\" style=\"color:#5B8A6B\">✓ Documento verificado</div><div class=\"meta\">#5B8A6B · 4.0:1 sobre blanco</div></div></div>",
+    "css": ".wrap{padding:20px;background:var(--bg);font-family:var(--font-sans)}.card{background:var(--surface);border-radius:var(--r-md);padding:18px 20px;box-shadow:var(--shadow-sm)}.ey{font-size:11px;letter-spacing:var(--tr-eyebrow);text-transform:uppercase;color:var(--fg-muted);margin-bottom:12px}.st{display:inline-flex;align-items:center;gap:7px;padding:5px 12px;border-radius:999px;font-size:11.5px;font-weight:500}.st i{width:7px;height:7px;border-radius:50%}.ok{margin-top:12px;font-size:12.5px;letter-spacing:.02em}.meta{margin-top:12px;font-size:10.5px;color:var(--fg-subtle);letter-spacing:.06em}"
+   }
+  ]
+ },
+ {
+  "id": "P-2026-10-22-05",
+  "titulo": "Tokens de «atención» con otros valores en Epi y Hola",
+  "tipo": "token",
+  "origen": "epi",
+  "apps_con_el_cambio": [
+   "epi",
+   "hola",
+   "mi"
+  ],
+  "apps_afectadas": [
+   "epi",
+   "hola",
+   "mi"
+  ],
+  "estado_en_ds": "distinto",
+  "impacto": "medio",
+  "recomendacion": "revertir",
+  "motivo": "El DS fija atención en #F2755A (punto), #B54D36 (texto) y #FDEFEB (tinte). Epi declara su propio trío en sa-tokens.css (#E9826A, #AF490E, #F8ECE9) y además usa #B4553C en 21 sitios; Hola copia --attention-text #AF490E y Mi un tinte rgba(242,117,90,.12). Todos pasan AA, pero el peach de alerta se ve distinto de una app a otra.",
+  "evidencia": [
+   {
+    "app": "epi",
+    "archivo": "sa-tokens.css",
+    "detalle": "--sa-attention:#E9826A; --sa-attention-text:#AF490E; --sa-attention-tint:#F8ECE9"
+   },
+   {
+    "app": "epi",
+    "archivo": "app.jsx",
+    "detalle": "#B4553C (21 usos), p. ej. campana activa stroke=\"#B4553C\" (línea 9737)"
+   },
+   {
+    "app": "hola",
+    "archivo": "index.html:20",
+    "detalle": "--attention-text:#AF490E"
+   },
+   {
+    "app": "mi",
+    "archivo": "spacio-tokens.css:60",
+    "detalle": "--attention-tint: rgba(242,117,90,0.12)"
+   },
+   {
+    "app": "ds",
+    "archivo": "tokens/colors.css",
+    "detalle": "--color-attention #F2755A · --color-attention-text #B54D36 · --color-attention-tint #FDEFEB"
+   }
+  ],
+  "vistas": [
+   {
+    "etiqueta": "Design system hoy",
+    "app": "ds",
+    "alto": 170,
+    "html": "<div class=\"wrap\"><div class=\"card\"><div class=\"row\"><span class=\"pill\" style=\"background:var(--attention-tint);color:var(--attention-text)\"><i style=\"background:var(--attention)\"></i>Falta depósito</span><span class=\"amt\" style=\"color:var(--attention-text)\">↓ 12.4%</span></div><div class=\"meta\">Ingreso de octubre · Q 18,450.00</div><div class=\"meta\" style=\"margin-top:10px;color:var(--fg-subtle)\">#F2755A · #B54D36 · #FDEFEB</div></div></div>",
+    "css": ".wrap{padding:20px;background:var(--bg);font-family:var(--font-sans)}.card{background:var(--surface);border-radius:var(--r-md);padding:18px 20px;box-shadow:var(--shadow-sm)}.row{display:flex;align-items:center;justify-content:space-between}.pill{display:inline-flex;align-items:center;gap:7px;padding:6px 12px;border-radius:999px;font-size:11.5px;font-weight:500;letter-spacing:.02em}.pill i{width:7px;height:7px;border-radius:50%}.amt{font-size:13px;font-weight:600;font-variant-numeric:tabular-nums}.meta{margin-top:12px;font-size:11px;letter-spacing:.06em;color:var(--fg-muted)}"
+   },
+   {
+    "etiqueta": "Epi (y texto de Hola)",
+    "app": "epi",
+    "alto": 170,
+    "html": "<div class=\"wrap\"><div class=\"card\"><div class=\"row\"><span class=\"pill\" style=\"background:#F8ECE9;color:#AF490E\"><i style=\"background:#E9826A\"></i>Falta depósito</span><span class=\"amt\" style=\"color:#AF490E\">↓ 12.4%</span></div><div class=\"meta\">Ingreso de octubre · Q 18,450.00</div><div class=\"meta\" style=\"margin-top:10px;color:var(--fg-subtle)\">#E9826A · #AF490E · #F8ECE9</div></div></div>",
+    "css": ".wrap{padding:20px;background:var(--bg);font-family:var(--font-sans)}.card{background:var(--surface);border-radius:var(--r-md);padding:18px 20px;box-shadow:var(--shadow-sm)}.row{display:flex;align-items:center;justify-content:space-between}.pill{display:inline-flex;align-items:center;gap:7px;padding:6px 12px;border-radius:999px;font-size:11.5px;font-weight:500;letter-spacing:.02em}.pill i{width:7px;height:7px;border-radius:50%}.amt{font-size:13px;font-weight:600;font-variant-numeric:tabular-nums}.meta{margin-top:12px;font-size:11px;letter-spacing:.06em;color:var(--fg-muted)}"
+   }
+  ]
+ },
+ {
+  "id": "P-2026-10-22-06",
+  "titulo": "Contador con número blanco sobre peach en las 6 apps (2.7:1, no pasa AA)",
+  "tipo": "patrón",
+  "origen": "epi",
+  "apps_con_el_cambio": [
+   "hub",
+   "hola",
+   "epi",
+   "mi",
+   "docs",
+   "grow"
+  ],
+  "apps_afectadas": [
+   "hub",
+   "hola",
+   "epi",
+   "mi",
+   "docs",
+   "grow"
+  ],
+  "estado_en_ds": "no existe",
+  "impacto": "medio",
+  "recomendacion": "estandarizar",
+  "motivo": "La regla del DS dice que el peach nunca carga texto, pero todas las apps usan un contador peach con número blanco (campana, «Limpiar filtros», multi-select): 2.67:1. El patrón es útil y conviene que exista en el DS, con el fondo en --attention-text (#B54D36, 5.2:1) para conservar la calidez y pasar AA.",
+  "evidencia": [
+   {
+    "app": "epi",
+    "archivo": "app.jsx:4344, 8757, 9737",
+    "detalle": "<span style={{background:C.peach,color:\"#fff\", …}}>{actF}</span> (9 casos)"
+   },
+   {
+    "app": "hola",
+    "archivo": "app/noti-center.jsx:55",
+    "detalle": "background: \"var(--accent,#E9826A)\", color: \"#fff\" (9 casos en la app)"
+   },
+   {
+    "app": "mi",
+    "archivo": "ui.jsx:185",
+    "detalle": "contador del multi-select: background: \"var(--peach)\", color: \"#fff\""
+   },
+   {
+    "app": "hub",
+    "archivo": "js/noti-center.jsx:51",
+    "detalle": "badge = \"var(--accent,#E9826A)\" … color:\"#fff\""
+   },
+   {
+    "app": "ds",
+    "archivo": "components/core/Button.jsx",
+    "detalle": "«El peach NUNCA carga texto (blanco 2.56:1)»"
+   }
+  ],
+  "vistas": [
+   {
+    "etiqueta": "Todas las apps hoy",
+    "app": "epi",
+    "alto": 150,
+    "html": "<div class=\"wrap\"><button class=\"f\">✕ Limpiar filtros <b style=\"background:#E9826A\">3</b></button><span class=\"bell\">◬<b style=\"background:#E9826A\">12</b></span><div class=\"meta\">Fondo #E9826A · número blanco 2.7:1</div></div>",
+    "css": ".wrap{padding:22px;background:var(--bg);font-family:var(--font-sans);display:flex;flex-wrap:wrap;align-items:center;gap:22px}.f{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--divider);background:var(--surface);color:var(--fg-muted);border-radius:999px;padding:8px 14px;font:500 12px var(--font-sans);letter-spacing:.02em}.f b,.bell b{min-width:18px;height:18px;padding:0 5px;box-sizing:border-box;border-radius:999px;color:#fff;font-size:10.5px;font-weight:700;display:inline-flex;align-items:center;justify-content:center}.bell{position:relative;font-size:24px;color:var(--color-info);width:36px}.bell b{position:absolute;top:-4px;right:-6px}.meta{width:100%;font-size:11px;color:var(--fg-muted);letter-spacing:.06em}"
+   },
+   {
+    "etiqueta": "Propuesta para el DS",
+    "app": "ds",
+    "alto": 150,
+    "html": "<div class=\"wrap\"><button class=\"f\">✕ Limpiar filtros <b style=\"background:var(--attention-text)\">3</b></button><span class=\"bell\">◬<b style=\"background:var(--attention-text)\">12</b></span><div class=\"meta\">Fondo --attention-text #B54D36 · número blanco 5.2:1</div></div>",
+    "css": ".wrap{padding:22px;background:var(--bg);font-family:var(--font-sans);display:flex;flex-wrap:wrap;align-items:center;gap:22px}.f{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--divider);background:var(--surface);color:var(--fg-muted);border-radius:999px;padding:8px 14px;font:500 12px var(--font-sans);letter-spacing:.02em}.f b,.bell b{min-width:18px;height:18px;padding:0 5px;box-sizing:border-box;border-radius:999px;color:#fff;font-size:10.5px;font-weight:700;display:inline-flex;align-items:center;justify-content:center}.bell{position:relative;font-size:24px;color:var(--color-info);width:36px}.bell b{position:absolute;top:-4px;right:-6px}.meta{width:100%;font-size:11px;color:var(--fg-muted);letter-spacing:.06em}"
+   }
+  ]
+ },
+ {
+  "id": "P-2026-10-22-07",
+  "titulo": "Radios fuera de la escala (6, 8, 9, 11, 12, 16, 22) en todas las apps",
+  "tipo": "token",
+  "origen": "epi",
+  "apps_con_el_cambio": [
+   "epi",
+   "hola",
+   "hub",
+   "mi",
+   "docs",
+   "grow"
+  ],
+  "apps_afectadas": [
+   "epi",
+   "hola",
+   "hub",
+   "mi",
+   "docs",
+   "grow"
+  ],
+  "estado_en_ds": "distinto",
+  "impacto": "medio",
+  "recomendacion": "revertir",
+  "motivo": "La escala del DS es 10 · 14 · 18 · 28 · 40 · píldora. Epi concentra la mayor deriva (8px en 144 sitios, 12 en 124, 9 en 92, 6 en 58); Hola usa 12 y 11; Hub, Mi y Docs repiten 16 y 22. A simple vista las tarjetas y botones se ven casi iguales pero nunca idénticos. Propuesta: 6-9→10, 11-12→10 o 14, 16→18, 22→18 o 28.",
+  "evidencia": [
+   {
+    "app": "epi",
+    "archivo": "app.jsx",
+    "detalle": "borderRadius 8 (144), 12 (124), 9 (92), 6 (58), 7 (33)"
+   },
+   {
+    "app": "hola",
+    "archivo": "app/*.jsx",
+    "detalle": "borderRadius 12 (45), 16 (30), 11 (28), 22 (14)"
+   },
+   {
+    "app": "hub",
+    "archivo": "index.html",
+    "detalle": "border-radius 16px (27), 22px (20), 11px (10), 12px (9)"
+   },
+   {
+    "app": "mi",
+    "archivo": "*.jsx",
+    "detalle": "9px (17), 16px (14), 12 (20), 22 (10)"
+   },
+   {
+    "app": "grow",
+    "archivo": "Spacio-AM-Gestion.dc.html",
+    "detalle": "8px (15), 12px (14), 20px (13), 24px (5)"
+   },
+   {
+    "app": "ds",
+    "archivo": "tokens/radius-shadow.css",
+    "detalle": "--r-sm 10 · --r-md 14 · --r-lg 18 · --r-xl 28 · --r-2xl 40 · --r-pill 999"
+   }
+  ],
+  "vistas": [
+   {
+    "etiqueta": "Design system hoy",
+    "app": "ds",
+    "alto": 130,
+    "html": "<div class=\"wrap\"><div class=\"ey\">Escala del DS</div><div class=\"g\"><div class=\"it\"><div class=\"sw\" style=\"border-radius:10px\"></div><span>10</span></div><div class=\"it\"><div class=\"sw\" style=\"border-radius:14px\"></div><span>14</span></div><div class=\"it\"><div class=\"sw\" style=\"border-radius:18px\"></div><span>18</span></div><div class=\"it\"><div class=\"sw\" style=\"border-radius:28px\"></div><span>28</span></div><div class=\"it\"><div class=\"sw\" style=\"border-radius:40px\"></div><span>40</span></div></div></div>",
+    "css": ".wrap{padding:18px 20px;background:var(--bg);font-family:var(--font-sans)}.ey{font-size:11px;letter-spacing:var(--tr-eyebrow);text-transform:uppercase;color:var(--fg-muted);margin-bottom:12px}.g{display:flex;flex-wrap:wrap;gap:12px}.it{display:flex;flex-direction:column;align-items:center;gap:6px;font-size:11px;color:var(--fg-muted)}.sw{width:54px;height:40px;background:var(--bg-alt);border:1px solid var(--divider)}"
+   },
+   {
+    "etiqueta": "Lo que usan las apps",
+    "app": "epi",
+    "alto": 210,
+    "html": "<div class=\"wrap\"><div class=\"ey\">Radios fuera de escala</div><div class=\"g\"><div class=\"it\"><div class=\"sw\" style=\"border-radius:6px\"></div><span>6</span></div><div class=\"it\"><div class=\"sw\" style=\"border-radius:8px\"></div><span>8</span></div><div class=\"it\"><div class=\"sw\" style=\"border-radius:9px\"></div><span>9</span></div><div class=\"it\"><div class=\"sw\" style=\"border-radius:11px\"></div><span>11</span></div><div class=\"it\"><div class=\"sw\" style=\"border-radius:12px\"></div><span>12</span></div><div class=\"it\"><div class=\"sw\" style=\"border-radius:16px\"></div><span>16</span></div><div class=\"it\"><div class=\"sw\" style=\"border-radius:20px\"></div><span>20</span></div><div class=\"it\"><div class=\"sw\" style=\"border-radius:22px\"></div><span>22</span></div><div class=\"it\"><div class=\"sw\" style=\"border-radius:24px\"></div><span>24</span></div></div></div>",
+    "css": ".wrap{padding:18px 20px;background:var(--bg);font-family:var(--font-sans)}.ey{font-size:11px;letter-spacing:var(--tr-eyebrow);text-transform:uppercase;color:var(--fg-muted);margin-bottom:12px}.g{display:flex;flex-wrap:wrap;gap:12px}.it{display:flex;flex-direction:column;align-items:center;gap:6px;font-size:11px;color:var(--fg-muted)}.sw{width:54px;height:40px;background:var(--bg-alt);border:1px solid var(--divider)}"
+   }
+  ]
+ },
+ {
+  "id": "P-2026-10-22-08",
+  "titulo": "Epi y Mi cargan una copia vieja del design system; Hola no carga ninguna",
+  "tipo": "asset",
+  "origen": "epi",
+  "apps_con_el_cambio": [
+   "epi",
+   "mi"
+  ],
+  "apps_afectadas": [
+   "epi",
+   "mi",
+   "hola"
+  ],
+  "estado_en_ds": "obsoleto",
+  "impacto": "medio",
+  "recomendacion": "revertir",
+  "motivo": "Hub, Docs y Grow llevan el _ds_bundle.js actual. Epi y Mi traen una exportación anterior: su Farol no tiene el estado «attention» y su Trend pinta las bajas en rojo, no en peach. Hola no usa el bundle: copia los tokens a mano en su index.html. Propuesta: copiar el export vigente a epi/_ds y mi/_ds (Hola queda anotada para cuando migre).",
+  "evidencia": [
+   {
+    "app": "epi",
+    "archivo": "_ds/…/_ds_bundle.js",
+    "detalle": "md5 7ce03ce2… (igual en mi); el DS vigente es dc8b5e45…"
+   },
+   {
+    "app": "epi",
+    "archivo": "_ds/…/_ds_bundle.js (Farol)",
+    "detalle": "«El peach NUNCA es un farol» — sin la clave attention: { fg, bg, dot }"
+   },
+   {
+    "app": "mi",
+    "archivo": "_ds/…/_ds_bundle.js (Trend)",
+    "detalle": "Trend: color = good ? success : var(--color-error)"
+   },
+   {
+    "app": "hola",
+    "archivo": "index.html:18-22",
+    "detalle": "tokens propios (--peach, --accent, --attention-text…) sin _ds/"
+   },
+   {
+    "app": "ds",
+    "archivo": "_ds_bundle.js",
+    "detalle": "Farol attention + Trend con prop critical (export del 20 oct)"
+   }
+  ],
+  "vistas": [
+   {
+    "etiqueta": "Design system vigente",
+    "app": "ds",
+    "alto": 110,
+    "html": "<div class=\"wrap\"><span class=\"fa\" style=\"color:var(--color-success);background:var(--color-success-tint)\"><i style=\"background:var(--color-success)\"></i>Confirmada</span><span class=\"fa\" style=\"color:var(--color-pending);background:var(--color-pending-tint)\"><i style=\"background:var(--color-pending)\"></i>Pendiente</span><span class=\"fa\" style=\"color:var(--color-error);background:var(--color-error-tint)\"><i style=\"background:var(--color-error)\"></i>Cancelada</span><span class=\"fa\" style=\"color:var(--attention-text);background:var(--attention-tint)\"><i style=\"background:var(--attention)\"></i>Falta depósito</span></div>",
+    "css": ".wrap{padding:20px;background:var(--bg);font-family:var(--font-sans);display:flex;flex-wrap:wrap;gap:10px;align-content:flex-start}.fa{display:inline-flex;align-items:center;gap:7px;padding:6px 12px;border-radius:999px;font-size:11.5px;font-weight:500}.fa i{width:7px;height:7px;border-radius:50%}"
+   },
+   {
+    "etiqueta": "Copia en Epi y Mi",
+    "app": "epi",
+    "alto": 110,
+    "html": "<div class=\"wrap\"><span class=\"fa\" style=\"color:var(--color-success);background:var(--color-success-tint)\"><i style=\"background:var(--color-success)\"></i>Confirmada</span><span class=\"fa\" style=\"color:var(--color-pending);background:var(--color-pending-tint)\"><i style=\"background:var(--color-pending)\"></i>Pendiente</span><span class=\"fa\" style=\"color:var(--color-error);background:var(--color-error-tint)\"><i style=\"background:var(--color-error)\"></i>Cancelada</span></div><div style=\"padding:0 20px 14px;font:11px var(--font-sans);color:var(--fg-muted);letter-spacing:.06em;background:var(--bg)\">Sin estado «atención»: «Falta depósito» no tiene farol.</div>",
+    "css": ".wrap{padding:20px;background:var(--bg);font-family:var(--font-sans);display:flex;flex-wrap:wrap;gap:10px;align-content:flex-start}.fa{display:inline-flex;align-items:center;gap:7px;padding:6px 12px;border-radius:999px;font-size:11.5px;font-weight:500}.fa i{width:7px;height:7px;border-radius:50%}"
+   }
+  ]
+ },
+ {
+  "id": "P-2026-10-22-09",
+  "titulo": "El eslogan del design system no es el oficial",
+  "tipo": "asset",
+  "origen": "docs",
+  "apps_con_el_cambio": [
+   "docs",
+   "grow",
+   "epi"
+  ],
+  "apps_afectadas": [
+   "hub",
+   "mi",
+   "hola"
+  ],
+  "estado_en_ds": "distinto",
+  "impacto": "alto",
+  "recomendacion": "estandarizar",
+  "motivo": "El eslogan oficial del brandbook es «Hay espacios en donde sueñas con volver a despertar». El DS v2 lo cambió a «Hay espacios donde despertar se siente como un sueño» (readme, guía de cita y login del kit). Las copias de Docs y Grow, los correos de Epi y Docs y el DS v1 conservan el oficial. Hoy conviven las dos frases.",
+  "evidencia": [
+   {
+    "app": "ds",
+    "archivo": "readme.md · guidelines/type-quote.html · ui_kits/owner-dashboard/Login.jsx",
+    "detalle": "«Hay espacios donde despertar se siente como un sueño.»"
+   },
+   {
+    "app": "docs",
+    "archivo": "_ds/…/_ds_bundle.js (Login del kit)",
+    "detalle": "«Hay espacios en donde sueñas con volver a despertar.»"
+   },
+   {
+    "app": "epi",
+    "archivo": "emails/email-system.js",
+    "detalle": "eslogan oficial en los correos"
+   },
+   {
+    "app": "hub",
+    "archivo": "index.html",
+    "detalle": "usa la frase nueva del DS"
+   },
+   {
+    "app": "mi",
+    "archivo": "i18n.js · spacio-tokens.css",
+    "detalle": "usa la frase nueva del DS"
+   }
+  ],
+  "vistas": [
+   {
+    "etiqueta": "Design system hoy",
+    "app": "ds",
+    "alto": 150,
+    "html": "<div class=\"wrap\"><div class=\"q\">“Hay espacios donde despertar se siente como un sueño.”</div><div class=\"s\">Spacio AM · pantalla de acceso</div></div>",
+    "css": ".wrap{padding:26px 28px;background:var(--bg-alt);font-family:var(--font-sans)}.q{font-family:var(--font-serif);font-weight:300;font-style:italic;font-size:24px;line-height:1.25;color:var(--fg);max-width:440px}.s{margin-top:14px;font-size:11px;letter-spacing:var(--tr-eyebrow);text-transform:uppercase;color:var(--fg-muted)}"
+   },
+   {
+    "etiqueta": "Oficial (Docs, Grow, correos)",
+    "app": "docs",
+    "alto": 150,
+    "html": "<div class=\"wrap\"><div class=\"q\">“Hay espacios en donde sueñas con volver a despertar.”</div><div class=\"s\">Spacio AM · pantalla de acceso</div></div>",
+    "css": ".wrap{padding:26px 28px;background:var(--bg-alt);font-family:var(--font-sans)}.q{font-family:var(--font-serif);font-weight:300;font-style:italic;font-size:24px;line-height:1.25;color:var(--fg);max-width:440px}.s{margin-top:14px;font-size:11px;letter-spacing:var(--tr-eyebrow);text-transform:uppercase;color:var(--fg-muted)}"
+   }
+  ]
+ },
+ {
+  "id": "P-2026-10-22-10",
+  "titulo": "Hub usa un divisor propio #EAE6E0 en ALMA y la bandeja",
+  "tipo": "token",
+  "origen": "hub",
+  "apps_con_el_cambio": [
+   "hub"
+  ],
+  "apps_afectadas": [
+   "hub"
+  ],
+  "estado_en_ds": "distinto",
+  "impacto": "bajo",
+  "recomendacion": "revertir",
+  "motivo": "Hub escribe #EAE6E0 en 16 bordes y 7 fondos (conversación de ALMA, cola de mensajes, hover). El DS tiene dos divisores para esto: --divider (#D8D4CE) y --border-soft (ink 8%). Es casi idéntico a --border-soft, así que el cambio es invisible y limpia un hex suelto.",
+  "evidencia": [
+   {
+    "app": "hub",
+    "archivo": "index.html:1781",
+    "detalle": "border-bottom:1px solid #EAE6E0; background:#F5F3F0"
+   },
+   {
+    "app": "hub",
+    "archivo": "index.html:1999",
+    "detalle": "border-top:1px solid #EAE6E0 (12 border-top en total)"
+   },
+   {
+    "app": "hub",
+    "archivo": "index.html:1696",
+    "detalle": "style-hover=\"background:#EAE6E0\""
+   },
+   {
+    "app": "ds",
+    "archivo": "tokens/colors.css",
+    "detalle": "--divider: var(--color-warm-grey) · --border-soft: 1px solid var(--color-ink-08)"
+   }
+  ],
+  "vistas": [
+   {
+    "etiqueta": "Design system (--border-soft)",
+    "app": "ds",
+    "alto": 195,
+    "html": "<div class=\"wrap\"><div class=\"chat\"><div class=\"m\">Hola Ana, tu check-in es a las 15:00.</div><div class=\"bar\" style=\"border-top:1px solid var(--color-ink-08)\"><span>Escribe un mensaje…</span></div></div><div class=\"meta\">--border-soft · ink 8%</div></div>",
+    "css": ".wrap{padding:18px 20px;background:var(--bg);font-family:var(--font-sans)}.chat{background:var(--surface);border-radius:var(--r-md);box-shadow:var(--shadow-xs);overflow:hidden}.m{margin:14px;display:inline-block;background:var(--bg-alt);border-radius:16px 16px 16px 4px;padding:10px 14px;font-size:12.5px;color:var(--fg)}.bar{padding:12px 16px}.bar span{display:block;border:1px solid var(--divider);border-radius:999px;padding:9px 14px;font-size:12px;color:var(--fg-subtle)}.meta{margin-top:10px;font-size:11px;color:var(--fg-muted);letter-spacing:.06em}"
+   },
+   {
+    "etiqueta": "Hub",
+    "app": "hub",
+    "alto": 195,
+    "html": "<div class=\"wrap\"><div class=\"chat\"><div class=\"m\">Hola Ana, tu check-in es a las 15:00.</div><div class=\"bar\" style=\"border-top:1px solid #EAE6E0\"><span>Escribe un mensaje…</span></div></div><div class=\"meta\">#EAE6E0 escrito a mano</div></div>",
+    "css": ".wrap{padding:18px 20px;background:var(--bg);font-family:var(--font-sans)}.chat{background:var(--surface);border-radius:var(--r-md);box-shadow:var(--shadow-xs);overflow:hidden}.m{margin:14px;display:inline-block;background:var(--bg-alt);border-radius:16px 16px 16px 4px;padding:10px 14px;font-size:12.5px;color:var(--fg)}.bar{padding:12px 16px}.bar span{display:block;border:1px solid var(--divider);border-radius:999px;padding:9px 14px;font-size:12px;color:var(--fg-subtle)}.meta{margin-top:10px;font-size:11px;color:var(--fg-muted);letter-spacing:.06em}"
+   }
+  ]
+ }
+]
