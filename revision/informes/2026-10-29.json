@@ -1,0 +1,413 @@
+[
+ {
+  "id": "P-2026-10-26-01",
+  "titulo": "Menú compartido SANav (la «roca»): ya está en las 6 apps y el design system no lo tiene",
+  "tipo": "componente",
+  "origen": "hub",
+  "apps_con_el_cambio": [
+   "hub",
+   "epi",
+   "hola",
+   "mi",
+   "docs",
+   "grow"
+  ],
+  "apps_afectadas": [
+   "hub",
+   "epi",
+   "hola",
+   "mi",
+   "docs",
+   "grow"
+  ],
+  "estado_en_ds": "no existe",
+  "impacto": "alto",
+  "recomendacion": "estandarizar",
+  "motivo": "Actualizada el 29 oct: desde el 26 oct Hola, Mi, Docs y Grow también montan js/sa-nav.js (PR «menu-compartido») y esconden su barra propia; además el menú ganó un estado 2 (doble toque o deslizar arriba), submenús con contador y un tinte por app. Ya es la navegación real del equipo, pero el DS solo documenta BottomNav y TopBar. Conviene subirlo como components/navigation/SANav con sus estados y medidas.",
+  "evidencia": [
+   {
+    "app": "hub",
+    "archivo": "js/sa-nav.js:1-25",
+    "detalle": "«Menú de navegación compartido… UN solo archivo para todas las apps» · SANav.mount({app, home, items, current, onNavigate})"
+   },
+   {
+    "app": "hub",
+    "archivo": "js/sa-nav.js (CSS)",
+    "detalle": ".san-btn{width:58px;height:58px;border-radius:50%;background:radial-gradient(…#F4F1EE,#ECE8E3,#E3DED8)} · .san-face 74px · .san-arm{background:#E9E4DE}"
+   },
+   {
+    "app": "epi",
+    "archivo": "index.html:5",
+    "detalle": "<script src=\"https://hub.spacioam.com/js/sa-nav.js\"></script> (PR #20 «nav-unificado»)"
+   },
+   {
+    "app": "epi",
+    "archivo": "app.jsx:10876-10999",
+    "detalle": "SANav.update({app:\"epi\", …}); la barra propia solo se muestra si !HAS_SANAV"
+   },
+   {
+    "app": "ds",
+    "archivo": "components/navigation/BottomNav.jsx",
+    "detalle": "variant \"bar\" con FAB peach central 58px o \"pill\" flotante; no hay menú entre apps"
+   },
+   {
+    "app": "hola",
+    "archivo": "app/screens-admin.jsx:1017-1057",
+    "detalle": "saMenuCarga = ld(SA_MENU_HUB + \"sa-nav.js\") · con el menú compartido se esconde la navegación propia"
+   },
+   {
+    "app": "mi",
+    "archivo": "main.jsx:6-17",
+    "detalle": "«Menú compartido de Spacio AM (el botón roca)… el mismo del Hub, Epi» · ld(H + \"sa-nav.js\")"
+   },
+   {
+    "app": "docs",
+    "archivo": "admin.jsx:796-884",
+    "detalle": "sanavCarga = ld(SANAV_HUB + \"sa-nav.js\"); si no carga, se queda la barra de pestañas propia"
+   },
+   {
+    "app": "grow",
+    "archivo": "index.html (plantilla)",
+    "detalle": "<script src=\"https://hub.spacioam.com/js/sa-nav.js\"> — PR #12 «menu-compartido»"
+   },
+   {
+    "app": "hub",
+    "archivo": "js/sa-nav.js (28 oct)",
+    "detalle": "+405/−90 líneas: estado 2 «opciones de adentro», submenú Alma con badges, SANav.update({tint})"
+   }
+  ],
+  "vistas": [
+   {
+    "etiqueta": "Design system hoy · BottomNav (barra + FAB peach)",
+    "app": "ds",
+    "alto": 200,
+    "html": "<div class=\"ph\"><p class=\"cap\">Reservas · hoy</p><div class=\"ln\"></div><div class=\"ln s\"></div></div><nav class=\"bn\"><button><span><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"3.5\" y=\"5\" width=\"17\" height=\"15\" rx=\"3\"/><path d=\"M8 3v4M16 3v4M3.5 10h17\"/></svg></span><b>Agenda</b></button><button><span><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M14 4h-7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-7\"/><path d=\"M17.5 3.5l3 3L12 15l-4 1 1-4z\"/></svg></span><b>Formulario</b></button><button class=\"fab\" aria-label=\"Inicio\"><svg width=\"22\" height=\"22\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M4 11l8-6.5 8 6.5\"/><path d=\"M6 9.5V20h12V9.5\"/></svg></button><button class=\"on\"><span><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linejoin=\"round\"><path d=\"M12 3.8l2.5 5.1 5.6.8-4 3.9.9 5.6-5-2.6-5 2.6.9-5.6-4-3.9 5.6-.8z\"/></svg></span><b>Reseñas</b><i></i></button><button><span><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\"><ellipse cx=\"9\" cy=\"7\" rx=\"5.5\" ry=\"2.6\"/><path d=\"M3.5 7v4c0 1.4 2.5 2.6 5.5 2.6s5.5-1.2 5.5-2.6V7\"/><path d=\"M9.5 16.2c.9 1.3 3 2.2 5.5 2.2 3 0 5.5-1.2 5.5-2.6v-4c0-1.2-1.8-2.2-4.3-2.5\"/></svg></span><b>Pagos</b></button></nav>",
+    "css": "body{padding:0!important}.ph{padding:18px 20px;height:96px;box-sizing:border-box}.cap{margin:0 0 12px;font-family:var(--font-serif);font-size:20px;color:var(--fg)}.ln{height:10px;border-radius:6px;background:var(--bg-alt);width:70%;margin-bottom:8px}.ln.s{width:45%}.bn{position:absolute;left:0;right:0;bottom:0;display:flex;align-items:center;justify-content:space-around;gap:4px;padding:8px 16px 12px;background:rgba(250,250,250,.94);border-top:1px solid var(--color-ink-08)}.bn button{flex:1;min-height:44px;background:transparent;border:0;display:flex;flex-direction:column;align-items:center;gap:5px;color:var(--fg-muted);font-family:var(--font-sans);position:relative}.bn button.on{color:var(--fg)}.bn b{font-size:9px;font-weight:500;letter-spacing:var(--tr-wide);text-transform:uppercase}.bn i{width:4px;height:4px;border-radius:50%;background:var(--accent)}.bn .fab{flex:0 0 58px;width:58px;height:58px;border-radius:50%;background:var(--accent);color:#fff;display:grid;place-items:center;box-shadow:var(--shadow-md);margin-top:-26px}"
+   },
+   {
+    "etiqueta": "Hub · Epi · SANav estado 2 (barra con pantallas + roca)",
+    "app": "hub",
+    "alto": 220,
+    "html": "<div class=\"ph\"><p class=\"cap\">Dashboard</p><div class=\"ln\"></div><div class=\"ln s\"></div></div><div class=\"nav\"><div class=\"arm\"><button class=\"b\"><span class=\"ic\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M14 4h-7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-7\"/><path d=\"M17.5 3.5l3 3L12 15l-4 1 1-4z\"/></svg></span><span class=\"t\">Formulario</span></button><button class=\"b\"><span class=\"ic\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"3.5\" y=\"5\" width=\"17\" height=\"15\" rx=\"3\"/><path d=\"M8 3v4M16 3v4M3.5 10h17\"/></svg></span><span class=\"t\">Agenda</span><span class=\"bd\">2</span></button><button class=\"b\"><span class=\"ic\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linejoin=\"round\"><path d=\"M12 3.8l2.5 5.1 5.6.8-4 3.9.9 5.6-5-2.6-5 2.6.9-5.6-4-3.9 5.6-.8z\"/></svg></span><span class=\"t\">Reseñas</span></button><button class=\"b\"><span class=\"ic\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\"><ellipse cx=\"9\" cy=\"7\" rx=\"5.5\" ry=\"2.6\"/><path d=\"M3.5 7v4c0 1.4 2.5 2.6 5.5 2.6s5.5-1.2 5.5-2.6V7\"/><path d=\"M9.5 16.2c.9 1.3 3 2.2 5.5 2.2 3 0 5.5-1.2 5.5-2.6v-4c0-1.2-1.8-2.2-4.3-2.5\"/></svg></span><span class=\"t\">Pagos</span></button></div><div class=\"core\"><span class=\"glow\"></span><span class=\"ring\"></span><button class=\"face on\"><span class=\"ic\"><svg width=\"22\" height=\"22\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\"><rect x=\"4\" y=\"4\" width=\"7\" height=\"7\" rx=\"2\"/><rect x=\"13\" y=\"4\" width=\"7\" height=\"7\" rx=\"2\"/><rect x=\"4\" y=\"13\" width=\"7\" height=\"7\" rx=\"2\"/><rect x=\"13\" y=\"13\" width=\"7\" height=\"7\" rx=\"2\"/></svg></span></button></div></div>",
+    "css": ".ph{height:80px}.cap{margin:0 0 12px;font-family:var(--font-serif);font-size:20px;color:var(--fg)}.ln{height:10px;border-radius:6px;background:var(--bg-alt);width:70%;margin-bottom:8px}.ln.s{width:45%}.nav{position:absolute;right:22px;bottom:22px;display:flex;align-items:center;gap:14px;font-family:Montserrat,system-ui,sans-serif}.arm{display:flex;gap:8px;padding:8px;border-radius:999px;background:#E9E4DE;box-shadow:0 14px 22px -6px rgba(60,45,38,.30),0 3px 6px rgba(60,45,38,.12),inset 0 3px 5px rgba(255,255,255,.55),inset 0 -4px 7px rgba(110,90,80,.10)}.b{position:relative;width:58px;height:58px;border-radius:50%;border:0;padding:0;color:#9C928A;background:radial-gradient(120% 120% at 50% 20%,#F4F1EE 0%,#ECE8E3 55%,#E3DED8 100%);box-shadow:0 7px 12px -5px rgba(96,76,66,.24),0 1px 3px rgba(96,76,66,.10),inset 0 2px 4px rgba(255,255,255,.55),inset 0 -4px 7px rgba(110,90,80,.09);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px}.b .t{font:600 8.6px/1 Montserrat,sans-serif;letter-spacing:.01em;text-shadow:0 1px 0 rgba(255,255,255,.75)}.bd{position:absolute;top:-4px;right:-5px;min-width:18px;height:18px;padding:0 5px;border-radius:9px;background:#E9826A;color:#fff;font:600 9.5px/18px Montserrat,sans-serif;box-shadow:0 0 0 2.5px #EDE9E4}.core{position:relative;width:92px;height:92px;display:grid;place-items:center}.ring,.glow{position:absolute;border-radius:50%;background:linear-gradient(100deg,#E64E37 0%,#EE7552 45%,#F59D68 100%)}.ring{inset:0;-webkit-mask:radial-gradient(farthest-side,transparent calc(100% - 10px),#000 calc(100% - 9px),#000 calc(100% - 3.5px),transparent 100%);mask:radial-gradient(farthest-side,transparent calc(100% - 10px),#000 calc(100% - 9px),#000 calc(100% - 3.5px),transparent 100%)}.glow{inset:-18px;opacity:.5;-webkit-mask:radial-gradient(closest-side,transparent 56%,rgba(0,0,0,.7) 71%,rgba(0,0,0,.18) 83%,transparent 97%);mask:radial-gradient(closest-side,transparent 56%,rgba(0,0,0,.7) 71%,rgba(0,0,0,.18) 83%,transparent 97%)}.face{position:relative;width:74px;height:74px;border-radius:50%;border:0;color:#E0613F;background:radial-gradient(100% 100% at 50% 38%,#F5F2EE 0%,#EDE9E4 55%,#E2DCD5 100%);box-shadow:0 16px 24px -8px rgba(0,0,0,.30),0 4px 7px rgba(0,0,0,.14),inset 0 4px 8px rgba(255,255,255,.35);display:grid;place-items:center}"
+   }
+  ]
+ },
+ {
+  "id": "P-2026-10-29-01",
+  "titulo": "Centro de tutoriales compartido (video, «?» lateral y hoja): ya llega a las 6 apps y no está en el design system",
+  "tipo": "componente",
+  "origen": "hub",
+  "apps_con_el_cambio": [
+   "hub",
+   "epi"
+  ],
+  "apps_afectadas": [
+   "hub",
+   "epi",
+   "hola",
+   "mi",
+   "docs",
+   "grow"
+  ],
+  "estado_en_ds": "no existe",
+  "impacto": "alto",
+  "recomendacion": "estandarizar",
+  "motivo": "Desde el 27 oct el Hub sirve js/sa-tutoriales.js y el menú compartido lo carga en todas las apps: video a pantalla completa, botón «?» pegado al borde y una hoja con la lista y el reporte de quién vio qué. Epi ya dejó su centro propio. Conviene subirlo a components/feedback y, de paso, pasar los textos pequeños de #938B8A (3.2:1, el DS lo prohíbe bajo 18px) a --fg-muted y el borde #EDEAE6 a --divider.",
+  "evidencia": [
+   {
+    "app": "hub",
+    "archivo": "js/sa-tutoriales.js:1-22",
+    "detalle": "«Lo carga solo el menú compartido (js/sa-nav.js) en todas las apps» · SATutoriales.centro/play/boton/registrar"
+   },
+   {
+    "app": "hub",
+    "archivo": "js/sa-nav.js:670-675",
+    "detalle": "s.src = HUB + \"/js/sa-tutoriales.js?v=2026-10-28a\""
+   },
+   {
+    "app": "epi",
+    "archivo": "app.jsx:10015-10510",
+    "detalle": "window.SATutoriales.play(id) · registrar(...) — PR #28 «Epi: un solo centro de tutoriales (el compartido)»"
+   },
+   {
+    "app": "hub",
+    "archivo": "js/sa-tutoriales.js:165-173",
+    "detalle": ".sat-sub{font-size:12.5px;color:#938B8A} .sat-it-r{font-size:11.5px;color:#938B8A} .sat-item{border:1px solid #EDEAE6}"
+   },
+   {
+    "app": "hub",
+    "archivo": "js/sa-tutoriales.js:143",
+    "detalle": ".sat-fab{border:1.5px solid #E9826A;border-radius:24px 0 0 24px;font:400 23px Valky}"
+   },
+   {
+    "app": "ds",
+    "archivo": "components/feedback/",
+    "detalle": "solo Modal.jsx y LoadingScreen.jsx"
+   }
+  ],
+  "vistas": [
+   {
+    "etiqueta": "Design system hoy",
+    "app": "ds",
+    "alto": 210,
+    "html": "<div class=\"box\"><b>No existe</b>components/feedback solo tiene <code>Modal</code> y <code>LoadingScreen</code>. No hay reproductor de video, ni centro de ayuda, ni botón «?» lateral. Cada app tenía su propia guía (Epi: tarjetas paso a paso).</div>",
+    "css": "\n.box{border:1px dashed var(--divider);border-radius:var(--r-lg);padding:18px;background:var(--surface);font-size:12.5px;line-height:1.6;color:var(--fg-muted)}\n.box b{display:block;font-family:var(--font-serif);font-weight:400;font-size:22px;color:var(--fg);margin-bottom:6px}\n.box code{background:var(--bg-alt);padding:1px 6px;border-radius:6px;font-size:11.5px}\n"
+   },
+   {
+    "etiqueta": "Hub · sa-tutoriales.js (en las 6 apps vía el menú)",
+    "app": "hub",
+    "alto": 590,
+    "html": "<div class=\"stage\"><span class=\"fab\">?</span><div class=\"sheet\"><div class=\"hero\"><span class=\"stone\"></span><span class=\"x\">✕</span></div><div class=\"body\">\n<div class=\"kick\"><i></i><span>Centro de tutoriales</span></div><div class=\"h1\">¿Cómo se hace?</div><p class=\"sub\">Videos cortos del equipo. Tu avance se guarda en todos tus equipos.</p>\n<h3>Para empezar</h3>\n<div class=\"item\"><span class=\"th\"></span><span><span class=\"t\">El botón roca</span><span class=\"r\">Dos toques abren el menú, uno lo cierra.</span><span class=\"m\">Nuevo · 0:48</span></span></div>\n<div class=\"item\"><span class=\"th\"></span><span><span class=\"t\">Registrar una reserva</span><span class=\"r\">Del WhatsApp del huésped al calendario.</span><span class=\"r\" style=\"margin-top:6px\">Visto · 1:12</span></span></div>\n</div></div></div>",
+    "css": "\nbody{padding:0!important;background:rgba(62,63,63,.5)!important}\n.stage{position:relative;padding-top:70px;display:flex;align-items:flex-end;justify-content:center}\n.sheet{width:100%;max-width:480px;background:#FFFFFF;border-radius:28px 28px 0 0;box-shadow:0 -20px 60px rgba(62,63,63,.18);overflow:hidden}\n.hero{position:relative;height:128px;background:#F5F3F0;overflow:hidden}\n.hero:before{content:'';position:absolute;width:300px;height:300px;border-radius:50%;right:-70px;top:-150px;background:#FAFAFA}\n.hero:after{content:'';position:absolute;width:190px;height:190px;border-radius:50%;left:-60px;bottom:-120px;background:#EDE9E4}\n.stone{position:absolute;left:50%;top:50%;width:66px;height:66px;margin:-33px 0 0 -33px;border-radius:50%;z-index:1;background:radial-gradient(circle at 40% 34%,#F7F5F2 0%,#EFECE8 42%,#E3DFDA 78%,#D3CEC8 100%);box-shadow:0 0 0 2px rgba(233,130,106,.35),0 0 26px 6px rgba(233,130,106,.45),0 10px 18px -6px rgba(90,70,60,.35)}\n.x{position:absolute;top:12px;right:12px;z-index:2;width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.85);color:#938B8A;display:flex;align-items:center;justify-content:center;font-size:17px}\n.body{padding:18px 22px 22px}\n.kick{font-size:10px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:#938B8A;display:flex;align-items:center;gap:8px}\n.kick i{width:7px;height:7px;border-radius:50%;background:#E9826A}\n.h1{font-family:'Valky','Cormorant Garamond',Georgia,serif;font-size:26px;line-height:1.15;margin:6px 0 2px;color:#3E3F3F}\n.sub{font-size:12.5px;line-height:1.6;color:#938B8A;margin:0}\nh3{font-size:9.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#938B8A;margin:18px 0 9px}\n.item{display:flex;gap:13px;align-items:center;background:#F5F3F0;border:1px solid #EDEAE6;border-radius:16px;padding:10px 12px 10px 10px;margin-bottom:8px}\n.th{position:relative;flex-shrink:0;width:58px;height:78px;border-radius:12px;background:linear-gradient(160deg,#E8DCCD,#D8C6B4)}\n.th:after{content:'';position:absolute;left:50%;top:50%;width:26px;height:26px;margin:-13px 0 0 -13px;border-radius:50%;background:rgba(233,130,106,.92)}\n.th:before{content:'';position:absolute;z-index:1;left:50%;top:50%;margin:-6px 0 0 -3px;border-left:9px solid #fff;border-top:6px solid transparent;border-bottom:6px solid transparent}\n.t{display:block;font-size:14px;font-weight:600;color:#3E3F3F;line-height:1.3}\n.r{display:block;font-size:11.5px;color:#938B8A;line-height:1.45;margin-top:3px}\n.m{display:inline-block;margin-top:6px;font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#B4553C;background:#FCEDE8;border:1px solid #E9826A;border-radius:999px;padding:2px 8px}\n.fab{position:absolute;right:0;top:10px;width:40px;height:48px;border:1.5px solid #E9826A;border-right:0;border-radius:24px 0 0 24px;background:#FFFFFF;color:#3E3F3F;display:flex;align-items:center;justify-content:center;padding-left:3px;font:400 23px/1 'Valky','Cormorant Garamond',Georgia,serif;box-shadow:-6px 10px 26px -12px rgba(90,70,60,.35)}\n"
+   }
+  ]
+ },
+ {
+  "id": "P-2026-10-29-02",
+  "titulo": "Hoja inferior (bottom sheet): cinco radios distintos y el asa solo existe en el Hub",
+  "tipo": "componente",
+  "origen": "hub",
+  "apps_con_el_cambio": [
+   "hub"
+  ],
+  "apps_afectadas": [
+   "hola",
+   "epi",
+   "grow"
+  ],
+  "estado_en_ds": "distinto",
+  "impacto": "medio",
+  "recomendacion": "estandarizar",
+  "motivo": "El DS define la hoja como Modal sheet: radio --r-card-top (28 px), sin asa. El Hub la usa así en 12 sitios y el 28 oct le sumó un asa de 36×4 px en #D8D4CE (Acciones pendientes). Las demás apps la hacen a mano con 22, 24 o 26 px. Propuesta: agregar el asa al Modal sheet del DS y llevar Hola, Epi y Grow a 28 px.",
+  "evidencia": [
+   {
+    "app": "hub",
+    "archivo": "index.html (Acciones pendientes)",
+    "detalle": "border-radius:28px 28px 0 0; background:#FAFAFA · asa width:36px;height:4px;border-radius:999px;background:#D8D4CE"
+   },
+   {
+    "app": "hola",
+    "archivo": "app/screens-bento.jsx:238",
+    "detalle": "background:C.alabaster, borderRadius:\"26px 26px 0 0\""
+   },
+   {
+    "app": "epi",
+    "archivo": "app.jsx:7624 · 9703",
+    "detalle": "borderRadius:\"22px 22px 0 0\" · .epi-hoja borderRadius:\"24px 24px 0 0\""
+   },
+   {
+    "app": "grow",
+    "archivo": "index.html (plantilla, línea 384)",
+    "detalle": "border-radius:22px 22px 0 0"
+   },
+   {
+    "app": "mi",
+    "archivo": "conta-facturas.jsx:73",
+    "detalle": ".cfr { border-radius: 28px 28px 0 0; } — ya coincide con el DS"
+   },
+   {
+    "app": "ds",
+    "archivo": "components/feedback/Modal.jsx:25",
+    "detalle": "borderRadius: sheet ? \"var(--r-card-top)\" : \"var(--r-xl)\" — sin asa"
+   }
+  ],
+  "vistas": [
+   {
+    "etiqueta": "Design system hoy · Modal sheet",
+    "app": "ds",
+    "alto": 250,
+    "html": "<div class=\"lbl\">DS · 28 px, sin asa</div><div class=\"wrap\" style=\"height:250px\"><div class=\"s\" style=\"border-radius:28px 28px 0 0;background:var(--surface);box-shadow:0 -18px 60px rgba(62,63,63,.16)\"><div class=\"k\">Te toca a ti</div><div class=\"tt\">Acciones pendientes</div><div class=\"row\"><b>Confirmar llegada · 1104</b><span>Hoy 15:00</span></div><div class=\"row\"><b>Cobro pendiente · Q 1,850</b><span>Reserva #4821</span></div></div></div>",
+    "css": "\nbody{padding:0!important;background:rgba(62,63,63,.55)!important}\n.wrap{height:100%;display:flex;align-items:flex-end;padding:0 0}\n.s{position:relative;width:100%;padding:12px 20px 20px;box-sizing:border-box;display:flex;flex-direction:column}\n.g{align-self:center;margin:0 0 12px;width:36px;height:4px;border-radius:999px;background:#D8D4CE}\n.k{font-size:10.5px;font-weight:600;letter-spacing:.24em;text-transform:uppercase;color:var(--fg-muted);margin-top:6px}\n.tt{font-size:15px;font-weight:600;color:var(--fg);margin:2px 0 12px}\n.row{display:flex;justify-content:space-between;gap:10px;background:#fff;border:1px solid rgba(62,63,63,.08);border-radius:16px;padding:12px 14px;margin-bottom:8px;font-size:13px}\n.row span{color:var(--fg-muted);font-size:12px}\n.lbl{position:absolute;top:10px;left:12px;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#fff;font-weight:600}\n"
+   },
+   {
+    "etiqueta": "Hub (cambio) · 28 px + asa",
+    "app": "hub",
+    "alto": 250,
+    "html": "<div class=\"lbl\">Hub · 28 px + asa</div><div class=\"wrap\" style=\"height:250px\"><div class=\"s\" style=\"border-radius:28px 28px 0 0;background:#FAFAFA;box-shadow:0 -18px 60px rgba(62,63,63,.16)\"><span class=\"g\" style=\"width:36px;height:4px;background:#D8D4CE\"></span><div class=\"k\">Te toca a ti</div><div class=\"tt\">Acciones pendientes</div><div class=\"row\"><b>Confirmar llegada · 1104</b><span>Hoy 15:00</span></div><div class=\"row\"><b>Cobro pendiente · Q 1,850</b><span>Reserva #4821</span></div></div></div>",
+    "css": "\nbody{padding:0!important;background:rgba(62,63,63,.55)!important}\n.wrap{height:100%;display:flex;align-items:flex-end;padding:0 0}\n.s{position:relative;width:100%;padding:12px 20px 20px;box-sizing:border-box;display:flex;flex-direction:column}\n.g{align-self:center;margin:0 0 12px;width:36px;height:4px;border-radius:999px;background:#D8D4CE}\n.k{font-size:10.5px;font-weight:600;letter-spacing:.24em;text-transform:uppercase;color:var(--fg-muted);margin-top:6px}\n.tt{font-size:15px;font-weight:600;color:var(--fg);margin:2px 0 12px}\n.row{display:flex;justify-content:space-between;gap:10px;background:#fff;border:1px solid rgba(62,63,63,.08);border-radius:16px;padding:12px 14px;margin-bottom:8px;font-size:13px}\n.row span{color:var(--fg-muted);font-size:12px}\n.lbl{position:absolute;top:10px;left:12px;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#fff;font-weight:600}\n"
+   },
+   {
+    "etiqueta": "Hola · 26 px",
+    "app": "hola",
+    "alto": 250,
+    "html": "<div class=\"lbl\">Hola · 26 px</div><div class=\"wrap\" style=\"height:250px\"><div class=\"s\" style=\"border-radius:26px 26px 0 0;background:#FAFAFA;box-shadow:0 -18px 60px rgba(62,63,63,.16)\"><div class=\"k\">Te toca a ti</div><div class=\"tt\">Acciones pendientes</div><div class=\"row\"><b>Confirmar llegada · 1104</b><span>Hoy 15:00</span></div><div class=\"row\"><b>Cobro pendiente · Q 1,850</b><span>Reserva #4821</span></div></div></div>",
+    "css": "\nbody{padding:0!important;background:rgba(62,63,63,.55)!important}\n.wrap{height:100%;display:flex;align-items:flex-end;padding:0 0}\n.s{position:relative;width:100%;padding:12px 20px 20px;box-sizing:border-box;display:flex;flex-direction:column}\n.g{align-self:center;margin:0 0 12px;width:36px;height:4px;border-radius:999px;background:#D8D4CE}\n.k{font-size:10.5px;font-weight:600;letter-spacing:.24em;text-transform:uppercase;color:var(--fg-muted);margin-top:6px}\n.tt{font-size:15px;font-weight:600;color:var(--fg);margin:2px 0 12px}\n.row{display:flex;justify-content:space-between;gap:10px;background:#fff;border:1px solid rgba(62,63,63,.08);border-radius:16px;padding:12px 14px;margin-bottom:8px;font-size:13px}\n.row span{color:var(--fg-muted);font-size:12px}\n.lbl{position:absolute;top:10px;left:12px;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#fff;font-weight:600}\n"
+   },
+   {
+    "etiqueta": "Epi · Grow · 22 px",
+    "app": "epi",
+    "alto": 250,
+    "html": "<div class=\"lbl\">Epi / Grow · 22 px</div><div class=\"wrap\" style=\"height:250px\"><div class=\"s\" style=\"border-radius:22px 22px 0 0;background:#FFFFFF;box-shadow:0 -18px 60px rgba(62,63,63,.16)\"><div class=\"k\">Te toca a ti</div><div class=\"tt\">Acciones pendientes</div><div class=\"row\"><b>Confirmar llegada · 1104</b><span>Hoy 15:00</span></div><div class=\"row\"><b>Cobro pendiente · Q 1,850</b><span>Reserva #4821</span></div></div></div>",
+    "css": "\nbody{padding:0!important;background:rgba(62,63,63,.55)!important}\n.wrap{height:100%;display:flex;align-items:flex-end;padding:0 0}\n.s{position:relative;width:100%;padding:12px 20px 20px;box-sizing:border-box;display:flex;flex-direction:column}\n.g{align-self:center;margin:0 0 12px;width:36px;height:4px;border-radius:999px;background:#D8D4CE}\n.k{font-size:10.5px;font-weight:600;letter-spacing:.24em;text-transform:uppercase;color:var(--fg-muted);margin-top:6px}\n.tt{font-size:15px;font-weight:600;color:var(--fg);margin:2px 0 12px}\n.row{display:flex;justify-content:space-between;gap:10px;background:#fff;border:1px solid rgba(62,63,63,.08);border-radius:16px;padding:12px 14px;margin-bottom:8px;font-size:13px}\n.row span{color:var(--fg-muted);font-size:12px}\n.lbl{position:absolute;top:10px;left:12px;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#fff;font-weight:600}\n"
+   }
+  ]
+ },
+ {
+  "id": "P-2026-10-29-03",
+  "titulo": "El halo de Alma usa dos degradados fuera de los tokens (rojo-naranja en la roca, atardecer azul en la app)",
+  "tipo": "token",
+  "origen": "hub",
+  "apps_con_el_cambio": [
+   "hub"
+  ],
+  "apps_afectadas": [
+   "hub",
+   "hola",
+   "epi",
+   "mi",
+   "docs",
+   "grow"
+  ],
+  "estado_en_ds": "no existe",
+  "impacto": "medio",
+  "recomendacion": "estandarizar",
+  "motivo": "Alma es la cara visible en las 6 apps (roca del menú, voz, app nueva), pero su color vive escrito en sa-nav.js: #E64E37→#EE7552→#F59D68, más rojo que el peach de marca. La app de Alma (28 oct) lo cambia por un atardecer azul-lila-durazno. Propuesta: tokens --alma-halo y --alma-halo-app en colors.css (con el peach #E9826A en el centro) y que sa-nav.js los lea.",
+  "evidencia": [
+   {
+    "app": "hub",
+    "archivo": "js/sa-nav.js:95-96",
+    "detalle": "GRAD = linear-gradient(100deg,var(--san-t1,#E64E37),var(--san-t2,#EE7552) 45%,var(--san-t3,#F59D68)) · TINT0 = [\"#E64E37\",\"#EE7552\",\"#F59D68\",\"#F2A07E\",\"#F6B696\",\"#FAD0B6\"]"
+   },
+   {
+    "app": "hub",
+    "archivo": "alma/inicio.html:18",
+    "detalle": "--san-halo: linear-gradient(180deg,#8FA5C8 0%,#B8B6C8 30%,#E9826A 56%,#E3A47F 74%,#A98C93 100%)"
+   },
+   {
+    "app": "hub",
+    "archivo": "js/sa-nav.js:93",
+    "detalle": "«una app puede teñirlo con SANav.update({ tint: \"#4B6A94\" })» — tinte libre, sin token"
+   },
+   {
+    "app": "ds",
+    "archivo": "tokens/colors.css",
+    "detalle": "--color-peach:#E9826A · --color-peach-neon:#F2755A — ningún token de halo/degradado"
+   }
+  ],
+  "vistas": [
+   {
+    "etiqueta": "Design system hoy",
+    "app": "ds",
+    "alto": 230,
+    "html": "<div class=\"row\"><div class=\"c\"><div class=\"ring\" style=\"background:var(--accent);box-shadow:0 0 26px 4px rgba(233,130,106,.35)\"><i></i></div>Solo existen<br><code>--accent #E9826A</code><code>--accent-neon #F2755A</code></div>\n<div class=\"c\" style=\"max-width:170px;text-align:left;font-size:12px;line-height:1.55\">No hay token de halo ni de degradado. El DS no define el color de Alma.</div></div>",
+    "css": "\n.row{display:flex;gap:22px;align-items:center;justify-content:center;padding:10px 0}\n.c{display:flex;flex-direction:column;align-items:center;gap:10px;font-size:10.5px;letter-spacing:.08em;color:var(--fg-muted);text-align:center;max-width:120px}\n.ring{position:relative;width:84px;height:84px;border-radius:50%;padding:5px;box-sizing:border-box}\n.ring i{display:block;width:100%;height:100%;border-radius:50%;background:radial-gradient(circle at 40% 34%,#F7F5F2 0%,#EFECE8 42%,#E3DFDA 78%,#D3CEC8 100%)}\n.sw{display:flex;gap:4px;margin-top:2px}.sw b{width:16px;height:16px;border-radius:4px;display:block}\ncode{font-size:10px;color:var(--fg)}\n"
+   },
+   {
+    "etiqueta": "Hub · roca del menú y app de Alma",
+    "app": "hub",
+    "alto": 220,
+    "html": "<div class=\"row\">\n<div class=\"c\"><div class=\"ring\" style=\"background:linear-gradient(100deg,#E64E37 0%,#EE7552 45%,#F59D68 100%);box-shadow:0 0 26px 6px rgba(238,117,82,.45)\"><i></i></div>Roca y voz · sa-nav.js<div class=\"sw\"><b style=\"background:#E64E37\"></b><b style=\"background:#EE7552\"></b><b style=\"background:#F59D68\"></b></div></div>\n<div class=\"c\"><div class=\"ring\" style=\"background:linear-gradient(180deg,#8FA5C8 0%,#B8B6C8 30%,#E9826A 56%,#E3A47F 74%,#A98C93 100%);box-shadow:0 0 26px 6px rgba(143,165,200,.45)\"><i></i></div>App de Alma · alma/inicio.html<div class=\"sw\"><b style=\"background:#8FA5C8\"></b><b style=\"background:#B8B6C8\"></b><b style=\"background:#E9826A\"></b><b style=\"background:#A98C93\"></b></div></div>\n</div>",
+    "css": "\n.row{display:flex;gap:22px;align-items:center;justify-content:center;padding:10px 0}\n.c{display:flex;flex-direction:column;align-items:center;gap:10px;font-size:10.5px;letter-spacing:.08em;color:var(--fg-muted);text-align:center;max-width:120px}\n.ring{position:relative;width:84px;height:84px;border-radius:50%;padding:5px;box-sizing:border-box}\n.ring i{display:block;width:100%;height:100%;border-radius:50%;background:radial-gradient(circle at 40% 34%,#F7F5F2 0%,#EFECE8 42%,#E3DFDA 78%,#D3CEC8 100%)}\n.sw{display:flex;gap:4px;margin-top:2px}.sw b{width:16px;height:16px;border-radius:4px;display:block}\ncode{font-size:10px;color:var(--fg)}\n"
+   }
+  ]
+ },
+ {
+  "id": "P-2026-10-29-04",
+  "titulo": "Health (nuevo): Cormorant en lugar de Valky, tinta #2F3030, fondo arena y fases del sueño en azules",
+  "tipo": "token",
+  "origen": "hub",
+  "apps_con_el_cambio": [
+   "hub"
+  ],
+  "apps_afectadas": [
+   "hub"
+  ],
+  "estado_en_ds": "distinto",
+  "impacto": "medio",
+  "recomendacion": "revertir",
+  "motivo": "La página Health (28 oct) arma su propia paleta: pone Cormorant Garamond antes que Valky (la letra de títulos de la marca), usa una tinta #2F3030 en vez de --fg, fondo «arena» #E8DCCD y una escala de azules para las fases del sueño, cuando el DS pide una sola serie peach y el resto en neutros cálidos. La estructura editorial (capítulos, vidrio) está muy bien; propongo mantenerla y volver a --font-serif, --fg y --series-*.",
+  "evidencia": [
+   {
+    "app": "hub",
+    "archivo": "health/index.html:12",
+    "detalle": "Google Fonts: Cormorant+Garamond + Montserrat (no carga ds/tokens/fonts.css)"
+   },
+   {
+    "app": "hub",
+    "archivo": "health/index.html:21-24",
+    "detalle": "--tinta:#2F3030; --arena:#E8DCCD; --papel:#F7F2EC; --serif:\"Cormorant Garamond\", Valky, Georgia, serif"
+   },
+   {
+    "app": "hub",
+    "archivo": "health/index.html:276 · 499",
+    "detalle": "FASE = { p:\"#3F5677\", l:\"#7F93B0\", r:\"#B9C5D6\", d:\"#E9A58E\" }"
+   },
+   {
+    "app": "ds",
+    "archivo": "tokens/typography.css:4 · colors.css",
+    "detalle": "--font-serif:\"Valky\",\"Cormorant Garamond\",… · --fg:#3E3F3F · --series-1 ink, --series-accent peach, --series-2…6 neutros"
+   }
+  ],
+  "vistas": [
+   {
+    "etiqueta": "Design system (Valky · --fg · series)",
+    "app": "ds",
+    "alto": 370,
+    "html": "<div class=\"cap\" style=\"background:var(--bg-alt);color:var(--fg);font-family:var(--font-sans)\"><div class=\"firma\"><span>Alma</span><span>Sueño</span></div><h2 style=\"font-family:var(--font-serif)\">Dormiste<em>siete horas</em></h2><p class=\"bajada\" style=\"color:var(--fg-muted)\">Más profundo que el martes. Tu cuerpo ya empezó a recuperarse.</p><div class=\"v\" style=\"background:rgba(255,255,255,.7)\"><div class=\"et\" style=\"color:var(--fg-muted)\"><i></i>Sueño · anoche</div><span class=\"cifra\" style=\"font-family:var(--font-serif)\">7 h 12<small style=\"color:var(--fg-muted);font-family:var(--font-sans)\">min</small></span><div class=\"bar\"><b style=\"flex:2;background:var(--series-1)\"></b><b style=\"flex:3;background:var(--series-3)\"></b><b style=\"flex:1.5;background:var(--series-accent)\"></b><b style=\"flex:.5;background:var(--series-5)\"></b></div><div class=\"ley\" style=\"color:var(--fg-muted)\"><span><i style=\"background:var(--series-1)\"></i>Profundo</span><span><i style=\"background:var(--series-3)\"></i>Ligero</span><span><i style=\"background:var(--series-accent)\"></i>REM</span><span><i style=\"background:var(--series-5)\"></i>Despierto</span></div></div></div>",
+    "css": "\nbody{padding:0!important}\n.cap{padding:22px 22px 20px;min-height:100%;box-sizing:border-box}\n.firma{display:flex;justify-content:space-between;font-size:11px;font-weight:500;letter-spacing:.32em;text-transform:uppercase;margin-bottom:22px}\nh2{margin:0;font-weight:400;font-size:44px;line-height:1.02;letter-spacing:-.01em}\nh2 em{font-style:italic;display:block}\n.bajada{margin:10px 0 16px;font-size:14px;line-height:1.5;max-width:30ch}\n.v{border-radius:20px;padding:13px 14px 12px}\n.et{display:flex;align-items:center;gap:7px;font-size:10.5px;font-weight:500;letter-spacing:.16em;text-transform:uppercase}\n.et i{width:6px;height:6px;border-radius:50%;background:#E9826A}\n.cifra{display:block;margin-top:4px;font-weight:500;font-size:34px;line-height:1.05}\n.cifra small{font-size:14px;margin-left:4px}\n.bar{display:flex;height:10px;border-radius:5px;overflow:hidden;margin-top:10px}\n.ley{display:flex;gap:10px;margin-top:8px;font-size:10.5px}.ley i{display:inline-block;width:8px;height:8px;border-radius:2px;margin-right:4px}\n"
+   },
+   {
+    "etiqueta": "Hub · Health hoy",
+    "app": "hub",
+    "alto": 370,
+    "html": "<div class=\"cap\" style=\"background:#E8DCCD;color:#2F3030;font-family:var(--font-sans)\"><div class=\"firma\"><span>Alma</span><span>Sueño</span></div><h2 style=\"font-family:'Cormorant Garamond',Georgia,serif\">Dormiste<em>siete horas</em></h2><p class=\"bajada\" style=\"color:#6F6867\">Más profundo que el martes. Tu cuerpo ya empezó a recuperarse.</p><div class=\"v\" style=\"background:rgba(255,255,255,.52)\"><div class=\"et\" style=\"color:#6F6867\"><i></i>Sueño · anoche</div><span class=\"cifra\" style=\"font-family:'Cormorant Garamond',Georgia,serif\">7 h 12<small style=\"color:#6F6867;font-family:var(--font-sans)\">min</small></span><div class=\"bar\"><b style=\"flex:2;background:#3F5677\"></b><b style=\"flex:3;background:#7F93B0\"></b><b style=\"flex:1.5;background:#B9C5D6\"></b><b style=\"flex:.5;background:#E9A58E\"></b></div><div class=\"ley\" style=\"color:#6F6867\"><span><i style=\"background:#3F5677\"></i>Profundo</span><span><i style=\"background:#7F93B0\"></i>Ligero</span><span><i style=\"background:#B9C5D6\"></i>REM</span><span><i style=\"background:#E9A58E\"></i>Despierto</span></div></div></div>",
+    "css": "\nbody{padding:0!important}\n.cap{padding:22px 22px 20px;min-height:100%;box-sizing:border-box}\n.firma{display:flex;justify-content:space-between;font-size:11px;font-weight:500;letter-spacing:.32em;text-transform:uppercase;margin-bottom:22px}\nh2{margin:0;font-weight:400;font-size:44px;line-height:1.02;letter-spacing:-.01em}\nh2 em{font-style:italic;display:block}\n.bajada{margin:10px 0 16px;font-size:14px;line-height:1.5;max-width:30ch}\n.v{border-radius:20px;padding:13px 14px 12px}\n.et{display:flex;align-items:center;gap:7px;font-size:10.5px;font-weight:500;letter-spacing:.16em;text-transform:uppercase}\n.et i{width:6px;height:6px;border-radius:50%;background:#E9826A}\n.cifra{display:block;margin-top:4px;font-weight:500;font-size:34px;line-height:1.05}\n.cifra small{font-size:14px;margin-left:4px}\n.bar{display:flex;height:10px;border-radius:5px;overflow:hidden;margin-top:10px}\n.ley{display:flex;gap:10px;margin-top:8px;font-size:10.5px}.ley i{display:inline-block;width:8px;height:8px;border-radius:2px;margin-right:4px}\n"
+   }
+  ]
+ },
+ {
+  "id": "P-2026-10-29-05",
+  "titulo": "Páginas nuevas del Hub usan --border como color: el campo de texto se queda sin borde",
+  "tipo": "token",
+  "origen": "hub",
+  "apps_con_el_cambio": [
+   "hub"
+  ],
+  "apps_afectadas": [
+   "hub"
+  ],
+  "estado_en_ds": "distinto",
+  "impacto": "bajo",
+  "recomendacion": "revertir",
+  "motivo": "En el DS --border ya es el borde completo (1px solid #D8D4CE). claude.html y alma/ escriben «1px solid var(--border, …)», que queda «1px solid 1px solid #D8D4CE»: el navegador descarta la regla y el campo pierde el borde (sobre fondo alabastro casi no se ve). Arreglo: border:var(--border) o 1px solid var(--divider).",
+  "evidencia": [
+   {
+    "app": "hub",
+    "archivo": "claude.html:27",
+    "detalle": "input { border: 1px solid var(--border, #E4DFDA); } — la página carga ds/tokens/colors.css"
+   },
+   {
+    "app": "hub",
+    "archivo": "alma/index.html:31",
+    "detalle": "textarea { border: 1px solid var(--border, #d6cfc4); }"
+   },
+   {
+    "app": "hub",
+    "archivo": "alma/instalar.html:22",
+    "detalle": "solid var(--border, #d6cfc4)"
+   },
+   {
+    "app": "ds",
+    "archivo": "tokens/colors.css",
+    "detalle": "--border:1px solid var(--color-warm-grey) · --divider:var(--color-warm-grey)"
+   }
+  ],
+  "vistas": [
+   {
+    "etiqueta": "Design system · border:var(--border)",
+    "app": "ds",
+    "alto": 190,
+    "html": "<div class=\"f\"><span class=\"k\">Llave de Claude</span><input style=\"border:var(--border)\" value=\"sk-ant-••••••••\"><div class=\"btn\">Guardar</div></div>",
+    "css": "\n.f{display:flex;flex-direction:column;gap:10px;max-width:340px}\n.k{font-size:10.5px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--fg-muted)}\ninput{width:100%;box-sizing:border-box;font:inherit;font-size:15px;padding:14px 16px;border-radius:var(--r-md);background:#fff;color:var(--fg)}\n.btn{padding:15px;border-radius:999px;background:var(--fg);color:var(--fg-inverse);text-align:center;font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase}\n"
+   },
+   {
+    "etiqueta": "Hub · claude.html hoy (sin borde)",
+    "app": "hub",
+    "alto": 190,
+    "html": "<div class=\"f\"><span class=\"k\">Llave de Claude</span><input style=\"border:1px solid var(--border, #E4DFDA)\" value=\"sk-ant-••••••••\"><div class=\"btn\">Guardar</div></div>",
+    "css": "\n.f{display:flex;flex-direction:column;gap:10px;max-width:340px}\n.k{font-size:10.5px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--fg-muted)}\ninput{width:100%;box-sizing:border-box;font:inherit;font-size:15px;padding:14px 16px;border-radius:var(--r-md);background:#fff;color:var(--fg)}\n.btn{padding:15px;border-radius:999px;background:var(--fg);color:var(--fg-inverse);text-align:center;font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase}\n"
+   }
+  ]
+ }
+]
