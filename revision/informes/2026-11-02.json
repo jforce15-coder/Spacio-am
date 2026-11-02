@@ -1,0 +1,516 @@
+[
+  {
+    "id": "P-2026-11-02-01",
+    "titulo": "Esqueleto de carga: las 6 apps usan sa-esq y el design system todavía dice que el loader es el logo que rebota",
+    "tipo": "componente",
+    "origen": "hub",
+    "apps_con_el_cambio": [
+      "hub",
+      "hola",
+      "epi",
+      "mi",
+      "docs",
+      "grow"
+    ],
+    "apps_afectadas": [
+      "hub",
+      "hola",
+      "epi",
+      "mi",
+      "docs",
+      "grow"
+    ],
+    "estado_en_ds": "obsoleto",
+    "impacto": "alto",
+    "recomendacion": "estandarizar",
+    "motivo": "El 31 oct nació «Rápido de sentir»: ninguna pantalla en blanco ni espera sin forma, y un esqueleto con brillo en las 6 apps. El DS sigue con la regla vieja: LoadingScreen como loader canónico y un Skeleton plano, sin brillo. Conviene subir sa-esq a components/feedback, pasar sus grises a tokens y dejar LoadingScreen solo para la primera entrada. De paso se limpian dos copias (alma/uso, alma/reporte) y el pulso .sa-skel del Hub.",
+    "evidencia": [
+      {
+        "app": "hub",
+        "archivo": "ds/esqueleto.css:6-17",
+        "detalle": ".sa-esq i{background:linear-gradient(90deg,#EFEBE6,#F7F4F1,#EFEBE6);animation:sa-esq 1.6s} · grises fuera de tokens"
+      },
+      {
+        "app": "hub",
+        "archivo": "ds/velocidad.md:29",
+        "detalle": "«Prohibido: pantallas en blanco, “Cargando…” sin forma, rueditas sin contexto»"
+      },
+      {
+        "app": "hola",
+        "archivo": "index.html:11,215",
+        "detalle": "<link href=hub.spacioam.com/ds/esqueleto.css> · <div id=arranque class=sa-esq>"
+      },
+      {
+        "app": "epi",
+        "archivo": "index.html:19,54",
+        "detalle": "esqueleto.css · <div class=sa-esq> en el arranque"
+      },
+      {
+        "app": "mi",
+        "archivo": "index.html:9,451",
+        "detalle": "esqueleto.css · <div class=sa-esq> en el arranque"
+      },
+      {
+        "app": "docs",
+        "archivo": "index.html:18 · admin.jsx:258",
+        "detalle": "esqueleto.css · className=sa-esq en la lista de documentos"
+      },
+      {
+        "app": "grow",
+        "archivo": "index.html:7,29",
+        "detalle": "esqueleto.css · <div class=sa-esq> en el arranque"
+      },
+      {
+        "app": "hub",
+        "archivo": "alma/uso.html:64-66 · alma/reporte.html:72-75",
+        "detalle": ".esq i y @keyframes esq: copias a mano de la misma pieza"
+      },
+      {
+        "app": "hub",
+        "archivo": "index.html:213-214",
+        "detalle": "@keyframes sa-skel (pulso de opacidad): un segundo esqueleto distinto, 5 usos en index.html"
+      },
+      {
+        "app": "ds",
+        "archivo": "components/feedback/LoadingScreen.jsx:5,23",
+        "detalle": "«Loader inicial canónico» con sa-bounce · Skeleton plano en --bg-alt, sin brillo"
+      },
+      {
+        "app": "ds",
+        "archivo": "readme.md:156-157",
+        "detalle": "«Nunca bounce… con una excepción: el loader canónico»"
+      }
+    ],
+    "vistas": [
+      {
+        "etiqueta": "Design system hoy · logo que rebota y Skeleton plano",
+        "app": "ds",
+        "alto": 230,
+        "html": "<div class=\"w\"><div class=\"l\"><div class=\"lg\">Spacio AM</div><span class=\"sb\"></span></div><p class=\"et\">Skeleton</p><span class=\"s\" style=\"width:60%\"></span><span class=\"s\"></span><span class=\"s\" style=\"width:40%\"></span></div>",
+        "css": ".w{padding:16px;background:var(--bg);font-family:var(--font-sans)}.et{font-size:12px;color:var(--fg-muted);margin:0 0 10px}.l{display:flex;flex-direction:column;align-items:center;gap:10px;padding:14px 0 18px}.lg{font-family:var(--font-serif);font-size:30px;color:var(--fg)}.sb{width:46px;height:5px;border-radius:var(--r-pill);background:var(--divider)}.s{display:block;height:14px;border-radius:var(--r-sm);background:var(--bg-alt);margin-bottom:8px}"
+      },
+      {
+        "etiqueta": "Las 6 apps · sa-esq con la forma de lo que viene",
+        "app": "hub",
+        "alto": 270,
+        "html": "<div class=\"w\"><div class=\"sa-esq\" aria-label=\"Cargando tus reservas\"><i class=\"t\"></i><i class=\"corta\"></i><div class=\"sa-esq dos\"><i class=\"c\"></i><i class=\"c\"></i><i class=\"c\"></i><i class=\"c\"></i></div></div></div>",
+        "css": ".w{padding:16px;background:var(--bg);font-family:var(--font-sans)}.et{font-size:12px;color:var(--fg-muted);margin:0 0 10px}.sa-esq{display:grid;gap:12px}.sa-esq.dos{grid-template-columns:1fr 1fr}.sa-esq i{display:block;height:14px;border-radius:8px;background:linear-gradient(90deg,#EFEBE6 0%,#F7F4F1 50%,#EFEBE6 100%);background-size:200% 100%;animation:e 1.6s ease-in-out infinite}.sa-esq .t{width:58%;height:26px}.sa-esq .corta{width:40%}.sa-esq .c{height:76px;border-radius:18px}@keyframes e{0%{background-position:100% 0}100%{background-position:-100% 0}}"
+      }
+    ]
+  },
+  {
+    "id": "P-2026-11-02-02",
+    "titulo": "Movimiento con sentido: 6 reglas y un resorte en las 6 apps, mientras el design system sigue diciendo «nunca spring»",
+    "tipo": "token",
+    "origen": "hub",
+    "apps_con_el_cambio": [
+      "hub",
+      "hola",
+      "epi",
+      "mi",
+      "docs",
+      "grow"
+    ],
+    "apps_afectadas": [
+      "hub",
+      "hola",
+      "epi",
+      "mi",
+      "docs",
+      "grow"
+    ],
+    "estado_en_ds": "distinto",
+    "impacto": "alto",
+    "recomendacion": "estandarizar",
+    "motivo": "Es una decisión tuya del 31 oct y ya la cargan las 6 apps desde el Hub, pero en el DS sigue escrito «Nunca bounce, nunca spring». La copia ds/ del Hub cambió ese comentario sola, así que hoy hay dos verdades. Conviene subir --resorte, las piezas y las 6 reglas a tokens/motion.css y guidelines/motion.html. Falta decidir el interruptor: .sa-interruptor (31×51, resorte) no lo usa ninguna app y el Toggle del DS sigue igual. Si apruebas esta, P-2026-10-26-02 se puede descartar.",
+    "evidencia": [
+      {
+        "app": "hub",
+        "archivo": "ds/movimiento.css:4-9",
+        "detalle": "--resorte:linear(0,.24 8%,…,1.04 50%,…,1) · --resorte-d:420ms"
+      },
+      {
+        "app": "hub",
+        "archivo": "ds/tokens/motion.css:1-2",
+        "detalle": "«un easing para lo que entra… y un resorte calmado» vs. el DS: «un solo easing… nunca bounce»"
+      },
+      {
+        "app": "hub",
+        "archivo": "ds/movimiento.md",
+        "detalle": "6 reglas: resorte, pop, sale de donde tocaste, sacudida, píldora, nada salta"
+      },
+      {
+        "app": "hola",
+        "archivo": "index.html:13,261 · app/primitives.jsx:669-688",
+        "detalle": "movimiento.css/js · saSacudir, quitar y píldora sobre window.SAMov"
+      },
+      {
+        "app": "epi",
+        "archivo": "index.html:9,20 · app.jsx:2480",
+        "detalle": "SAMov.sacudir(r.current)"
+      },
+      {
+        "app": "mi",
+        "archivo": "index.html:11-12 · login.jsx:15",
+        "detalle": "SAMov.sacudir en el ingreso"
+      },
+      {
+        "app": "docs",
+        "archivo": "index.html:20-21 · admin.jsx:65",
+        "detalle": "SAMov.sacudir en el ingreso"
+      },
+      {
+        "app": "grow",
+        "archivo": "index.html (plantilla)",
+        "detalle": "movimiento.css, movimiento.js y 5 usos de SAMov"
+      },
+      {
+        "app": "hub",
+        "archivo": "ds/movimiento.css:12-21",
+        "detalle": ".sa-interruptor definido, sin ningún uso en las 6 apps"
+      },
+      {
+        "app": "ds",
+        "archivo": "readme.md:156 · tokens/motion.css:1 · guidelines/motion.html",
+        "detalle": "«Nunca bounce, nunca spring» · «un solo easing»"
+      }
+    ],
+    "vistas": [
+      {
+        "etiqueta": "Design system hoy · un solo easing",
+        "app": "ds",
+        "alto": 170,
+        "html": "<div class=\"w\"><p class=\"et\">--ease · 360 ms · fade y desplazamiento corto</p><div class=\"f\"><label>Correo</label><input value=\"juan@spacio\" readonly></div><div class=\"tg\"><span class=\"k\"></span></div></div>",
+        "css": ".w{padding:16px;background:var(--bg);font-family:var(--font-sans)}.et{font-size:12px;color:var(--fg-muted);margin:0 0 10px}.f label{display:block;font-size:12px;color:var(--fg-muted);margin-bottom:6px}.f input{width:100%;box-sizing:border-box;padding:11px 14px;border:1px solid var(--divider);border-radius:var(--r-md);font:14px var(--font-sans);color:var(--fg);background:#fff}.tg{margin-top:14px;width:44px;height:26px;border-radius:13px;background:var(--accent);position:relative}.k{position:absolute;top:3px;right:3px;width:20px;height:20px;border-radius:50%;background:#fff}"
+      },
+      {
+        "etiqueta": "Las 6 apps · el error se sacude y queda en rojo, con su texto",
+        "app": "hub",
+        "alto": 170,
+        "html": "<div class=\"w\"><p class=\"et\">.sa-sacude + .sa-mal · --resorte en lo que tocas</p><div class=\"f\"><label>Correo</label><input class=\"m\" value=\"juan@spacio\" readonly><small>Escribe un correo electrónico válido.</small></div></div>",
+        "css": ".w{padding:16px;background:var(--bg);font-family:var(--font-sans)}.et{font-size:12px;color:var(--fg-muted);margin:0 0 10px}.f label{display:block;font-size:12px;color:var(--fg-muted);margin-bottom:6px}.f input{width:100%;box-sizing:border-box;padding:11px 14px;border:1px solid var(--color-error);box-shadow:0 0 0 3px rgba(192,57,43,.12);border-radius:var(--r-md);font:14px var(--font-sans);color:var(--fg);background:#fff}.f small{display:block;margin-top:6px;font-size:12px;color:var(--color-error)}.m{animation:s 360ms cubic-bezier(.36,.07,.19,.97) infinite alternate}@keyframes s{10%,90%{transform:translateX(-2px)}20%,80%{transform:translateX(4px)}30%,50%,70%{transform:translateX(-7px)}40%,60%{transform:translateX(7px)}}"
+      }
+    ]
+  },
+  {
+    "id": "P-2026-11-02-03",
+    "titulo": "Chat con Alma (estilo A): tu elección vive en ds/chat.css con su propia paleta gris, y su texto tenue no pasa AA",
+    "tipo": "componente",
+    "origen": "hub",
+    "apps_con_el_cambio": [
+      "hub"
+    ],
+    "apps_afectadas": [
+      "hub"
+    ],
+    "estado_en_ds": "no existe",
+    "impacto": "alto",
+    "recomendacion": "estandarizar",
+    "motivo": "El chat estilo A lo elegiste tú (#317) y ya es el cuadro único de la app y del Hub, pero el DS no tiene ningún componente de chat. No propongo cambiar el aspecto: subirlo a components/ y dejar sus grises como tokens --chat-*. Sí hay un arreglo: --chat-tenue #8A8A8A da 3.45:1 sobre blanco en textos de 10.5 a 12 px; #6F6867 (--fg-muted) da 5.45:1 y casi no se nota. El estilo A pide negros neutros, fuera de la paleta cálida: decide si queda como excepción del chat.",
+    "evidencia": [
+      {
+        "app": "hub",
+        "archivo": "ds/chat.css:1-3",
+        "detalle": "«Chat estilo A, “Airbnb fiel” (issue #317, elegido por Juan)»"
+      },
+      {
+        "app": "hub",
+        "archivo": "ds/chat.css:6-17",
+        "detalle": "--chat-tinta:#222222 · --chat-tenue:#8A8A8A · --chat-otro-bg:#F3F3F3 · --chat-mia-bg:#1F1F1F · sombra rgba(0,0,0)"
+      },
+      {
+        "app": "hub",
+        "archivo": "ds/chat.css (.sa-chat-meta, .sa-chat-etiqueta, .sa-chat-opcion-detalle)",
+        "detalle": "10.5 a 12 px en --chat-tenue: 3.45:1 sobre blanco"
+      },
+      {
+        "app": "hub",
+        "archivo": "js/sa-chat.js:425",
+        "detalle": "SAChat = { opciones, enlaces, pintor, unico, filaEsferas… }"
+      },
+      {
+        "app": "hub",
+        "archivo": "index.html:2006-2013",
+        "detalle": "Decisión del equipo (#325): .sa-chat-tarjeta con A/B/C"
+      },
+      {
+        "app": "ds",
+        "archivo": "components/",
+        "detalle": "sin chat, burbuja ni cuadro de texto · tokens/colors.css sin grises neutros · --color-ink:#3E3F3F"
+      }
+    ],
+    "vistas": [
+      {
+        "etiqueta": "Design system hoy · no existe; lo más cercano es Card",
+        "app": "ds",
+        "alto": 200,
+        "html": "<div class=\"w2\"><div class=\"c\"><p>Sin componente de chat</p><span>Cada pantalla tendría que armar burbujas, tarjeta de acción y cuadro de texto a mano.</span></div></div>",
+        "css": ".w2{padding:16px;background:var(--bg);font-family:var(--font-sans)}.c{background:#fff;border-radius:var(--r-md);padding:18px;box-shadow:var(--shadow-sm)}.c p{font-family:var(--font-serif);font-size:20px;color:var(--fg);margin:0 0 6px}.c span{font-size:13px;color:var(--fg-muted)}"
+      },
+      {
+        "etiqueta": "Hub y app de Alma · estilo A, con el tenue en 3.45:1",
+        "app": "hub",
+        "alto": 345,
+        "html": "<div class=\"w\"><p class=\"e\">Alma · Decisión del equipo</p><div class=\"b o\">Sofía pide salir a las 14:00 de la Suite 1104. ¿Qué le contesto?</div><div class=\"t\"><div class=\"r\">A · Sí, sin costo<small>La limpieza entra a las 15:00</small></div><div class=\"r\">B · Sí, por Q150<small>Salida tardía</small></div><div class=\"r\">C · Otra respuesta<small>La escribes tú</small></div></div><div class=\"b m\" style=\"margin-top:12px\">Opción A</div></div>",
+        "css": ".w{padding:16px;background:#fff;font-family:var(--font-sans)}.e{font-size:11.5px;color:#8A8A8A;margin:0 0 4px 2px}.b{max-width:82%;padding:9px 15px;border-radius:20px;font-size:14.5px;line-height:1.42;margin-bottom:6px}.o{background:#F3F3F3;color:#222}.m{background:#1F1F1F;color:#fff;margin-left:auto;width:fit-content}.t{width:272px;max-width:100%;border-radius:24px;box-shadow:0 2px 6px rgba(0,0,0,.04),0 10px 32px rgba(0,0,0,.09);padding:6px 0;margin-top:8px}.r{padding:9px 14px;font-size:14px;font-weight:600;color:#222}.r small{display:block;font-size:12px;font-weight:400;color:#8A8A8A}"
+      }
+    ]
+  },
+  {
+    "id": "P-2026-11-02-04",
+    "titulo": "Pantallas nuevas de Alma con paleta propia: fondo #FAF8F6, verde y ámbar a mano, y texto suave que no pasa AA",
+    "tipo": "token",
+    "origen": "hub",
+    "apps_con_el_cambio": [
+      "hub"
+    ],
+    "apps_afectadas": [
+      "hub"
+    ],
+    "estado_en_ds": "distinto",
+    "impacto": "medio",
+    "recomendacion": "revertir",
+    "motivo": "Cinco pantallas nuevas (Uso, Correos, Agentes, Reporte de llamadas y Conexiones) y la capa de áreas del inicio de Alma se pintan con una crema que no está en el DS en lugar de --bg #FAFAFA. Cuatro ni siquiera cargan colors.css; escriben su paleta en :root. El verde y el ámbar son casi los del DS, pero no los mismos. --suave #8A8580 da 3.45:1 y --tenue #A39B93 da 2.59:1 sobre esa crema, en textos de 10 a 13 px. Propongo cargar los tokens y usarlos; si prefieres la crema para Alma, márcala «estandarizar» y va al DS como fondo de la app.",
+    "evidencia": [
+      {
+        "app": "hub",
+        "archivo": "alma/uso.html:15-16",
+        "detalle": "--suave:#8A8580 · --tenue:#A39B93 · --crema:#FAF8F6 · --verde:#2F6B47 · --ambar:#9A6B12 · --arena:#F3EFEA"
+      },
+      {
+        "app": "hub",
+        "archivo": "alma/correos.html",
+        "detalle": "#A39B93 ×7 · #FAF8F6 ×5 · #A6503C ×4 · sin colors.css"
+      },
+      {
+        "app": "hub",
+        "archivo": "alma/agentes.html · alma/reporte.html",
+        "detalle": "#FAF8F6 de fondo · sin colors.css"
+      },
+      {
+        "app": "hub",
+        "archivo": "alma/conexiones.html",
+        "detalle": "carga tokens, pero solo 5 var() y fondo #FAF8F6"
+      },
+      {
+        "app": "hub",
+        "archivo": "alma/inicio.html:172",
+        "detalle": ".areas{background:#FAF8F6} · sin colors.css"
+      },
+      {
+        "app": "ds",
+        "archivo": "tokens/colors.css:28-30,35,39",
+        "detalle": "--bg alabaster #FAFAFA · --fg-muted #6F6867 · --color-success:#3d6b52 · --color-warning:#9a5020"
+      }
+    ],
+    "vistas": [
+      {
+        "etiqueta": "Design system hoy · con sus tokens",
+        "app": "ds",
+        "alto": 190,
+        "html": "<div class=\"w\"><p class=\"s\">Ajustes</p><h3>Uso de hoy</h3><p class=\"d\">Queda 62 % del cupo de Google.</p><div class=\"e\"><i class=\"o\">Normal</i><i class=\"a\">En reserva</i></div><span class=\"n\">--bg · --fg-muted · --color-success · --color-warning</span></div>",
+        "css": ".w{padding:18px;background:var(--bg);font-family:var(--font-sans);color:var(--fg)}.s{font-size:10.5px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--fg-muted);margin:0}h3{font-family:var(--font-serif);font-weight:400;font-size:30px;margin:8px 0}.d{font-size:13px;color:var(--fg-muted);margin:0 0 12px}.e i{font-style:normal;font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;padding:6px 11px;border-radius:999px;margin-right:6px;background:#fff}.o{color:var(--color-success)}.a{color:var(--color-warning)}.n{display:block;margin-top:14px;font:11px monospace;color:var(--fg-muted)}"
+      },
+      {
+        "etiqueta": "Alma · Uso, Correos, Agentes, Reporte y Conexiones",
+        "app": "hub",
+        "alto": 190,
+        "html": "<div class=\"w\"><p class=\"s\">Ajustes</p><h3>Uso de hoy</h3><p class=\"d\">Queda 62 % del cupo de Google.</p><div class=\"e\"><i class=\"o\">Normal</i><i class=\"a\">En reserva</i></div><span class=\"n\">#FAF8F6 · #8A8580 · #2F6B47 · #9A6B12</span></div>",
+        "css": ".w{padding:18px;background:#FAF8F6;font-family:var(--font-sans);color:#3E3F3F}.s{font-size:10.5px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:#8A8580;margin:0}h3{font-family:var(--font-serif);font-weight:400;font-size:30px;margin:8px 0}.d{font-size:13px;color:#8A8580;margin:0 0 12px}.e i{font-style:normal;font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;padding:6px 11px;border-radius:999px;margin-right:6px;background:#fff}.o{color:#2F6B47}.a{color:#9A6B12}.n{display:block;margin-top:14px;font:11px monospace;color:#8A8580}"
+      }
+    ]
+  },
+  {
+    "id": "P-2026-11-02-05",
+    "titulo": "La píldora que viaja: el design system tiene un solo Segmented y las apps ya usan tres formas",
+    "tipo": "patrón",
+    "origen": "hub",
+    "apps_con_el_cambio": [
+      "hub",
+      "hola",
+      "epi",
+      "mi"
+    ],
+    "apps_afectadas": [
+      "hub",
+      "hola",
+      "epi",
+      "mi",
+      "docs"
+    ],
+    "estado_en_ds": "distinto",
+    "impacto": "medio",
+    "recomendacion": "estandarizar",
+    "motivo": "La regla 5 hizo que cada app armara a mano su marcador con estilos en línea: píldora blanca (como el DS), píldora negra o raya peach abajo. Son tres formas para hacer lo mismo y el mismo Hub usa dos. Propongo que Segmented lleve el marcador con variantes «claro» (filtros) y «raya» (pestañas de sección), más una regla de cuándo va cada una. La negra sobraría; si la quieres, sería una tercera variante.",
+    "evidencia": [
+      {
+        "app": "hub",
+        "archivo": "index.html:641,1109,1174",
+        "detalle": "<i class=sa-pildora style=background:#FFFFFF>, radio 14px en el tercero"
+      },
+      {
+        "app": "hub",
+        "archivo": "index.html:824",
+        "detalle": "<i class=sa-pildora style=background:#3E3F3F>"
+      },
+      {
+        "app": "hola",
+        "archivo": "app/shell.jsx:16 · index.html:87",
+        "detalle": "fondo var(--ink) · .sa-tabs-inner .sa-pildora{height:2px;background:var(--peach)}"
+      },
+      {
+        "app": "epi",
+        "archivo": "app.jsx:2762,3372,10892",
+        "detalle": "fondo alabaster · transparente con borde · fondo negro"
+      },
+      {
+        "app": "docs",
+        "archivo": "panel-ui.jsx:40",
+        "detalle": "fondo --alabaster: la forma del DS"
+      },
+      {
+        "app": "mi",
+        "archivo": "main.jsx:204 · index.html:51",
+        "detalle": "sa-pildora sa-tab-raya: raya peach bajo la pestaña"
+      },
+      {
+        "app": "ds",
+        "archivo": "components/navigation/Segmented.jsx:3-21",
+        "detalle": "un solo estilo: activo --bg sobre --bg-alt, sin marcador que viaja"
+      }
+    ],
+    "vistas": [
+      {
+        "etiqueta": "Design system hoy · Segmented",
+        "app": "ds",
+        "alto": 110,
+        "html": "<div class=\"w\"><div class=\"sg\"><b class=\"on\">Programa</b><b>Registros</b></div></div>",
+        "css": ".w{padding:18px;background:var(--bg);font-family:var(--font-sans)}.et{font-size:11px;color:var(--fg-muted);margin:0 0 8px}.g{margin-bottom:16px}.sg{display:inline-flex;padding:3px;gap:2px;border-radius:var(--r-pill);background:var(--bg-alt)}.sg b{font-size:11px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;padding:9px 16px;border-radius:var(--r-pill);color:var(--fg-muted)}.sg b.on{background:var(--bg);color:var(--fg);box-shadow:var(--shadow-xs)}.n b.on{background:var(--fg);color:#fff}.r{display:inline-flex;gap:22px;border-bottom:1px solid var(--divider)}.r b{font-size:11px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;padding:0 0 8px;color:var(--fg-muted)}.r b.on{color:var(--fg);box-shadow:0 2px 0 var(--accent)}"
+      },
+      {
+        "etiqueta": "Apps · blanca, negra y raya peach",
+        "app": "hub",
+        "alto": 245,
+        "html": "<div class=\"w\"><p class=\"et\">Hub · filtros</p><div class=\"g\"><div class=\"sg\"><b class=\"on\">Programa</b><b>Registros</b></div></div><p class=\"et\">Hola · Epi · Hub</p><div class=\"g\"><div class=\"sg n\"><b class=\"on\">Reservas</b><b>Propiedades</b></div></div><p class=\"et\">Hola · Mi · Epi</p><div class=\"r\"><b class=\"on\">Resumen</b><b>Reservas</b><b>Pagos</b></div></div>",
+        "css": ".w{padding:18px;background:var(--bg);font-family:var(--font-sans)}.et{font-size:11px;color:var(--fg-muted);margin:0 0 8px}.g{margin-bottom:16px}.sg{display:inline-flex;padding:3px;gap:2px;border-radius:var(--r-pill);background:var(--bg-alt)}.sg b{font-size:11px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;padding:9px 16px;border-radius:var(--r-pill);color:var(--fg-muted)}.sg b.on{background:var(--bg);color:var(--fg);box-shadow:var(--shadow-xs)}.n b.on{background:var(--fg);color:#fff}.r{display:inline-flex;gap:22px;border-bottom:1px solid var(--divider)}.r b{font-size:11px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;padding:0 0 8px;color:var(--fg-muted)}.r b.on{color:var(--fg);box-shadow:0 2px 0 var(--accent)}"
+      }
+    ]
+  },
+  {
+    "id": "P-2026-11-02-06",
+    "titulo": "Las seis esferas de Alma: colores repetidos a mano en tres listas y fuera de los tokens",
+    "tipo": "token",
+    "origen": "hub",
+    "apps_con_el_cambio": [
+      "hub"
+    ],
+    "apps_afectadas": [
+      "hub"
+    ],
+    "estado_en_ds": "no existe",
+    "impacto": "medio",
+    "recomendacion": "estandarizar",
+    "motivo": "Las esferas son ya el mapa de Alma: inicio, chat único, Pendientes y Notificaciones. Sus colores y tonos oscuros viven copiados en tres listas, y sa-chat.js lo admite en un comentario, así que cambiar uno obliga a tocar tres sitios. El DS no las conoce. Propongo una capa tokens/esferas.css (--esf-proposito, -2, -3…), como la capa de dominio de Epi, y que estas listas la lean.",
+    "evidencia": [
+      {
+        "app": "hub",
+        "archivo": "alma/inicio.html:132-137",
+        "detalle": ".esf.relaciones{--c:#D99AA0;--c2:#F0C4C3;--c3:#B06F7A} y las otras cinco"
+      },
+      {
+        "app": "hub",
+        "archivo": "alma/inicio.html:599",
+        "detalle": "AV_COLOR={proposito:\"#E9826A\",relaciones:\"#D99AA0\",finanzas:\"#8FB38C\",…}"
+      },
+      {
+        "app": "hub",
+        "archivo": "js/sa-chat.js:85-94",
+        "detalle": "ESFERAS=[{n:\"Propósito\",c:\"#E9826A\",c3:\"#C9705E\"…}] «con el color y el ícono del inicio»"
+      },
+      {
+        "app": "ds",
+        "archivo": "tokens/domain.css",
+        "detalle": "capa de dominio solo para Epi; ninguna esfera en tokens/ ni guidelines/"
+      }
+    ],
+    "vistas": [
+      {
+        "etiqueta": "Design system hoy · sin esferas (solo la capa de Epi)",
+        "app": "ds",
+        "alto": 120,
+        "html": "<div class=\"w\"><p class=\"et\">tokens/domain.css</p><span class=\"d\" style=\"background:var(--dom-limpieza-tradicional-bg,#E8F3ED);color:var(--dom-limpieza-tradicional-fg,#317754)\">Limpieza</span><span class=\"d\" style=\"background:var(--dom-mantenimiento-bg,#E8EDF3);color:var(--dom-mantenimiento-fg,#3B6691)\">Mantenimiento</span></div>",
+        "css": ".w{padding:16px;background:var(--bg);font-family:var(--font-sans)}.et{font-size:12px;color:var(--fg-muted);margin:0 0 10px}.d{display:inline-block;font-size:11px;padding:6px 11px;border-radius:999px;margin-right:6px}"
+      },
+      {
+        "etiqueta": "Hub · las 6 esferas de Alma",
+        "app": "hub",
+        "alto": 120,
+        "html": "<div class=\"w\"><div class=\"fl\"><div class=\"z\"><span style=\"--c:#E9826A\"></span><small>Propósito</small></div><div class=\"z\"><span style=\"--c:#D99AA0\"></span><small>Relaciones</small></div><div class=\"z\"><span style=\"--c:#8FB38C\"></span><small>Finanzas</small></div><div class=\"z\"><span style=\"--c:#E3A47F\"></span><small>Health</small></div><div class=\"z\"><span style=\"--c:#8FA5C8\"></span><small>Comunidad</small></div><div class=\"z\"><span style=\"--c:#A9A4CC\"></span><small>Esencia</small></div></div></div>",
+        "css": ".w{padding:18px 12px;background:#FCFBFA;font-family:var(--font-sans)}.fl{display:flex;justify-content:space-between}.z{display:flex;flex-direction:column;align-items:center;gap:7px;min-width:0}.z span{width:34px;height:34px;border-radius:50%;background:radial-gradient(120% 120% at 50% 20%,#fff,#F4F1EE 60%,#ECE8E3);box-shadow:0 0 0 1.5px var(--c)}.z small{font-size:9.5px;font-weight:500;color:#6F6867}"
+      }
+    ]
+  },
+  {
+    "id": "P-2026-10-26-02",
+    "titulo": "Movimiento con rebote y sombras negras: el Hub (y un toque en Grow) rompe la regla «nunca bounce»",
+    "tipo": "token",
+    "origen": "hub",
+    "apps_con_el_cambio": [
+      "hub",
+      "grow",
+      "epi"
+    ],
+    "apps_afectadas": [
+      "hub",
+      "grow",
+      "epi"
+    ],
+    "estado_en_ds": "distinto",
+    "impacto": "medio",
+    "recomendacion": "estandarizar",
+    "motivo": "Actualizada el 2 nov: el 31 oct decidiste «Movimiento con sentido», que ya trae --resorte y lo define mejor que el --ease-pop que aquí se proponía. La parte del movimiento pasa a P-2026-11-02-02: si la apruebas, esta se puede descartar. Lo que sigue abierto aquí son las curvas viejas .34,1.56,.64,1 (se pasan más del 4 %) y las sombras negras de la roca. — El DS tiene un solo easing (--ease .22,.61,.36,1, «nunca bounce») y sombras con tinte ink. El lanzador de apps del Hub, el contador que «salta», la roca del menú y los accesos rápidos de Grow usan curvas con rebote (.34,1.56,.64,1 y .3,1.25,.55,1) y la roca usa sombras rgba(0,0,0). Como es una decisión deliberada y táctil, propongo sumar un token --ease-pop solo para respuestas al toque de objetos pequeños (íconos, contadores, roca) y documentar la sombra «objeto» del menú; el resto sigue con --ease y sombras ink.",
+    "evidencia": [
+      {
+        "app": "hub",
+        "archivo": "index.html (.app-tile / .app-badge)",
+        "detalle": "transition:transform .42s cubic-bezier(.34,1.56,.64,1) · animation:sa-pop .5s cubic-bezier(.34,1.56,.64,1)"
+      },
+      {
+        "app": "hub",
+        "archivo": "js/sa-nav.js",
+        "detalle": "cubic-bezier(.3,1.25,.55,1) ×5 · .san-face::before{box-shadow:0 16px 24px -8px rgba(0,0,0,.30),0 4px 7px rgba(0,0,0,.14)} (commit «Roca: sombras solo en negro»)"
+      },
+      {
+        "app": "grow",
+        "archivo": "index.html (.gb-q-ic)",
+        "detalle": "transition:transform .42s cubic-bezier(.34,1.56,.64,1)"
+      },
+      {
+        "app": "epi",
+        "archivo": "index.html:5",
+        "detalle": "hereda la roca al cargar sa-nav.js"
+      },
+      {
+        "app": "ds",
+        "archivo": "tokens/motion.css · radius-shadow.css",
+        "detalle": "«MOVIMIENTO — un solo easing… nunca bounce» · --shadow-md:0 12px 40px rgba(62,63,63,0.07)"
+      }
+    ],
+    "vistas": [
+      {
+        "etiqueta": "Design system hoy · --ease y sombra ink",
+        "app": "ds",
+        "alto": 210,
+        "html": "<div class=\"row\"><div class=\"lane\"><span class=\"tile\"></span></div><p>--ease (.22,.61,.36,1) · 360 ms · se detiene sin pasarse</p></div><div class=\"sh\"><span class=\"obj ink\"></span><p>--shadow-md · rgba(62,63,63,.07)</p></div>",
+        "css": ".row,.sh{display:flex;align-items:center;gap:16px;margin-bottom:22px}p{margin:0;font-size:11px;letter-spacing:.04em;color:var(--fg-muted)}.lane{position:relative;width:180px;height:48px;border-radius:var(--r-pill);background:var(--bg-alt)}.tile{position:absolute;left:6px;top:6px;width:36px;height:36px;border-radius:12px;background:var(--surface);box-shadow:var(--shadow-sm);animation:mv 1.6s var(--ease) infinite alternate}@keyframes mv{to{transform:translateX(132px)}}.obj{width:58px;height:58px;border-radius:50%;background:var(--surface)}.ink{box-shadow:var(--shadow-md)}"
+      },
+      {
+        "etiqueta": "Hub · Grow · rebote y sombra negra de la roca",
+        "app": "hub",
+        "alto": 210,
+        "html": "<div class=\"row\"><div class=\"lane\"><span class=\"tile\"></span></div><p>cubic-bezier(.34,1.56,.64,1) · se pasa y vuelve</p></div><div class=\"sh\"><span class=\"obj\"></span><p>roca · rgba(0,0,0,.30) + rgba(0,0,0,.14)</p></div>",
+        "css": ".row,.sh{display:flex;align-items:center;gap:16px;margin-bottom:22px}p{margin:0;font-size:11px;letter-spacing:.04em;color:var(--fg-muted)}.lane{position:relative;width:180px;height:48px;border-radius:var(--r-pill);background:var(--bg-alt)}.tile{position:absolute;left:6px;top:6px;width:36px;height:36px;border-radius:12px;background:var(--surface);box-shadow:0 1px 2px rgba(62,63,63,.10),0 6px 14px rgba(62,63,63,.08);animation:mv 1.6s cubic-bezier(.34,1.56,.64,1) infinite alternate}@keyframes mv{to{transform:translateX(132px)}}.obj{width:58px;height:58px;border-radius:50%;background:radial-gradient(100% 100% at 50% 38%,#F5F2EE 0%,#EDE9E4 55%,#E2DCD5 100%);box-shadow:0 16px 24px -8px rgba(0,0,0,.30),0 4px 7px rgba(0,0,0,.14),inset 0 4px 8px rgba(255,255,255,.35)}"
+      }
+    ]
+  }
+]
