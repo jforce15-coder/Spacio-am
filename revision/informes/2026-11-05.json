@@ -1,0 +1,414 @@
+[
+ {
+  "id": "P-2026-11-05-01",
+  "titulo": "Calendario con barras: nació en el Hub con 18 variables de color propias y el design system solo tiene el de faroles de Epi",
+  "tipo": "componente",
+  "origen": "hub",
+  "apps_con_el_cambio": [
+   "hub"
+  ],
+  "apps_afectadas": [
+   "hub",
+   "epi",
+   "hola"
+  ],
+  "estado_en_ds": "distinto",
+  "impacto": "alto",
+  "recomendacion": "estandarizar",
+  "motivo": "El 4 nov el Hub estrenó el calendario tipo Airbnb, con barras por reserva. Los colores se leen bien (todos pasan AA, entre 5 y 6.5:1), pero viven en --cal-* dentro de index.html, y suman ámbar y morado, que no existen en tokens. Propongo subirlo como Calendar en modo «barras», pasar la paleta a tokens/domain.css y dejar el de faroles para Epi. El punto de «hoy» es peach con número blanco: ese arreglo va con P-2026-11-05-02.",
+  "evidencia": [
+   {
+    "app": "hub",
+    "archivo": "index.html:275-276",
+    "detalle": "--cal-res:#D9E4EF · --cal-esta:#3B6691 · --cal-con:#F5E6BF · --cal-consin:#E6DDF0 · --cal-esta-con:#E2B65A · --cal-bloq:#F2DAD5 · --cal-libre:#E1EEE5"
+   },
+   {
+    "app": "hub",
+    "archivo": "index.html:291-302",
+    "detalle": ".cal-bar[data-t=res|esta|con|estacon|consin|estaconsin|bloq|libre|nodisp]: 9 tipos de barra"
+   },
+   {
+    "app": "hub",
+    "archivo": "index.html:289",
+    "detalle": ".cal-d[data-k=hoy] b{background:#E9826A;color:#FFFFFF}: 2.67:1"
+   },
+   {
+    "app": "hub",
+    "archivo": "index.html (.cal-fila, .cv-fila, .cal-elegidas)",
+    "detalle": "#F0EDE8 de divisor y #3d6b52 a mano, cuando ya existen --color-success y --border-soft"
+   },
+   {
+    "app": "ds",
+    "archivo": "components/data/Calendar.jsx:9",
+    "detalle": "«Calendario mensual de EPI»: celdas --r-sm, estado por farol, hoy = borde --accent, sin barras ni rangos"
+   }
+  ],
+  "vistas": [
+   {
+    "etiqueta": "Design system hoy",
+    "app": "ds",
+    "alto": 170,
+    "html": "<div class=\"w\"><p class=\"et\">Calendar · celdas con farol (Epi)</p><div class=\"c\"><i>1</i><i>2<u class=\"s\"></u></i><i>3<u class=\"s\"></u></i><i class=\"h\">4<u class=\"a\"></u></i><i class=\"x\">5</i><i>6<u class=\"p\"></u></i><i>7</i><i>8</i><i>9<u class=\"s\"></u></i><i>10</i><i>11<u class=\"i\"></u></i><i>12</i><i>13</i><i>14</i></div></div>",
+    "css": ".w{padding:18px;background:var(--bg);font-family:var(--font-sans);color:var(--fg);box-sizing:border-box}.et{font-size:11px;color:var(--fg-muted);margin:0 0 8px}.g{margin-bottom:14px}.c{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;max-width:340px}.c i{font-style:normal;aspect-ratio:1;border-radius:var(--r-sm);background:var(--bg-alt);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;font-size:12px;font-weight:500;border:1px solid transparent}.c i.h{border:1.5px solid var(--accent)}.c i.x{background:var(--fg);color:var(--fg-inverse)}.c u{width:5px;height:5px;border-radius:50%}.s{background:var(--color-success)}.a{background:var(--attention)}.p{background:var(--color-pending)}.i{background:var(--color-info)}"
+   },
+   {
+    "etiqueta": "Hub (cambio)",
+    "app": "hub",
+    "alto": 225,
+    "html": "<div class=\"w\"><p class=\"et\">Hub · Calendario de propiedades, paleta --cal-*</p><div class=\"f\"><b style=\"left:0\">2</b><b style=\"left:14.28%\">3</b><b class=\"h\" style=\"left:28.57%\"><em>4</em></b><b style=\"left:42.85%\">5</b><b style=\"left:57.14%\">6</b><b style=\"left:71.42%\">7</b><b style=\"left:85.71%\">8</b><span class=\"b e\" style=\"left:2%;width:40%\">Ana López · 3 n</span><span class=\"b r\" style=\"left:45%;width:30%\">Mark D.</span><span class=\"b q\" style=\"left:78%;width:22%\"></span></div><div class=\"f\"><b style=\"left:0\">9</b><b style=\"left:14.28%\">10</b><b style=\"left:28.57%\">11</b><b style=\"left:42.85%\">12</b><b style=\"left:57.14%\">13</b><b style=\"left:71.42%\">14</b><b style=\"left:85.71%\">15</b><span class=\"b c\" style=\"left:2%;width:26%\">Consulta</span><span class=\"b v\" style=\"left:31%;width:26%\">Sin confirmar</span><span class=\"b l\" style=\"left:60%;width:40%\">Libre</span></div><div class=\"k\"><span><i class=\"e\"></i>En estadía</span><span><i class=\"r\"></i>Reserva</span><span><i class=\"c\"></i>Consulta</span><span><i class=\"v\"></i>Sin confirmar</span><span><i class=\"q\"></i>Bloqueo</span></div></div>",
+    "css": ".w{padding:18px;background:var(--bg);font-family:var(--font-sans);color:var(--fg);box-sizing:border-box}.et{font-size:11px;color:var(--fg-muted);margin:0 0 8px}.g{margin-bottom:14px}.f{position:relative;height:56px;border-top:1px solid #F0EDE8;max-width:380px}.f b{position:absolute;top:6px;width:14.28%;text-align:center;font-size:12.5px;font-weight:500}.f b.h em{font-style:normal;display:inline-grid;place-items:center;width:22px;height:22px;margin-top:-3px;border-radius:50%;background:#E9826A;color:#fff;font-weight:600}.b{position:absolute;top:28px;height:22px;display:flex;align-items:center;padding:0 8px;box-sizing:border-box;font-size:10.5px;font-weight:600;white-space:nowrap;overflow:hidden;clip-path:polygon(6px 0,100% 0,calc(100% - 6px) 100%,0 100%)}.e{background:#3B6691;color:#fff}.r{background:#D9E4EF;color:#2C5175}.c{background:#F5E6BF;color:#6F5210}.v{background:#E6DDF0;color:#5B4380}.l{background:#E1EEE5;color:#2F5B43}.q{background:repeating-linear-gradient(135deg,#F2DAD5 0 4px,#FBF1EF 4px 8px)}.k{display:flex;flex-wrap:wrap;gap:6px 12px;font-size:11px;color:#6F6867;padding-top:10px;border-top:1px solid #F0EDE8;max-width:380px}.k span{display:inline-flex;align-items:center;gap:6px}.k i{width:18px;height:10px;display:inline-block}"
+   }
+  ]
+ },
+ {
+  "id": "P-2026-11-05-02",
+  "titulo": "Botones y avisos peach con texto blanco: 15 usos en Hola y más en Hub, Epi y Mi, cuando la regla dice que el peach no carga texto",
+  "tipo": "patrón",
+  "origen": "hola",
+  "apps_con_el_cambio": [
+   "hola",
+   "hub",
+   "epi",
+   "mi"
+  ],
+  "apps_afectadas": [
+   "hola",
+   "hub",
+   "epi",
+   "mi"
+  ],
+  "estado_en_ds": "distinto",
+  "impacto": "alto",
+  "recomendacion": "revertir",
+  "motivo": "P-2026-10-22-06 cubre los contadores; esto es otra cosa: botones enteros, algunos en lo primero que ve el huésped. Blanco sobre peach da 2.67:1 y AA pide 4.5. Hola tiene incluso una variante Btn peach, con 15 usos. Propongo que la acción fuerte sea tinta y la cálida, tinte con borde, como dice Button.jsx. Si prefieres conservar el peach sólido por marca, elige «estandarizar» y la regla cambia, con texto en tinta (3.96:1), que tampoco pasa AA en letra pequeña.",
+  "evidencia": [
+   {
+    "app": "hola",
+    "archivo": "app/primitives.jsx:140",
+    "detalle": "variante peach: { background: C.peach, color: C.white }"
+   },
+   {
+    "app": "hola",
+    "archivo": "app/screens-bento.jsx (8) · screens-onboarding.jsx (4) · screens-admin.jsx (3)",
+    "detalle": "<Btn variant=\"peach\">: 15 usos, entre ellos el ingreso del huésped"
+   },
+   {
+    "app": "hub",
+    "archivo": "alma/inicio.html:146,155,303,422",
+    "detalle": ".fila .agregar · .entrar button.prin · .vj-btn.dur · .fila.cuanto[aria-pressed]: background:#E9826A;color:#fff"
+   },
+   {
+    "app": "hub",
+    "archivo": "index.html:289",
+    "detalle": "el día de hoy en el calendario, número blanco sobre peach"
+   },
+   {
+    "app": "epi",
+    "archivo": "app.jsx:8451",
+    "detalle": "botón guardar: background:C.peach,color:\"#fff\""
+   },
+   {
+    "app": "mi",
+    "archivo": "index.html:172-173",
+    "detalle": ".sa-pend-banner.urgent{background:var(--peach)} con texto --alabaster"
+   },
+   {
+    "app": "ds",
+    "archivo": "components/core/Button.jsx:17 · tokens/colors.css:9",
+    "detalle": "«El peach NUNCA carga texto»: el comentario dice 2.56:1, medido da 2.67:1 (hay que corregirlo)"
+   }
+  ],
+  "vistas": [
+   {
+    "etiqueta": "Design system hoy",
+    "app": "ds",
+    "alto": 150,
+    "html": "<div class=\"w\"><p class=\"et\">Regla: el peach no carga texto</p><div class=\"r\"><span class=\"b p\">Ingresar</span><span class=\"b a\">Agregar</span></div><p class=\"et\" style=\"margin-top:12px\">Acción sólida en tinta · cálida en tinte con borde</p></div>",
+    "css": ".w{padding:18px;background:var(--bg);font-family:var(--font-sans);color:var(--fg);box-sizing:border-box}.et{font-size:11px;color:var(--fg-muted);margin:0 0 8px}.g{margin-bottom:14px}.r{display:flex;gap:10px}.b{display:inline-flex;align-items:center;min-height:44px;padding:0 24px;border-radius:var(--r-pill);font-size:11.5px;font-weight:500;letter-spacing:var(--tr-wide);text-transform:uppercase}.p{background:var(--fg);color:var(--accent-contrast)}.a{background:var(--accent-tint);color:var(--fg);box-shadow:inset 0 0 0 1px var(--accent)}"
+   },
+   {
+    "etiqueta": "Apps (cambio)",
+    "app": "hola",
+    "alto": 270,
+    "html": "<div class=\"w\"><p class=\"et\">Hola · Btn variant=\"peach\" (huésped, entrada)</p><div class=\"g\"><span class=\"b\">Entrar a mi estadía</span></div><p class=\"et\">Hub · app de Alma</p><div class=\"g r\"><span class=\"b s\">Agregar</span><span class=\"b s\">Entrar</span><em>4</em></div><p class=\"et\">Mi · aviso urgente</p><div class=\"u\">Tienes 3 facturas pendientes de 2026</div></div>",
+    "css": ".w{padding:18px;background:var(--bg);font-family:var(--font-sans);color:var(--fg);box-sizing:border-box}.et{font-size:11px;color:var(--fg-muted);margin:0 0 8px}.g{margin-bottom:14px}.r{display:flex;gap:10px;align-items:center}.b{display:inline-flex;align-items:center;min-height:50px;padding:0 24px;border-radius:var(--r-pill);background:#E9826A;color:#fff;font-size:14px;font-weight:600}.b.s{min-height:44px;padding:0 18px;font-size:13px;border-radius:12px}em{font-style:normal;display:inline-grid;place-items:center;width:22px;height:22px;border-radius:50%;background:#E9826A;color:#fff;font-size:12.5px;font-weight:600}.u{background:#E9826A;color:#FAFAFA;border-radius:18px;padding:13px 16px;font-size:13px;font-weight:500}"
+   }
+  ]
+ },
+ {
+  "id": "P-2026-11-05-03",
+  "titulo": "Opciones de Alma: tarjeta, copia en el menú y píldoras nuevas hacen el mismo trabajo y ninguna está en el design system",
+  "tipo": "componente",
+  "origen": "hub",
+  "apps_con_el_cambio": [
+   "hub"
+  ],
+  "apps_afectadas": [
+   "hub",
+   "hola",
+   "epi",
+   "mi",
+   "docs",
+   "grow"
+  ],
+  "estado_en_ds": "no existe",
+  "impacto": "medio",
+  "recomendacion": "estandarizar",
+  "motivo": "Un toque para responder ya tiene tres formas. Las píldoras las elegiste tú (#446, opción A) y funcionan bien, con 44 px y buen movimiento, pero sus colores están a mano. .san-op copia la tarjeta del chat dentro de sa-nav.js, y sa-nav llega a las 6 apps. Propongo un solo componente Opciones con dos variantes y una regla simple: tarjeta cuando cada opción necesita detalle, píldoras cuando son respuestas cortas. Complementa a P-2026-11-02-03.",
+  "evidencia": [
+   {
+    "app": "hub",
+    "archivo": "ds/chat.css:180-196",
+    "detalle": ".sa-chat-pill{min-height:44px;border:1px solid #DDDDDD} · [aria-pressed=true]{background:#1F1F1F} · --otra dashed, #6F6867"
+   },
+   {
+    "app": "hub",
+    "archivo": "ds/chat.css:60-69",
+    "detalle": ".sa-chat-tarjeta · .sa-chat-opcion{min-height:48px}"
+   },
+   {
+    "app": "hub",
+    "archivo": "js/sa-nav.js (.san-ops, .san-op)",
+    "detalle": "misma tarjeta con radio 20 en vez de 24, ícono de 34 con radio 11 y #222 a mano: «como la tarjeta de acción del chat (ds/chat.css)»"
+   },
+   {
+    "app": "hub",
+    "archivo": "index.html:2103-2105",
+    "detalle": "<div class=sa-chat-pills>: decisión del equipo en la conversación"
+   },
+   {
+    "app": "ds",
+    "archivo": "components/",
+    "detalle": "no hay ningún componente de opciones ni de respuesta rápida"
+   }
+  ],
+  "vistas": [
+   {
+    "etiqueta": "Design system hoy",
+    "app": "ds",
+    "alto": 90,
+    "html": "<div class=\"w\"><p class=\"et\">No existe. Lo más cercano es Button y Segmented.</p></div>",
+    "css": ".w{padding:18px;background:var(--bg);font-family:var(--font-sans);color:var(--fg);box-sizing:border-box}.et{font-size:11px;color:var(--fg-muted);margin:0 0 8px}.g{margin-bottom:14px}"
+   },
+   {
+    "etiqueta": "Hub (tres formas)",
+    "app": "hub",
+    "alto": 495,
+    "html": "<div class=\"w\"><p class=\"et\">Chat · tarjeta de acción (.sa-chat-opcion)</p><div class=\"g t\"><div class=\"o\"><i>✓</i><span><b>Aprobar el reembolso</b><small>Q 450 a Ana López</small></span></div><div class=\"o\"><i>✎</i><span><b>Cambiar el texto</b></span></div></div><p class=\"et\">Pendientes · .san-op (copia en sa-nav.js)</p><div class=\"g t n\"><div class=\"o\"><i>▣</i><span><b>Mover la limpieza al jueves</b></span></div><div class=\"o\"><i>×</i><span><b>Dejarla como está</b></span></div></div><p class=\"et\">Conversaciones · píldoras (.sa-chat-pill)</p><div class=\"p\"><b class=\"on\"><i>A</i>Late check-out</b><b class=\"off\"><i>B</i>Hasta las 12</b><b class=\"off q\">Otra…</b></div></div>",
+    "css": ".w{padding:18px;background:var(--bg);font-family:var(--font-sans);color:var(--fg);box-sizing:border-box}.et{font-size:11px;color:var(--fg-muted);margin:0 0 8px}.g{margin-bottom:14px}.t{width:286px;max-width:100%;border-radius:24px;background:#fff;box-shadow:0 2px 6px rgba(0,0,0,.04),0 10px 28px rgba(0,0,0,.08);padding:6px 0}.t.n{border-radius:20px;padding:4px 0}.o{display:flex;align-items:center;gap:12px;min-height:48px;padding:6px 14px;color:#222;font-size:14px}.o i{font-style:normal;flex:none;width:34px;height:34px;border-radius:11px;background:#F3F3F3;display:grid;place-items:center;font-size:13px}.o span{display:flex;flex-direction:column}.o b{font-weight:600}.o small{font-size:12px;color:#8A8A8A}.p{display:flex;flex-wrap:wrap;gap:8px;max-width:320px}.p b{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 15px 0 7px;box-sizing:border-box;border-radius:999px;background:#fff;border:1px solid #DDD;font-size:13.5px;font-weight:600;color:#222}.p b i{font-style:normal;width:30px;height:30px;border-radius:50%;background:#F3F3F3;display:grid;place-items:center;font-size:11px;font-weight:700;color:#3E3F3F}.p b.on{background:#1F1F1F;border-color:#1F1F1F;color:#fff}.p b.on i{background:#fff;color:#1F1F1F}.p b.off{opacity:.35}.p b.q{padding:0 15px;border-style:dashed;color:#6F6867;font-weight:500}"
+   }
+  ]
+ },
+ {
+  "id": "P-2026-11-05-04",
+  "titulo": "Filtros en píldora (chips): cada app tiene el suyo y lo elegido se ve negro en unas y peach en otras",
+  "tipo": "componente",
+  "origen": "hub",
+  "apps_con_el_cambio": [
+   "hub",
+   "docs",
+   "epi",
+   "mi"
+  ],
+  "apps_afectadas": [
+   "hub",
+   "hola",
+   "epi",
+   "mi",
+   "docs",
+   "grow"
+  ],
+  "estado_en_ds": "no existe",
+  "impacto": "medio",
+  "recomendacion": "estandarizar",
+  "motivo": "El Hub sumó dos filtros nuevos el 4 nov y ya son al menos seis piezas con alturas de 30 a 58 px y tamaños de letra de 9.5 a 13.5 px. Segmented no sirve porque aquí se eligen varias o van con número. Propongo un componente Chip con dos tamaños, 44 px como mínimo, y lo elegido siempre en tinta. Los filtros con número (.cv-rapido) quedarían como su variante «con contador».",
+  "evidencia": [
+   {
+    "app": "hub",
+    "archivo": "index.html:316-320",
+    "detalle": ".cv-rapido{min-width:76px;height:58px;border-radius:16px} · [aria-pressed=true]{background:#3E3F3F}"
+   },
+   {
+    "app": "hub",
+    "archivo": "index.html (.cp-pill, .cp-rec button)",
+    "detalle": "min-height:36px · border-radius:999px · elegido #3E3F3F"
+   },
+   {
+    "app": "docs",
+    "archivo": "admin.css:150,261-263,352",
+    "detalle": ".sa-chip · .perm-chip.on{background:var(--ink)} · .prog-rapidos .sa-chip.on{background:var(--peach-12)}"
+   },
+   {
+    "app": "epi",
+    "archivo": "app.jsx:13093,13540",
+    "detalle": "CHIP con minHeight:44 y otro CHIP con minHeight:30, en la misma app"
+   },
+   {
+    "app": "mi",
+    "archivo": "index.html:145",
+    "detalle": ".sa-dep-chip{height:30px;border-radius:9px}: ni siquiera es píldora"
+   },
+   {
+    "app": "ds",
+    "archivo": "components/navigation/Segmented.jsx",
+    "detalle": "opción única; no hay Chip ni FilterChip"
+   }
+  ],
+  "vistas": [
+   {
+    "etiqueta": "Design system hoy",
+    "app": "ds",
+    "alto": 90,
+    "html": "<div class=\"w\"><p class=\"et\">No existe. Lo más cercano es Segmented, de opción única.</p></div>",
+    "css": ".w{padding:18px;background:var(--bg);font-family:var(--font-sans);color:var(--fg);box-sizing:border-box}.et{font-size:11px;color:var(--fg-muted);margin:0 0 8px}.g{margin-bottom:14px}"
+   },
+   {
+    "etiqueta": "Apps (seis piezas)",
+    "app": "hub",
+    "alto": 345,
+    "html": "<div class=\"w\"><p class=\"et\">Hub · filtros rápidos con número (.cv-rapido)</p><div class=\"g r\"><b class=\"v on\"><u>24</u><s>Todas</s></b><b class=\"v\"><u style=\"color:#B54D36\">3</u><s>Por responder</s></b><b class=\"v\"><u style=\"color:#3d6b52\">2</u><s>Llegan hoy</s></b></div><p class=\"et\">Hub · .cp-pill, 36 px</p><div class=\"g r\"><b class=\"c on\">Zona 10</b><b class=\"c\">Zona 14</b></div><p class=\"et\">Docs · .sa-chip.on en tinte peach</p><div class=\"g r\"><b class=\"d on\">Hoy 7:00</b><b class=\"d\">Mañana 9:00</b></div><p class=\"et\">Docs · .perm-chip · Epi · CHIP</p><div class=\"r\"><b class=\"m on\">Admin</b><b class=\"m\">Equipo</b><b class=\"e on\">3 días antes</b></div></div>",
+    "css": ".w{padding:18px;background:var(--bg);font-family:var(--font-sans);color:var(--fg);box-sizing:border-box}.et{font-size:11px;color:var(--fg-muted);margin:0 0 8px}.g{margin-bottom:14px}.r{display:flex;flex-wrap:wrap;gap:8px;align-items:center}.v{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;min-width:76px;height:58px;padding:0 10px;box-sizing:border-box;border-radius:16px;border:1px solid #EAE6E0;background:#fff}.v u{text-decoration:none;font-size:18px;font-weight:600;line-height:1.1}.v s{text-decoration:none;font-size:9.5px;font-weight:600;letter-spacing:.06em;color:#6F6867}.v.on{background:#3E3F3F;border-color:#3E3F3F}.v.on u,.v.on s{color:#fff}.c{display:inline-flex;align-items:center;min-height:36px;padding:0 13px;border-radius:999px;border:1px solid #D8D4CE;background:#fff;font-size:12.5px;font-weight:500}.c.on{background:#3E3F3F;border-color:#3E3F3F;color:#FAFAFA}.d{display:inline-flex;align-items:center;background:var(--bg);border:1px solid var(--color-ink-08);border-radius:999px;padding:7px 13px;font-size:10.5px;font-weight:400;letter-spacing:.08em;color:var(--fg-muted)}.d.on{border-color:var(--accent);background:var(--accent-tint);color:var(--fg)}.m{border:1px solid var(--divider);background:var(--bg);color:var(--fg-muted);border-radius:999px;padding:7px 13px;font-size:9.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase}.m.on{background:var(--fg);border-color:var(--fg);color:var(--bg)}.e{display:inline-flex;align-items:center;padding:0 15px;min-height:44px;border-radius:999px;border:1.5px solid var(--fg);background:var(--fg);color:#fff;font-size:11.5px}"
+   }
+  ]
+ },
+ {
+  "id": "P-2026-11-05-05",
+  "titulo": "Tamaño mínimo de toque: el Hub ya exige 44 px, pero el design system no tiene token y su propio Button mide 33",
+  "tipo": "token",
+  "origen": "hub",
+  "apps_con_el_cambio": [
+   "hub"
+  ],
+  "apps_afectadas": [
+   "hub",
+   "hola",
+   "epi",
+   "mi",
+   "docs",
+   "grow"
+  ],
+  "estado_en_ds": "distinto",
+  "impacto": "medio",
+  "recomendacion": "estandarizar",
+  "motivo": "ESTANDARES.md pide 44 px y el 4 nov el Hub hizo una ronda solo para eso en la app de Alma, pero la regla vive en un documento de un solo repo. Medí el Button del DS: sm da 33 px y md da 42, así que quien lo use tal cual queda por debajo. Propongo --tap-min:44px en tokens, aplicarlo como min-height en Button, Input y Chip, y dejar el tamaño visual libre con área de toque invisible cuando haga falta.",
+  "evidencia": [
+   {
+    "app": "hub",
+    "archivo": "ESTANDARES.md:33",
+    "detalle": "«los botones miden al menos 44 px»"
+   },
+   {
+    "app": "hub",
+    "archivo": "alma/agentes.html · alma/inicio.html (#460)",
+    "detalle": "«App de Alma (ronda): botones de 44 px»; .ajustes::after amplía el área de toque"
+   },
+   {
+    "app": "ds",
+    "archivo": "components/core/Button.jsx:11-15",
+    "detalle": "SIZES sin altura mínima: sm 33 px · md 42 px (medido en Chromium)"
+   },
+   {
+    "app": "ds",
+    "archivo": "components/navigation/BottomNav.jsx:7",
+    "detalle": "«Alturas de toque mínimo 44px»: el único lugar del DS que lo dice"
+   },
+   {
+    "app": "mi",
+    "archivo": "avanzado.jsx:85",
+    "detalle": ".av-rowbtn{width:30px;height:30px}"
+   },
+   {
+    "app": "epi",
+    "archivo": "app.jsx:13540",
+    "detalle": "CHIP{minHeight:30}"
+   },
+   {
+    "app": "hub",
+    "archivo": "index.html (.cp-pill)",
+    "detalle": "min-height:36px, en una pantalla nueva del 4 nov"
+   }
+  ],
+  "vistas": [
+   {
+    "etiqueta": "Design system hoy",
+    "app": "ds",
+    "alto": 165,
+    "html": "<div class=\"w\"><p class=\"et\">Button · alturas reales del design system</p><div class=\"r\"><span class=\"z\"><b class=\"s\">Guardar</b><small>sm · 33 px</small></span><span class=\"z\"><b class=\"m\">Guardar</b><small>md · 42 px</small></span></div><p class=\"et\" style=\"margin-top:14px\">La regla de 44 px solo aparece en BottomNav.</p></div>",
+    "css": ".w{padding:18px;background:var(--bg);font-family:var(--font-sans);color:var(--fg);box-sizing:border-box}.et{font-size:11px;color:var(--fg-muted);margin:0 0 8px}.g{margin-bottom:14px}.r{display:flex;gap:18px;align-items:flex-end}.z{display:flex;flex-direction:column;align-items:center;gap:6px}.z small{font-size:11px;color:var(--fg-muted)}b{display:inline-flex;align-items:center;box-sizing:border-box;background:var(--fg);color:var(--accent-contrast);border-radius:var(--r-pill);font-weight:500;letter-spacing:var(--tr-wide);text-transform:uppercase}.s{height:33px;padding:0 20px;font-size:10.5px}.m{height:42px;padding:0 28px;font-size:11.5px}"
+   },
+   {
+    "etiqueta": "Hub y demás apps",
+    "app": "hub",
+    "alto": 225,
+    "html": "<div class=\"w\"><p class=\"et\">Hub · ronda del 4 nov: todo a 44 px</p><div class=\"r\"><span class=\"z\"><b class=\"k\">Listo</b><small>.vj-btn · 44 px</small></span><span class=\"z\"><b class=\"k o\">Quitar</b><small>.fila .quitar · 44 px</small></span></div><p class=\"et\" style=\"margin-top:14px\">Sigue por debajo</p><div class=\"r\"><span class=\"z\"><i class=\"x\">✎</i><small>Mi .av-rowbtn · 30</small></span><span class=\"z\"><b class=\"c\">Zona 10</b><small>Hub .cp-pill · 36</small></span><span class=\"z\"><b class=\"c e\">Copiar</b><small>Epi CHIP · 30</small></span></div></div>",
+    "css": ".w{padding:18px;background:var(--bg);font-family:var(--font-sans);color:var(--fg);box-sizing:border-box}.et{font-size:11px;color:var(--fg-muted);margin:0 0 8px}.g{margin-bottom:14px}.r{display:flex;gap:18px;align-items:flex-end}.z{display:flex;flex-direction:column;align-items:center;gap:6px}.z small{font-size:11px;color:var(--fg-muted)}b{display:inline-flex;align-items:center;box-sizing:border-box;background:var(--fg);color:var(--accent-contrast);border-radius:var(--r-pill);font-weight:500;letter-spacing:var(--tr-wide);text-transform:uppercase}.s{height:33px;padding:0 20px;font-size:10.5px}.m{height:42px;padding:0 28px;font-size:11.5px}.k{height:44px;padding:0 16px;background:#3E3F3F;color:#FAFAFA;font-size:13px;font-weight:600;letter-spacing:0;text-transform:none}.k.o{background:rgba(62,63,63,.08);color:#3E3F3F;border-radius:12px}.x{font-style:normal;display:grid;place-items:center;width:30px;height:30px;box-sizing:border-box;border-radius:999px;border:1px solid var(--accent);background:var(--accent-tint);font-size:12px}.c{height:36px;padding:0 13px;background:#fff;color:#3E3F3F;border:1px solid #D8D4CE;font-size:12.5px;letter-spacing:0;text-transform:none}.c.e{height:30px;padding:0 10px;font-size:10.5px;color:var(--fg-subtle)}"
+   }
+  ]
+ },
+ {
+  "id": "P-2026-11-05-06",
+  "titulo": "Aviso en línea (banner): Hub, Hola y Mi lo arman a mano con el tinte peach y el design system no lo tiene",
+  "tipo": "componente",
+  "origen": "hub",
+  "apps_con_el_cambio": [
+   "hub",
+   "hola",
+   "mi"
+  ],
+  "apps_afectadas": [
+   "hub",
+   "hola",
+   "epi",
+   "mi",
+   "docs",
+   "grow"
+  ],
+  "estado_en_ds": "no existe",
+  "impacto": "medio",
+  "recomendacion": "estandarizar",
+  "motivo": "Hay un mensaje dentro de la pantalla, que no se va solo como el Toast, y cada app lo resuelve distinto: borde, radio y hasta el rojo cambian. El DS ya tiene los colores (--attention-tint, --attention-text) y falta la pieza. Propongo Banner con tono atención, info y éxito, radio --r-md y una acción opcional. De paso, los rojos #B4452A y #A9543F pasan a --attention-text.",
+  "evidencia": [
+   {
+    "app": "hub",
+    "archivo": "index.html:2794,2935",
+    "detalle": "data-a=auto-pausa: rgba(233,130,106,.12), borde .45, radio 14, a mano y repetido"
+   },
+   {
+    "app": "hub",
+    "archivo": "alma/inicio.html:97,412",
+    "detalle": ".cp-error{color:#B4452A} · .vj-llegar{color:#A9543F;border-radius:16px}"
+   },
+   {
+    "app": "hola",
+    "archivo": "app/screens-ltguest.jsx:41 · screens-longterm.jsx:330",
+    "detalle": "avisoSalida: rgba(233,130,106,.10), borde peach sólido, radio 14"
+   },
+   {
+    "app": "mi",
+    "archivo": "index.html:168-173",
+    "detalle": ".sa-pend-banner con radio 16 y borde peach sólido; .urgent en peach sólido"
+   },
+   {
+    "app": "ds",
+    "archivo": "tokens/colors.css:12-13",
+    "detalle": "--color-attention-text:#B54D36 · --color-attention-tint:#FDEFEB, hoy solo los usa Farol"
+   }
+  ],
+  "vistas": [
+   {
+    "etiqueta": "Design system hoy",
+    "app": "ds",
+    "alto": 90,
+    "html": "<div class=\"w\"><p class=\"et\">No existe. Toast y Modal cubren otros casos.</p></div>",
+    "css": ".w{padding:18px;background:var(--bg);font-family:var(--font-sans);color:var(--fg);box-sizing:border-box}.et{font-size:11px;color:var(--fg-muted);margin:0 0 8px}.g{margin-bottom:14px}"
+   },
+   {
+    "etiqueta": "Apps (cuatro versiones)",
+    "app": "hub",
+    "alto": 365,
+    "html": "<div class=\"w\"><p class=\"et\">Hub · auto mejora en pausa</p><div class=\"g a\"><u></u><span>La mejora automática está en pausa.</span><b>Activar</b></div><p class=\"et\">Hola · aviso de salida</p><div class=\"g h\"><span>Tu estadía termina el 30 de noviembre.</span></div><p class=\"et\">Mi · facturas pendientes</p><div class=\"g m\"><i>!</i><span>Tienes 3 facturas por subir de 2026</span></div><p class=\"et\">Hub · error en Alma, otro rojo</p><div class=\"e\">No pude abrir el micrófono.</div></div>",
+    "css": ".w{padding:18px;background:var(--bg);font-family:var(--font-sans);color:var(--fg);box-sizing:border-box}.et{font-size:11px;color:var(--fg-muted);margin:0 0 8px}.g{margin-bottom:14px}.a{display:flex;align-items:center;gap:10px;background:rgba(233,130,106,.12);border:1px solid rgba(233,130,106,.45);border-radius:14px;padding:8px 8px 8px 14px;font-size:12.5px}.a u{width:7px;height:7px;border-radius:50%;background:#F2755A;flex:none}.a span{flex:1}.a b{min-height:36px;display:inline-flex;align-items:center;padding:0 14px;border-radius:999px;background:var(--fg);color:#fff;font-size:12px;font-weight:600}.h{background:rgba(233,130,106,.10);border:1px solid #E9826A;border-radius:14px;padding:12px 14px;font-size:13px}.m{display:flex;align-items:center;gap:14px;border:1px solid var(--accent);background:var(--accent-tint);border-radius:16px;padding:12px 16px;font-size:12px}.m i{font-style:normal;width:34px;height:34px;flex:none;border-radius:50%;background:#fff;display:grid;place-items:center;color:var(--attention-text);font-weight:700}.e{padding:10px 14px;border-radius:14px;background:rgba(233,130,106,.14);color:#B4452A;font-size:13px;line-height:1.4}"
+   }
+  ]
+ }
+]
