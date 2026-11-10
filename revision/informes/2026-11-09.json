@@ -1,0 +1,215 @@
+[
+ {
+  "id": "P-2026-11-09-01",
+  "titulo": "Botón «pendiente»: en Hola «Siguiente» ya no se apaga, se toca y dice qué falta; el design system solo tiene «disabled»",
+  "tipo": "patrón",
+  "origen": "hola",
+  "apps_con_el_cambio": [
+   "hola"
+  ],
+  "apps_afectadas": [
+   "hub",
+   "epi",
+   "mi",
+   "docs",
+   "grow"
+  ],
+  "estado_en_ds": "no existe",
+  "impacto": "medio",
+  "recomendacion": "estandarizar",
+  "motivo": "Hola agregó al botón un estado «pending» (6-nov): se ve apagado, pero al tocarlo dice qué falta y el aviso se sacude, en vez de dejar al huésped frente a un botón muerto. Es buena idea para todos los formularios. Pero el aviso va en peach puro (2.6:1, no pasa AA) y el DS pide los errores en --color-error con ícono. Propuesta: subir «pending» al Button del DS con su aviso en --fg y el ícono en --accent (o en --attention-text, 4.9:1).",
+  "evidencia": [
+   {
+    "app": "hola",
+    "archivo": "app/primitives.jsx:131-147",
+    "detalle": "Btn({ …, pending }): opacity: disabled || pending ? 0.38 : 1 · aria-disabled={pending}"
+   },
+   {
+    "app": "hola",
+    "archivo": "app/screens-onboarding.jsx:285-300",
+    "detalle": "avisar(): agrega .sa-sacude; PasoAviso: <p role=\"alert\" style={{color: C.peach, fontSize: 12.5}}>"
+   },
+   {
+    "app": "hola",
+    "archivo": "app/screens-onboarding.jsx:373",
+    "detalle": "<Btn onClick={proceed} pending={!b.type || …}> (antes disabled=)"
+   },
+   {
+    "app": "ds",
+    "archivo": "components/core/Button.prompt.md:12",
+    "detalle": "disabled = --divider + --fg-subtle; no existe un estado que explique qué falta"
+   },
+   {
+    "app": "ds",
+    "archivo": "components/forms/Input.jsx:40",
+    "detalle": "error en var(--color-error) con <Icon name=\"alert\">"
+   }
+  ],
+  "vistas": [
+   {
+    "etiqueta": "Design system hoy",
+    "app": "ds",
+    "alto": 279,
+    "html": "<div class=\"w\"><p class=\"et\">Button disabled: gris, no se puede tocar y no dice por qué</p><div class=\"g bar\"><span class=\"b\">Atrás</span><span class=\"sp\"></span><span class=\"b off\">Siguiente</span></div><p class=\"et\">Input con error: rojo --color-error con ícono, junto al campo</p><div class=\"f\"><label>Número de DPI</label><div class=\"in\">2547 8810</div><div class=\"er\"><i>!</i>Faltan 5 dígitos</div></div></div>",
+    "css": ".w{font-family:var(--font-sans);color:var(--fg)}.et{font-size:11px;color:var(--fg-muted);margin:0 0 8px;letter-spacing:.02em}.g{margin-bottom:16px}.bar{display:flex;align-items:center;gap:12px;border-top:1px solid var(--divider);padding-top:14px}.sp{flex:1}.b{font-family:var(--font-sans);font-size:13px;font-weight:500;letter-spacing:.04em;padding:12px 22px;border-radius:var(--r-pill,999px);border:1px solid var(--fg);background:transparent;color:var(--fg)}.b.off{background:var(--divider);border-color:var(--divider);color:var(--fg-subtle)}.f label{display:block;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--fg-subtle);margin-bottom:6px}.f .in{border:1px solid var(--color-error);border-radius:var(--r-md);padding:11px 12px;font-size:14px;background:#fff}.f .er{display:flex;align-items:center;gap:6px;margin-top:6px;font-size:11.5px;color:var(--color-error)}.f .er i{font-style:normal;width:13px;height:13px;border:1.5px solid currentColor;border-radius:50%;display:grid;place-items:center;font-size:9px;font-weight:700}"
+   },
+   {
+    "etiqueta": "Hola (cambio)",
+    "app": "hola",
+    "alto": 318,
+    "html": "<div class=\"w\"><p class=\"et\">Antes de tocar: «Siguiente» al 38 %, pero sí se puede tocar</p><div class=\"g bar\"><span class=\"b o\">Atrás</span><span class=\"sp\"></span><span class=\"b s p\">Siguiente</span></div><p class=\"et\">Después de tocar: el aviso aparece arriba (en peach) y se sacude</p><div class=\"bar\"><p class=\"msg\">Elige quién hace la reserva para seguir.</p><span class=\"b o\">Atrás</span><span class=\"sp\"></span><span class=\"b s p\">Siguiente</span></div><p class=\"tap\">texto peach sobre alabaster: 2.6:1 (AA pide 4.5:1)</p></div>",
+    "css": ".w{font-family:var(--font-sans);color:var(--fg)}.et{font-size:11px;color:var(--fg-muted);margin:0 0 8px;letter-spacing:.02em}.g{margin-bottom:16px}.bar{display:flex;flex-wrap:wrap;align-items:center;gap:12px;border-top:1px solid #D8D4CE;padding-top:14px}.sp{flex:1}.msg{flex-basis:100%;margin:0;color:#E9826A;font-size:12.5px;line-height:1.45;letter-spacing:.02em;text-align:center}.b{font-family:var(--font-sans);font-size:12px;letter-spacing:.14em;font-weight:500;padding:16px 30px;border-radius:14px;text-transform:uppercase;min-height:44px;box-sizing:border-box;display:inline-flex;align-items:center}.o{border:1px solid #3E3F3F;color:#3E3F3F;background:transparent}.s{background:#3E3F3F;color:#FAFAFA}.p{opacity:.38}.tap{font-size:10.5px;color:var(--fg-muted);text-align:right;margin:6px 0 0}"
+   }
+  ]
+ },
+ {
+  "id": "P-2026-11-05-06",
+  "titulo": "Aviso en línea (banner): Hub, Hola, Mi y ahora Docs lo arman a mano con el tinte peach y el design system no lo tiene",
+  "tipo": "componente",
+  "origen": "hub",
+  "apps_con_el_cambio": [
+   "hub",
+   "hola",
+   "mi",
+   "docs"
+  ],
+  "apps_afectadas": [
+   "hub",
+   "hola",
+   "epi",
+   "mi",
+   "grow"
+  ],
+  "estado_en_ds": "no existe",
+  "impacto": "medio",
+  "recomendacion": "estandarizar",
+  "motivo": "Hay un mensaje dentro de la pantalla, que no se va solo como el Toast, y cada app lo resuelve distinto: borde, radio y hasta el rojo cambian. El DS ya tiene los colores (--attention-tint, --attention-text) y falta la pieza. Propongo Banner con tono atención, info y éxito, radio --r-md y una acción opcional. De paso, los rojos #B4452A y #A9543F pasan a --attention-text. Docs sumó el 6-nov una quinta versión (barra peach a la izquierda y radio 6) para «Faltan 3 datos en el contrato».",
+  "evidencia": [
+   {
+    "app": "hub",
+    "archivo": "index.html:2794,2935",
+    "detalle": "data-a=auto-pausa: rgba(233,130,106,.12), borde .45, radio 14, a mano y repetido"
+   },
+   {
+    "app": "hub",
+    "archivo": "alma/inicio.html:97,412",
+    "detalle": ".cp-error{color:#B4452A} · .vj-llegar{color:#A9543F;border-radius:16px}"
+   },
+   {
+    "app": "hola",
+    "archivo": "app/screens-ltguest.jsx:41 · screens-longterm.jsx:330",
+    "detalle": "avisoSalida: rgba(233,130,106,.10), borde peach sólido, radio 14"
+   },
+   {
+    "app": "mi",
+    "archivo": "index.html:168-173",
+    "detalle": ".sa-pend-banner con radio 16 y borde peach sólido; .urgent en peach sólido"
+   },
+   {
+    "app": "ds",
+    "archivo": "tokens/colors.css:12-13",
+    "detalle": "--color-attention-text:#B54D36 · --color-attention-tint:#FDEFEB, hoy solo los usa Farol"
+   },
+   {
+    "app": "docs",
+    "archivo": "styles.css:765-776 (6-nov)",
+    "detalle": ".faltan-aviso: color-mix(peach 12%), border-left 3px peach, radio 6px, 12px: una quinta forma"
+   }
+  ],
+  "vistas": [
+   {
+    "etiqueta": "Design system hoy",
+    "app": "ds",
+    "alto": 110,
+    "html": "<div class=\"w\"><p class=\"et\">No existe. Toast y Modal cubren otros casos.</p></div>",
+    "css": ".w{padding:18px;background:var(--bg);font-family:var(--font-sans);color:var(--fg);box-sizing:border-box}.et{font-size:11px;color:var(--fg-muted);margin:0 0 8px}.g{margin-bottom:14px}"
+   },
+   {
+    "etiqueta": "Apps (cinco versiones)",
+    "app": "hub",
+    "alto": 539,
+    "html": "<div class=\"w\"><p class=\"et\">Hub · auto mejora en pausa</p><div class=\"g a\"><u></u><span>La mejora automática está en pausa.</span><b>Activar</b></div><p class=\"et\">Hola · aviso de salida</p><div class=\"g h\"><span>Tu estadía termina el 30 de noviembre.</span></div><p class=\"et\">Mi · facturas pendientes</p><div class=\"g m\"><i>!</i><span>Tienes 3 facturas por subir de 2026</span></div><p class=\"et\">Docs · faltan datos (nuevo)</p><div class=\"g d\">Faltan 3 datos en el contrato: nit, dirección, fecha de inicio. Se ven en color en la hoja.</div><p class=\"et\">Hub · error en Alma, otro rojo</p><div class=\"e\">No pude abrir el micrófono.</div></div>",
+    "css": ".w{padding:18px;background:var(--bg);font-family:var(--font-sans);color:var(--fg);box-sizing:border-box}.et{font-size:11px;color:var(--fg-muted);margin:0 0 8px}.g{margin-bottom:14px}.a{display:flex;align-items:center;gap:10px;background:rgba(233,130,106,.12);border:1px solid rgba(233,130,106,.45);border-radius:14px;padding:8px 8px 8px 14px;font-size:12.5px}.a u{width:7px;height:7px;border-radius:50%;background:#F2755A;flex:none}.a span{flex:1}.a b{min-height:36px;display:inline-flex;align-items:center;padding:0 14px;border-radius:999px;background:var(--fg);color:#fff;font-size:12px;font-weight:600}.h{background:rgba(233,130,106,.10);border:1px solid #E9826A;border-radius:14px;padding:12px 14px;font-size:13px}.m{display:flex;align-items:center;gap:14px;border:1px solid var(--accent);background:var(--accent-tint);border-radius:16px;padding:12px 16px;font-size:12px}.m i{font-style:normal;width:34px;height:34px;flex:none;border-radius:50%;background:#fff;display:grid;place-items:center;color:var(--attention-text);font-weight:700}.e{padding:10px 14px;border-radius:14px;background:rgba(233,130,106,.14);color:#B4452A;font-size:13px;line-height:1.4}.d{padding:10px 12px;font-size:12px;line-height:1.5;letter-spacing:.01em;color:var(--fg);background:color-mix(in srgb,#E9826A 12%,transparent);border-left:3px solid #E9826A;border-radius:6px}"
+   }
+  ]
+ },
+ {
+  "id": "P-2026-11-05-05",
+  "titulo": "Tamaño mínimo de toque: Hub y Hola ya exigen 44 px, pero el design system no tiene token y su propio Button mide 33",
+  "tipo": "token",
+  "origen": "hub",
+  "apps_con_el_cambio": [
+   "hub",
+   "hola"
+  ],
+  "apps_afectadas": [
+   "hub",
+   "epi",
+   "mi",
+   "docs",
+   "grow"
+  ],
+  "estado_en_ds": "distinto",
+  "impacto": "medio",
+  "recomendacion": "estandarizar",
+  "motivo": "ESTANDARES.md pide 44 px y el 4 nov el Hub hizo una ronda solo para eso en la app de Alma, pero la regla vive en un documento de un solo repo. Medí el Button del DS: sm da 33 px y md da 42, así que quien lo use tal cual queda por debajo. Propongo --tap-min:44px en tokens, aplicarlo como min-height en Button, Input y Chip, y dejar el tamaño visual libre con área de toque invisible cuando haga falta. Hola lo adoptó el 5-nov (registro: botones de 44 px), así que ya son dos apps.",
+  "evidencia": [
+   {
+    "app": "hub",
+    "archivo": "ESTANDARES.md:33",
+    "detalle": "«los botones miden al menos 44 px»"
+   },
+   {
+    "app": "hub",
+    "archivo": "alma/agentes.html · alma/inicio.html (#460)",
+    "detalle": "«App de Alma (ronda): botones de 44 px»; .ajustes::after amplía el área de toque"
+   },
+   {
+    "app": "hola",
+    "archivo": "app/primitives.jsx (5-nov, «botones de 44 px»)",
+    "detalle": "minHeight: 44 en DocUploader y TopBar; padding 8 + margin -8 para no mover el dibujo"
+   },
+   {
+    "app": "ds",
+    "archivo": "components/core/Button.jsx:11-15",
+    "detalle": "SIZES sin altura mínima: sm 33 px · md 42 px (medido en Chromium)"
+   },
+   {
+    "app": "ds",
+    "archivo": "components/navigation/BottomNav.jsx:7",
+    "detalle": "«Alturas de toque mínimo 44px»: el único lugar del DS que lo dice"
+   },
+   {
+    "app": "mi",
+    "archivo": "avanzado.jsx:85",
+    "detalle": ".av-rowbtn{width:30px;height:30px}"
+   },
+   {
+    "app": "epi",
+    "archivo": "app.jsx:13540",
+    "detalle": "CHIP{minHeight:30}"
+   },
+   {
+    "app": "hub",
+    "archivo": "index.html (.cp-pill)",
+    "detalle": "min-height:36px, en una pantalla nueva del 4 nov"
+   }
+  ],
+  "vistas": [
+   {
+    "etiqueta": "Design system hoy",
+    "app": "ds",
+    "alto": 208,
+    "html": "<div class=\"w\"><p class=\"et\">Button · alturas reales del design system</p><div class=\"r\"><span class=\"z\"><b class=\"s\">Guardar</b><small>sm · 33 px</small></span><span class=\"z\"><b class=\"m\">Guardar</b><small>md · 42 px</small></span></div><p class=\"et\" style=\"margin-top:14px\">La regla de 44 px solo aparece en BottomNav.</p></div>",
+    "css": ".w{padding:18px;background:var(--bg);font-family:var(--font-sans);color:var(--fg);box-sizing:border-box}.et{font-size:11px;color:var(--fg-muted);margin:0 0 8px}.g{margin-bottom:14px}.r{display:flex;gap:18px;align-items:flex-end}.z{display:flex;flex-direction:column;align-items:center;gap:6px}.z small{font-size:11px;color:var(--fg-muted)}b{display:inline-flex;align-items:center;box-sizing:border-box;background:var(--fg);color:var(--accent-contrast);border-radius:var(--r-pill);font-weight:500;letter-spacing:var(--tr-wide);text-transform:uppercase}.s{height:33px;padding:0 20px;font-size:10.5px}.m{height:42px;padding:0 28px;font-size:11.5px}"
+   },
+   {
+    "etiqueta": "Hub y demás apps",
+    "app": "hub",
+    "alto": 280,
+    "html": "<div class=\"w\"><p class=\"et\">Hub · ronda del 4 nov: todo a 44 px</p><div class=\"r\"><span class=\"z\"><b class=\"k\">Listo</b><small>.vj-btn · 44 px</small></span><span class=\"z\"><b class=\"k o\">Quitar</b><small>.fila .quitar · 44 px</small></span></div><p class=\"et\" style=\"margin-top:14px\">Sigue por debajo</p><div class=\"r\"><span class=\"z\"><i class=\"x\">✎</i><small>Mi .av-rowbtn · 30</small></span><span class=\"z\"><b class=\"c\">Zona 10</b><small>Hub .cp-pill · 36</small></span><span class=\"z\"><b class=\"c e\">Copiar</b><small>Epi CHIP · 30</small></span></div></div>",
+    "css": ".w{padding:18px;background:var(--bg);font-family:var(--font-sans);color:var(--fg);box-sizing:border-box}.et{font-size:11px;color:var(--fg-muted);margin:0 0 8px}.g{margin-bottom:14px}.r{display:flex;gap:18px;align-items:flex-end}.z{display:flex;flex-direction:column;align-items:center;gap:6px}.z small{font-size:11px;color:var(--fg-muted)}b{display:inline-flex;align-items:center;box-sizing:border-box;background:var(--fg);color:var(--accent-contrast);border-radius:var(--r-pill);font-weight:500;letter-spacing:var(--tr-wide);text-transform:uppercase}.s{height:33px;padding:0 20px;font-size:10.5px}.m{height:42px;padding:0 28px;font-size:11.5px}.k{height:44px;padding:0 16px;background:#3E3F3F;color:#FAFAFA;font-size:13px;font-weight:600;letter-spacing:0;text-transform:none}.k.o{background:rgba(62,63,63,.08);color:#3E3F3F;border-radius:12px}.x{font-style:normal;display:grid;place-items:center;width:30px;height:30px;box-sizing:border-box;border-radius:999px;border:1px solid var(--accent);background:var(--accent-tint);font-size:12px}.c{height:36px;padding:0 13px;background:#fff;color:#3E3F3F;border:1px solid #D8D4CE;font-size:12.5px;letter-spacing:0;text-transform:none}.c.e{height:30px;padding:0 10px;font-size:10.5px;color:var(--fg-subtle)}"
+   }
+  ]
+ }
+]
