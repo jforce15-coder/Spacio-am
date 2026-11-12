@@ -1,0 +1,163 @@
+[
+    {
+        "id": "P-2026-11-12-01",
+        "titulo": "P\u00e1gina de paso de los enlaces cortos: Hub y Grow la hicieron distinta y las dos giran el anillo que el design system proh\u00edbe",
+        "tipo": "patr\u00f3n",
+        "origen": "hub",
+        "apps_con_el_cambio": [
+            "hub",
+            "grow"
+        ],
+        "apps_afectadas": [
+            "hola",
+            "mi",
+            "docs",
+            "epi"
+        ],
+        "estado_en_ds": "no existe",
+        "impacto": "medio",
+        "recomendacion": "estandarizar",
+        "motivo": "Los enlaces cortos (hub.spacioam.com/<c\u00f3digo>, grow.spacioam.com/<c\u00f3digo>) abren una p\u00e1gina p\u00fablica \u00abAbriendo tu enlace\u2026\u00bb que ve el hu\u00e9sped o el cliente. Hub y Grow la hicieron el mismo d\u00eda con estilos distintos: el Hub con el logo en Valky, fondo #FAFAFA y bot\u00f3n de 44 px; Grow con el nombre en eyebrow, fondo #faf9f5 fuera de la paleta y bot\u00f3n de 38 px. Las dos usan un anillo que gira, y el LoadingScreen del DS dice \u00absin spinner, sin anillo\u00bb. Propongo una sola plantilla en el DS (templates/pagina-de-paso) con la versi\u00f3n del Hub y el loader del DS en lugar del anillo, lista para cuando Hola, Mi y Docs tengan su acortador.",
+        "evidencia": [
+            {
+                "app": "hub",
+                "archivo": "404.html:20-27 (12-nov, #489)",
+                "detalle": ".marca{font-family:Valky;font-size:22px} \u00b7 --fondo:#FAFAFA \u00b7 .punto{border-top-color:var(--durazno);animation:girar .9s linear infinite} \u00b7 button{min-height:44px;background:var(--arena)}"
+            },
+            {
+                "app": "grow",
+                "archivo": "404.html:17-28 (12-nov, #34)",
+                "detalle": ":root{--fondo:#faf9f5} \u00b7 .marca{font-size:11px;letter-spacing:.32em;uppercase} \u00b7 .punto{border-top-color:var(--tinta)} \u00b7 button sin min-height (\u224838 px), fondo transparente"
+            },
+            {
+                "app": "ds",
+                "archivo": "components/feedback/LoadingScreen.prompt.md:8",
+                "detalle": "\u00abEl logo rebota\u2026 Sin spinner, sin anillo \u2014 un ring giratorio es vocabulario de dashboard gen\u00e9rico\u00bb"
+            },
+            {
+                "app": "hub",
+                "archivo": "ESTANDARES.md (Enlace corto)",
+                "detalle": "\u00abhola, docs y mi.spacioam.com salen largos hasta que su app tenga su acortador\u00bb: vienen tres p\u00e1ginas m\u00e1s"
+            }
+        ],
+        "vistas": [
+            {
+                "etiqueta": "Design system hoy (LoadingScreen)",
+                "app": "ds",
+                "alto": 300,
+                "html": "<div class='pg' style='background:var(--bg)'><div class='m' style='gap:var(--s-4)'><span style=\"font-family:var(--font-serif);font-size:30px;letter-spacing:.02em;color:var(--fg)\">Spacio AM</span><span style='width:46px;height:5px;border-radius:var(--r-pill);background:var(--divider)'></span><span style='font-size:var(--t-eyebrow);font-weight:500;letter-spacing:var(--tr-eyebrow);text-transform:uppercase;color:var(--fg-muted)'>Abriendo tu enlace</span><p style='font-size:11px;color:var(--fg-muted);letter-spacing:.04em;margin-top:6px'>LoadingScreen: el logo rebota sobre su sombra. \u00abSin spinner, sin anillo\u00bb.</p></div></div>",
+                "css": ".pg{min-height:300px;display:flex;align-items:center;justify-content:center;text-align:center;font-family:var(--font-sans)}.m{display:flex;flex-direction:column;align-items:center;max-width:300px}"
+            },
+            {
+                "etiqueta": "Hub \u00b7 404.html (cargando)",
+                "app": "hub",
+                "alto": 260,
+                "html": "<div class='pg' style='background:#FAFAFA'><div class='m'><span style=\"font-family:var(--font-serif);font-size:22px;letter-spacing:.04em\">Spacio AM</span><div class='p' style='border-top-color:#E9826A'></div><p>Abriendo tu enlace\u2026</p></div></div>",
+                "css": ".pg{height:100%;min-height:240px;display:flex;align-items:center;justify-content:center;text-align:center;font-family:var(--font-sans);color:#3E3F3F}.m{display:flex;flex-direction:column;align-items:center;gap:18px;max-width:300px}.p{width:28px;height:28px;border-radius:50%;border:2px solid #D8D4CE}p{margin:0;font-size:15px;line-height:1.55}button{font:inherit;border-radius:999px;border:1px solid #3E3F3F;color:#3E3F3F}"
+            },
+            {
+                "etiqueta": "Grow \u00b7 404.html (cargando)",
+                "app": "grow",
+                "alto": 260,
+                "html": "<div class='pg' style='background:#faf9f5'><div class='m'><span style='font-size:11px;letter-spacing:.32em;text-transform:uppercase;color:#6F6867'>Spacio AM</span><div class='p' style='border-top-color:#3E3F3F'></div><p>Abriendo tu enlace\u2026</p></div></div>",
+                "css": ".pg{height:100%;min-height:240px;display:flex;align-items:center;justify-content:center;text-align:center;font-family:var(--font-sans);color:#3E3F3F}.m{display:flex;flex-direction:column;align-items:center;gap:18px;max-width:300px}.p{width:28px;height:28px;border-radius:50%;border:2px solid #D8D4CE}p{margin:0;font-size:15px;line-height:1.55}button{font:inherit;border-radius:999px;border:1px solid #3E3F3F;color:#3E3F3F}"
+            }
+        ]
+    },
+    {
+        "id": "P-2026-11-05-05",
+        "titulo": "Tama\u00f1o m\u00ednimo de toque: Hub y Hola ya exigen 44 px, pero el design system no tiene token y su propio Button mide 33",
+        "tipo": "token",
+        "origen": "hub",
+        "apps_con_el_cambio": [
+            "hub",
+            "hola"
+        ],
+        "apps_afectadas": [
+            "hub",
+            "epi",
+            "mi",
+            "docs",
+            "grow"
+        ],
+        "estado_en_ds": "distinto",
+        "impacto": "medio",
+        "recomendacion": "estandarizar",
+        "motivo": "ESTANDARES.md pide 44 px y el Hub ya lo resolvi\u00f3 con una clase reutilizable: .sa-toque agranda el \u00e1rea de toque a 44 \u00d7 44 con un ::after invisible, sin cambiar c\u00f3mo se ve el bot\u00f3n (9-nov, 7 botones de la bandeja y la conversaci\u00f3n). Hola lo adopt\u00f3 el 5-nov. El Button del DS sigue en 33 px (sm) y 42 (md). Propongo --tap-min:44px en tokens, min-height en Button, Input y Chip, y subir .sa-toque al DS como la forma oficial de dar 44 px a un bot\u00f3n que se ve m\u00e1s chico.",
+        "evidencia": [
+            {
+                "app": "hub",
+                "archivo": "index.html:62-65 (9-nov, e6431b3)",
+                "detalle": ".sa-toque::after{content:\"\";position:absolute;top:min(0px,calc(50% - 22px));\u2026} en el avatar, Anterior/Siguiente (34\u00d732), \u00abResuelta\u00bb y \u00abM\u00e1s acciones\u00bb (34\u00d734)"
+            },
+            {
+                "app": "hub",
+                "archivo": "404.html (12-nov)",
+                "detalle": "button{min-height:44px} en la p\u00e1gina de paso de los enlaces cortos"
+            },
+            {
+                "app": "hub",
+                "archivo": "ESTANDARES.md:33",
+                "detalle": "\u00ablos botones miden al menos 44 px\u00bb"
+            },
+            {
+                "app": "hub",
+                "archivo": "alma/agentes.html \u00b7 alma/inicio.html (#460)",
+                "detalle": "\u00abApp de Alma (ronda): botones de 44 px\u00bb; .ajustes::after ampl\u00eda el \u00e1rea de toque"
+            },
+            {
+                "app": "hola",
+                "archivo": "app/primitives.jsx (5-nov, \u00abbotones de 44 px\u00bb)",
+                "detalle": "minHeight: 44 en DocUploader y TopBar; padding 8 + margin -8 para no mover el dibujo"
+            },
+            {
+                "app": "ds",
+                "archivo": "components/core/Button.jsx:11-15",
+                "detalle": "SIZES sin altura m\u00ednima: sm 33 px \u00b7 md 42 px (medido en Chromium)"
+            },
+            {
+                "app": "ds",
+                "archivo": "components/navigation/BottomNav.jsx:7",
+                "detalle": "\u00abAlturas de toque m\u00ednimo 44px\u00bb: el \u00fanico lugar del DS que lo dice"
+            },
+            {
+                "app": "mi",
+                "archivo": "avanzado.jsx:85",
+                "detalle": ".av-rowbtn{width:30px;height:30px}"
+            },
+            {
+                "app": "epi",
+                "archivo": "app.jsx:13540",
+                "detalle": "CHIP{minHeight:30}"
+            },
+            {
+                "app": "hub",
+                "archivo": "index.html (.cp-pill)",
+                "detalle": "min-height:36px, en una pantalla nueva del 4 nov"
+            }
+        ],
+        "vistas": [
+            {
+                "etiqueta": "Design system hoy",
+                "app": "ds",
+                "alto": 208,
+                "html": "<div class=\"w\"><p class=\"et\">Button \u00b7 alturas reales del design system</p><div class=\"r\"><span class=\"z\"><b class=\"s\">Guardar</b><small>sm \u00b7 33 px</small></span><span class=\"z\"><b class=\"m\">Guardar</b><small>md \u00b7 42 px</small></span></div><p class=\"et\" style=\"margin-top:14px\">La regla de 44 px solo aparece en BottomNav.</p></div>",
+                "css": ".w{padding:18px;background:var(--bg);font-family:var(--font-sans);color:var(--fg);box-sizing:border-box}.et{font-size:11px;color:var(--fg-muted);margin:0 0 8px}.g{margin-bottom:14px}.r{display:flex;gap:18px;align-items:flex-end}.z{display:flex;flex-direction:column;align-items:center;gap:6px}.z small{font-size:11px;color:var(--fg-muted)}b{display:inline-flex;align-items:center;box-sizing:border-box;background:var(--fg);color:var(--accent-contrast);border-radius:var(--r-pill);font-weight:500;letter-spacing:var(--tr-wide);text-transform:uppercase}.s{height:33px;padding:0 20px;font-size:10.5px}.m{height:42px;padding:0 28px;font-size:11.5px}"
+            },
+            {
+                "etiqueta": "Hub y dem\u00e1s apps",
+                "app": "hub",
+                "alto": 280,
+                "html": "<div class=\"w\"><p class=\"et\">Hub \u00b7 ronda del 4 nov: todo a 44 px</p><div class=\"r\"><span class=\"z\"><b class=\"k\">Listo</b><small>.vj-btn \u00b7 44 px</small></span><span class=\"z\"><b class=\"k o\">Quitar</b><small>.fila .quitar \u00b7 44 px</small></span></div><p class=\"et\" style=\"margin-top:14px\">Sigue por debajo</p><div class=\"r\"><span class=\"z\"><i class=\"x\">\u270e</i><small>Mi .av-rowbtn \u00b7 30</small></span><span class=\"z\"><b class=\"c\">Zona 10</b><small>Hub .cp-pill \u00b7 36</small></span><span class=\"z\"><b class=\"c e\">Copiar</b><small>Epi CHIP \u00b7 30</small></span></div></div>",
+                "css": ".w{padding:18px;background:var(--bg);font-family:var(--font-sans);color:var(--fg);box-sizing:border-box}.et{font-size:11px;color:var(--fg-muted);margin:0 0 8px}.g{margin-bottom:14px}.r{display:flex;gap:18px;align-items:flex-end}.z{display:flex;flex-direction:column;align-items:center;gap:6px}.z small{font-size:11px;color:var(--fg-muted)}b{display:inline-flex;align-items:center;box-sizing:border-box;background:var(--fg);color:var(--accent-contrast);border-radius:var(--r-pill);font-weight:500;letter-spacing:var(--tr-wide);text-transform:uppercase}.s{height:33px;padding:0 20px;font-size:10.5px}.m{height:42px;padding:0 28px;font-size:11.5px}.k{height:44px;padding:0 16px;background:#3E3F3F;color:#FAFAFA;font-size:13px;font-weight:600;letter-spacing:0;text-transform:none}.k.o{background:rgba(62,63,63,.08);color:#3E3F3F;border-radius:12px}.x{font-style:normal;display:grid;place-items:center;width:30px;height:30px;box-sizing:border-box;border-radius:999px;border:1px solid var(--accent);background:var(--accent-tint);font-size:12px}.c{height:36px;padding:0 13px;background:#fff;color:#3E3F3F;border:1px solid #D8D4CE;font-size:12.5px;letter-spacing:0;text-transform:none}.c.e{height:30px;padding:0 10px;font-size:10.5px;color:var(--fg-subtle)}"
+            },
+            {
+                "etiqueta": "Hub \u00b7 .sa-toque (\u00e1rea invisible punteada)",
+                "app": "hub",
+                "alto": 200,
+                "html": "<div class='w'><div class='bar'><span class='pie'>Conversaci\u00f3n 3 de 12</span><div class='grp'><button class='b t'><svg width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.8' stroke-linecap='round'><path d='M15 6l-6 6 6 6'/></svg></button><span class='n'>3/12</span><button class='b t'><svg width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.8' stroke-linecap='round'><path d='M9 6l6 6-6 6'/></svg></button></div><button class='res t'>Resuelta</button><button class='mas t'>\u00b7\u00b7\u00b7</button></div><p class='nota'>Se ven de 32\u201334 px; el toque mide 44 \u00d7 44 (l\u00ednea punteada, solo para la vista).</p></div>",
+                "css": ".w{padding:28px 20px;background:var(--bg);font-family:var(--font-sans);display:flex;flex-direction:column;gap:22px}.bar{display:flex;align-items:center;gap:14px;flex-wrap:wrap}.pie{font-size:10.5px;letter-spacing:.05em;color:var(--fg-muted)}.grp{display:inline-flex;align-items:center;gap:2px;padding:2px;border-radius:999px;background:var(--bg-alt)}.b{width:34px;height:32px;border-radius:999px;border:none;background:transparent;display:grid;place-items:center;color:var(--fg)}.n{min-width:44px;text-align:center;font-size:11px;color:var(--fg-muted)}.res{min-height:34px;padding:0 11px;border:1px solid var(--divider);background:var(--surface);border-radius:999px;font:600 10.5px var(--font-sans);letter-spacing:.12em;text-transform:uppercase;color:var(--fg)}.mas{width:34px;height:34px;border-radius:50%;border:1px solid var(--divider);background:var(--surface);color:var(--fg);font-size:12px}.t{position:relative}.t::after{content:'';position:absolute;top:min(0px,calc(50% - 22px));bottom:min(0px,calc(50% - 22px));left:min(0px,calc(50% - 22px));right:min(0px,calc(50% - 22px));outline:1px dashed var(--accent);border-radius:6px}.nota{margin:0;font-size:11px;letter-spacing:.04em;color:var(--fg-muted)}"
+            }
+        ]
+    }
+]
