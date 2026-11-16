@@ -1,0 +1,235 @@
+[
+ {
+  "id": "P-2026-11-16-01",
+  "titulo": "Etiquetas de estado del tablero de la llamada: usan la paleta del calendario (ámbar, rojo y verde a mano) en vez de Farol",
+  "tipo": "token",
+  "origen": "hub",
+  "apps_con_el_cambio": [
+   "hub"
+  ],
+  "apps_afectadas": [
+   "hub"
+  ],
+  "estado_en_ds": "distinto",
+  "impacto": "medio",
+  "recomendacion": "revertir",
+  "motivo": "El tablero bento de la llamada (#508, 13 nov) pinta sus etiquetas con los colores del calendario: «consulta» en ámbar #F5E6BF/#6F5210, «alerta» en #F2DAD5/#9E3326 y «libre» en #E1EEE5/#2F5B43. El DS ya tiene esa escala en Farol (warning, error, success), y la Bandeja del mismo Hub sí usa el verde del DS para «Check-in hoy». Propongo que las etiquetas usen Farol; el calendario puede quedarse con su paleta si apruebas P-2026-11-05-01.",
+  "evidencia": [
+   {
+    "app": "hub",
+    "archivo": "alma/inicio.html:621-623,642 (.tvb-chip)",
+    "detalle": "background:#F5E6BF;color:#6F5210 · [data-tono=alerta]{#F2DAD5;#9E3326} · [data-tono=libre]{#E1EEE5;#2F5B43}"
+   },
+   {
+    "app": "hub",
+    "archivo": "alma/inicio.html:533-534,549 (.tv-chip, .tv-prom)",
+    "detalle": ".tv-chip[data-tono=aviso]{background:#F5E6BF;color:#6F5210} · .tv-prom{background:#F5E6BF}"
+   },
+   {
+    "app": "hub",
+    "archivo": "alma/inicio.html:651-652 (.tvb-l li > b)",
+    "detalle": "[data-tono=aviso] #F5E6BF/#6F5210 · [data-tono=alerta] #F2DAD5/#9E3326 · neutro #ECEAE7"
+   },
+   {
+    "app": "hub",
+    "archivo": "index.html:8830 (Bandeja)",
+    "detalle": "[\"Check-in hoy\", \"#E8F2ED\", \"#3d6b52\"] = --color-success del DS, junto a [\"Consulta\", \"#F5E6BF\", \"#6F5210\"]"
+   },
+   {
+    "app": "hub",
+    "archivo": "alma/inicio.html (#l-llaves .va.falta, #n-llave.error)",
+    "detalle": "color:#D9583A (4 usos), rojo que no es --color-error #C0392B ni --attention-text #B54D36"
+   },
+   {
+    "app": "ds",
+    "archivo": "components/core/Farol.jsx · tokens/colors.css",
+    "detalle": "success #3d6b52/#E8F2ED · warning #9a5020/#F5EBE5 · error #C0392B/#F7E7E4 · info #3B6691/#E8EDF3"
+   }
+  ],
+  "vistas": [
+   {
+    "etiqueta": "Design system hoy (Farol)",
+    "app": "ds",
+    "alto": 230,
+    "html": "<div class='w'><div class='k'>Farol · escala única</div><div class='row'><span style='display:inline-flex;align-items:center;gap:8px;font-family:var(--font-sans);font-weight:600;border-radius:999px;white-space:nowrap;font-size:var(--t-small);letter-spacing:var(--tr-wide);padding:var(--s-1) var(--s-3);color:var(--color-success);background:var(--color-success-tint)'><span class='d'></span>Libre hoy</span><span style='display:inline-flex;align-items:center;gap:8px;font-family:var(--font-sans);font-weight:600;border-radius:999px;white-space:nowrap;font-size:var(--t-small);letter-spacing:var(--tr-wide);padding:var(--s-1) var(--s-3);color:var(--color-warning);background:var(--color-warning-tint)'><span class='d'></span>Consulta abierta</span><span style='display:inline-flex;align-items:center;gap:8px;font-family:var(--font-sans);font-weight:600;border-radius:999px;white-space:nowrap;font-size:var(--t-small);letter-spacing:var(--tr-wide);padding:var(--s-1) var(--s-3);color:var(--color-error);background:var(--color-error-tint)'><span class='d'></span>Bloqueado</span><span style='display:inline-flex;align-items:center;gap:8px;font-family:var(--font-sans);font-weight:600;border-radius:999px;white-space:nowrap;font-size:var(--t-small);letter-spacing:var(--tr-wide);padding:var(--s-1) var(--s-3);color:var(--color-info);background:var(--color-info-tint)'><span class='d'></span>Llega mañana</span></div><div class='k'>Falta algo (atención, peach)</div><div class='row'><span style='display:inline-flex;align-items:center;gap:8px;font-family:var(--font-sans);font-weight:600;border-radius:999px;white-space:nowrap;font-size:var(--t-small);letter-spacing:var(--tr-wide);padding:var(--s-1) var(--s-3);color:var(--attention-text);background:var(--attention-tint)'><span class='d' style='background:var(--attention)'></span>Faltan fotos</span></div></div>",
+    "css": ".w{padding:18px 20px;font-family:var(--font-sans);color:var(--fg);background:var(--bg)}.k{font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:#6F6867;margin:0 0 10px}.row{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}.d{width:8px;height:8px;border-radius:50%;background:currentColor;flex-shrink:0}"
+   },
+   {
+    "etiqueta": "Hub · tablero de la llamada",
+    "app": "hub",
+    "alto": 360,
+    "html": "<div class='w' style='min-height:360px;box-sizing:border-box;background:linear-gradient(155deg,#E9DED3,#B9A493 60%,#8F7F74)'><div class='k' style='color:#fff'>Tablero de la llamada (.tvb-chip, .tv-chip)</div><div style='display:grid;grid-template-columns:1fr 1fr;gap:8px'><div style='padding:10px 12px;border-radius:20px;background:rgba(255,255,255,.94)'><span style='font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:#6F6867'>Apto 1104</span><div style='font-family:var(--font-serif);font-size:20px;margin:3px 0 6px'>Hoy</div><span style='display:inline-flex;align-items:center;gap:8px;font-family:var(--font-sans);font-weight:600;border-radius:999px;white-space:nowrap;font-size:10px;padding:4px 9px;color:#2F5B43;background:#E1EEE5'>Libre hoy</span></div><div style='padding:10px 12px;border-radius:20px;background:rgba(255,255,255,.94)'><span style='font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:#6F6867'>Consulta</span><div style='font-family:var(--font-serif);font-size:20px;margin:3px 0 6px'>Q 1 850</div><span style='display:inline-flex;align-items:center;gap:8px;font-family:var(--font-sans);font-weight:600;border-radius:999px;white-space:nowrap;font-size:10px;padding:4px 9px;color:#6F5210;background:#F5E6BF'>Por confirmar</span></div><div style='padding:10px 12px;border-radius:20px;background:rgba(255,255,255,.94)'><span style='font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:#6F6867'>Calendario</span><div style='font-family:var(--font-serif);font-size:20px;margin:3px 0 6px'>20–22 nov</div><span style='display:inline-flex;align-items:center;gap:8px;font-family:var(--font-sans);font-weight:600;border-radius:999px;white-space:nowrap;font-size:10px;padding:4px 9px;color:#9E3326;background:#F2DAD5'>Bloqueado</span></div><div style='padding:10px 12px;border-radius:20px;background:rgba(255,255,255,.94)'><span style='font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:#6F6867'>Huésped</span><div style='font-family:var(--font-serif);font-size:20px;margin:3px 0 6px'>Ana P.</div><span style='display:inline-flex;align-items:center;gap:8px;font-family:var(--font-sans);font-weight:600;border-radius:999px;white-space:nowrap;font-size:10px;padding:4px 9px;color:#3B6691;background:rgba(232,237,243,.96)'>Llega mañana</span></div></div></div>",
+    "css": ".w{padding:18px 20px;font-family:var(--font-sans);color:var(--fg);background:var(--bg)}.k{font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:#6F6867;margin:0 0 10px}.row{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}.d{width:8px;height:8px;border-radius:50%;background:currentColor;flex-shrink:0}"
+   },
+   {
+    "etiqueta": "Hub · Bandeja y Llaves",
+    "app": "hub",
+    "alto": 260,
+    "html": "<div class='w'><div class='k'>Bandeja (index.html:8830) · mismo Hub, otra escala</div><div class='row'><span style='display:inline-flex;align-items:center;gap:8px;font-family:var(--font-sans);font-weight:600;border-radius:999px;white-space:nowrap;font-size:11px;padding:5px 10px;color:#3d6b52;background:#E8F2ED'>Check-in hoy</span><span style='display:inline-flex;align-items:center;gap:8px;font-family:var(--font-sans);font-weight:600;border-radius:999px;white-space:nowrap;font-size:11px;padding:5px 10px;color:#6F5210;background:#F5E6BF'>Consulta</span><span style='display:inline-flex;align-items:center;gap:8px;font-family:var(--font-sans);font-weight:600;border-radius:999px;white-space:nowrap;font-size:11px;padding:5px 10px;color:#3B6691;background:#E8EDF3'>Sale hoy</span></div><div class='k'>Ajustes · Llaves (alma/inicio.html)</div><div class='row'><span style='font-size:13px;color:#D9583A'>Falta · sin guardar</span></div><p style='font-size:11px;color:#6F6867;margin:0'>Dos verdes (#3d6b52 y #2F5B43) y dos rojos (#9E3326 y #D9583A) para lo mismo, en la misma app.</p></div>",
+    "css": ".w{padding:18px 20px;font-family:var(--font-sans);color:var(--fg);background:var(--bg)}.k{font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:#6F6867;margin:0 0 10px}.row{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}.d{width:8px;height:8px;border-radius:50%;background:currentColor;flex-shrink:0}"
+   }
+  ]
+ },
+ {
+  "id": "P-2026-11-12-01",
+  "titulo": "Página de paso de los enlaces cortos: ya hay 5 copias y Hola, Docs y Mi copiaron la de Grow (fondo fuera de paleta, botón chico y anillo)",
+  "tipo": "patrón",
+  "origen": "hub",
+  "apps_con_el_cambio": [
+   "hub",
+   "grow",
+   "hola",
+   "docs",
+   "mi"
+  ],
+  "apps_afectadas": [
+   "hub",
+   "grow",
+   "hola",
+   "docs",
+   "mi"
+  ],
+  "estado_en_ds": "no existe",
+  "impacto": "alto",
+  "recomendacion": "estandarizar",
+  "motivo": "La página pública «Abriendo tu enlace…» que ve el huésped ya existe en las 5 apps con acortador. El 12 nov Hola, Docs y Mi copiaron la versión de Grow: fondo #faf9f5 fuera de la paleta, nombre en eyebrow y botón «Intentar de nuevo» de 13 px sin los 44 px de toque. Solo el Hub usa Valky, #FAFAFA y 44 px, y las cinco giran el anillo que el LoadingScreen prohíbe. Propongo una plantilla en el DS (templates/pagina-de-paso) con la versión del Hub y el loader del DS, y llevar las 4 copias a ella: solo cambia el bloque <style>.",
+  "evidencia": [
+   {
+    "app": "hub",
+    "archivo": "404.html:20-27 (12-nov, #489)",
+    "detalle": ".marca{font-family:Valky;font-size:22px} · --fondo:#FAFAFA · .punto{border-top-color:var(--durazno);animation:girar .9s linear infinite} · button{min-height:44px;background:var(--arena)}"
+   },
+   {
+    "app": "grow",
+    "archivo": "404.html:17-28 (12-nov, #34)",
+    "detalle": ":root{--fondo:#faf9f5} · .marca{font-size:11px;letter-spacing:.32em;uppercase} · .punto{border-top-color:var(--tinta)} · button sin min-height (≈38 px), fondo transparente"
+   },
+   {
+    "app": "ds",
+    "archivo": "components/feedback/LoadingScreen.prompt.md:8",
+    "detalle": "«El logo rebota… Sin spinner, sin anillo — un ring giratorio es vocabulario de dashboard genérico»"
+   },
+   {
+    "app": "hola",
+    "archivo": "404.html:17-30 (12-nov, #36)",
+    "detalle": ":root{--fondo:#faf9f5} · .marca{font-size:11px;letter-spacing:.32em;uppercase} · button{font-size:13px;padding:10px 18px} · @keyframes girar"
+   },
+   {
+    "app": "docs",
+    "archivo": "404.html:17-30 (12-nov, #17)",
+    "detalle": "idéntica a Hola salvo la URL del Apps Script: --fondo:#faf9f5, sin Valky, anillo con border-top-color:var(--tinta)"
+   },
+   {
+    "app": "mi",
+    "archivo": "404.html:17-30 (12-nov, #30)",
+    "detalle": "idéntica a Hola salvo la URL: --fondo:#faf9f5 · botón 13 px sin min-height:44px"
+   }
+  ],
+  "vistas": [
+   {
+    "etiqueta": "Design system hoy (LoadingScreen)",
+    "app": "ds",
+    "alto": 300,
+    "html": "<div class='pg' style='background:var(--bg)'><div class='m' style='gap:var(--s-4)'><span style=\"font-family:var(--font-serif);font-size:30px;letter-spacing:.02em;color:var(--fg)\">Spacio AM</span><span style='width:46px;height:5px;border-radius:var(--r-pill);background:var(--divider)'></span><span style='font-size:var(--t-eyebrow);font-weight:500;letter-spacing:var(--tr-eyebrow);text-transform:uppercase;color:var(--fg-muted)'>Abriendo tu enlace</span><p style='font-size:11px;color:var(--fg-muted);letter-spacing:.04em;margin-top:6px'>LoadingScreen: el logo rebota sobre su sombra. «Sin spinner, sin anillo».</p></div></div>",
+    "css": ".pg{min-height:300px;display:flex;align-items:center;justify-content:center;text-align:center;font-family:var(--font-sans)}.m{display:flex;flex-direction:column;align-items:center;max-width:300px}"
+   },
+   {
+    "etiqueta": "Hub · 404.html (cargando)",
+    "app": "hub",
+    "alto": 260,
+    "html": "<div class='pg' style='background:#FAFAFA'><div class='m'><span style=\"font-family:var(--font-serif);font-size:22px;letter-spacing:.04em\">Spacio AM</span><div class='p' style='border-top-color:#E9826A'></div><p>Abriendo tu enlace…</p></div></div>",
+    "css": ".pg{height:100%;min-height:240px;display:flex;align-items:center;justify-content:center;text-align:center;font-family:var(--font-sans);color:#3E3F3F}.m{display:flex;flex-direction:column;align-items:center;gap:18px;max-width:300px}.p{width:28px;height:28px;border-radius:50%;border:2px solid #D8D4CE}p{margin:0;font-size:15px;line-height:1.55}button{font:inherit;border-radius:999px;border:1px solid #3E3F3F;color:#3E3F3F}"
+   },
+   {
+    "etiqueta": "Grow, Hola, Docs y Mi · 404.html (cargando)",
+    "app": "grow",
+    "alto": 260,
+    "html": "<div class='pg' style='background:#faf9f5'><div class='m'><span style='font-size:11px;letter-spacing:.32em;text-transform:uppercase;color:#6F6867'>Spacio AM</span><div class='p' style='border-top-color:#3E3F3F'></div><p>Abriendo tu enlace…</p></div></div>",
+    "css": ".pg{height:100%;min-height:240px;display:flex;align-items:center;justify-content:center;text-align:center;font-family:var(--font-sans);color:#3E3F3F}.m{display:flex;flex-direction:column;align-items:center;gap:18px;max-width:300px}.p{width:28px;height:28px;border-radius:50%;border:2px solid #D8D4CE}p{margin:0;font-size:15px;line-height:1.55}button{font:inherit;border-radius:999px;border:1px solid #3E3F3F;color:#3E3F3F}"
+   },
+   {
+    "etiqueta": "Hub · enlace vencido (botón 44 px)",
+    "app": "hub",
+    "alto": 220,
+    "html": "<div class='pg' style='background:#FAFAFA'><div class='m'><span style=\"font-family:var(--font-serif);font-size:22px;letter-spacing:.04em\">Spacio AM</span><p>No pudimos abrir tu enlace. Revisa tu conexión.</p><button style='font:inherit;font-size:14px;min-height:44px;padding:10px 22px;border-radius:999px;border:1px solid #3E3F3F;background:#F5F3F0;color:#3E3F3F'>Intentar de nuevo</button></div></div>",
+    "css": ".pg{min-height:200px;display:flex;align-items:center;justify-content:center;text-align:center;font-family:var(--font-sans);color:#3E3F3F}.m{display:flex;flex-direction:column;align-items:center;gap:18px;max-width:300px}p{margin:0;font-size:15px;line-height:1.55}a{color:#3E3F3F}"
+   },
+   {
+    "etiqueta": "Grow, Hola, Docs y Mi · enlace vencido (botón ≈38 px)",
+    "app": "hola",
+    "alto": 220,
+    "html": "<div class='pg' style='background:#faf9f5'><div class='m'><span style='font-size:11px;letter-spacing:.32em;text-transform:uppercase;color:#6F6867'>Spacio AM</span><p>No pudimos abrir tu enlace. Revisa tu conexión.</p><button style='font:inherit;font-size:13px;padding:10px 18px;border-radius:999px;border:1px solid #3E3F3F;background:transparent;color:#3E3F3F'>Intentar de nuevo</button></div></div>",
+    "css": ".pg{min-height:200px;display:flex;align-items:center;justify-content:center;text-align:center;font-family:var(--font-sans);color:#3E3F3F}.m{display:flex;flex-direction:column;align-items:center;gap:18px;max-width:300px}p{margin:0;font-size:15px;line-height:1.55}a{color:#3E3F3F}"
+   }
+  ]
+ },
+ {
+  "id": "P-2026-10-26-03",
+  "titulo": "Inicio tipo bento del equipo: Hub y Grow lo comparten, pero el DS solo lo define para la Guest App",
+  "tipo": "patrón",
+  "origen": "hub",
+  "apps_con_el_cambio": [
+   "hub",
+   "grow"
+  ],
+  "apps_afectadas": [
+   "epi",
+   "mi",
+   "docs"
+  ],
+  "estado_en_ds": "distinto",
+  "impacto": "medio",
+  "recomendacion": "estandarizar",
+  "motivo": "El 23 oct Grow copió el Inicio en bento del Hub (foto con resumen del día, «Necesita tu acción», accesos). El DS dice que Bento es solo de la Guest App. El Hub lo hace con los tokens (radio 18 = --r-lg, --shadow-sm); Grow usa radio 20 y un mosaico peach con texto blanco (2.7:1, el DS prohíbe texto sobre peach). Propuesta: sumar al DS la variante «Inicio del equipo» con la medida del Hub y llevar Grow a 18 y a tinte peach con texto ink. Actualizado el 16 nov: el Hub sumó un tercer bento, el tablero de la llamada (#508), con radio 20 y sombra 0 18px 40px -26px como Grow, no 18 como su propio Inicio.",
+  "evidencia": [
+   {
+    "app": "hub",
+    "archivo": "index.html (.bento / .sp-tile)",
+    "detalle": ".bento{grid-template-columns:repeat(2,1fr);grid-auto-rows:128px;gap:12px} · tile border-radius:18px; box-shadow:0 4px 16px rgba(62,63,63,.05)"
+   },
+   {
+    "app": "grow",
+    "archivo": "index.html (.gb-tile)",
+    "detalle": ".gb-tile{border-radius:20px;padding:15px;min-height:132px} · PR #11 «Inicio tipo bento (como el Hub)»"
+   },
+   {
+    "app": "grow",
+    "archivo": "index.html (.gb-peach)",
+    "detalle": ".gb-peach{background:var(--accent);color:#FFFFFF;box-shadow:0 6px 20px rgba(233,130,106,.28)}"
+   },
+   {
+    "app": "ds",
+    "archivo": "components/navigation/Bento.jsx",
+    "detalle": "«Bento de la Guest App… NO es la navegación permanente» · radio var(--r-lg), tonos solid / ink / peach-tint / image"
+   },
+   {
+    "app": "hub",
+    "archivo": "alma/inicio.html:610-612 (.tvb-g, .tvb-t)",
+    "detalle": ".tvb-g{grid-template-columns:repeat(6,minmax(0,1fr));gap:var(--g)=8px} · .tvb-t{border-radius:20px;background:rgba(255,255,255,.94);box-shadow:0 18px 40px -26px rgba(40,30,25,.5)}"
+   }
+  ],
+  "vistas": [
+   {
+    "etiqueta": "Design system hoy · Bento (Guest App)",
+    "app": "ds",
+    "alto": 420,
+    "html": "<div class=\"g\"><div class=\"t img s2\"><span>Tu estancia en Casa Ceiba</span></div><div class=\"t solid\"><span>Wifi</span></div><div class=\"t peach\"><span>Check-out</span></div><div class=\"t ink s2b\"><span>Recomendaciones</span></div></div>",
+    "css": ".g{display:grid;grid-template-columns:repeat(2,1fr);grid-auto-rows:110px;gap:var(--s-3);max-width:360px}.t{border-radius:var(--r-lg);box-shadow:var(--shadow-sm);padding:var(--s-3);display:flex;align-items:flex-end;font-size:12px;font-weight:600;letter-spacing:var(--tr-normal);position:relative;overflow:hidden}.s2{grid-column:span 2}.s2b{grid-column:span 2}.solid{background:var(--bg-alt);color:var(--fg)}.peach{background:var(--accent-tint);color:var(--fg)}.ink{background:var(--fg);color:var(--fg-inverse)}.img{color:#fff;background:linear-gradient(180deg,transparent 45%,rgba(62,63,63,.55)),linear-gradient(135deg,#d9c7b3,#a88f78 60%,#7d6a5a)}.t span{position:relative}"
+   },
+   {
+    "etiqueta": "Hub · Inicio (radio 18, sombra sm)",
+    "app": "hub",
+    "alto": 290,
+    "html": "<div class=\"g\"><div class=\"t hoy\"><div><div class=\"eb\">Hoy</div><div class=\"h\">6 llegadas · 4 salidas</div></div><div class=\"st\"><div><small>Limpiezas</small><b>9</b></div><div><small>Ocupación</small><b>82%</b></div></div></div><div class=\"t dark\"><span class=\"chip\">◷</span><div><b class=\"n\">3</b><div class=\"sub\">Necesita tu acción</div></div></div><div class=\"t soft\"><span class=\"chip c2\">✦</span><div><div class=\"hh\">Alma</div><div class=\"sub\">2 conversaciones</div></div></div></div>",
+    "css": ".g{display:grid;grid-template-columns:repeat(2,1fr);grid-auto-rows:118px;gap:12px;max-width:380px}.t{border-radius:18px;padding:15px;box-shadow:0 4px 16px rgba(62,63,63,.05);display:flex;flex-direction:column;justify-content:space-between;overflow:hidden}.hoy{grid-column:span 2;color:#FAFAFA;background:linear-gradient(to top,rgba(62,63,63,.78),rgba(62,63,63,.08) 70%),linear-gradient(135deg,#d9c7b3,#a88f78 60%,#7d6a5a)}.eb{font-size:10px;letter-spacing:.24em;text-transform:uppercase;opacity:.85}.h{font-family:var(--font-serif);font-size:22px;margin-top:4px}.st{display:flex;gap:18px}.st small{display:block;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;opacity:.7}.st b{font-family:var(--font-serif);font-weight:400;font-size:18px}.dark{background:#3E3F3F;color:#FAFAFA}.soft{background:var(--bg-alt);color:var(--fg)}.chip{width:32px;height:32px;border-radius:11px;display:grid;place-items:center;background:rgba(255,255,255,.16)}.chip.c2{background:var(--surface);color:var(--accent)}.n{font-family:var(--font-serif);font-weight:400;font-size:28px}.hh{font-family:var(--font-serif);font-size:18px}.sub{font-size:10.5px;letter-spacing:.01em;opacity:.8}"
+   },
+   {
+    "etiqueta": "Grow · Inicio (radio 20, mosaico peach con texto blanco)",
+    "app": "grow",
+    "alto": 290,
+    "html": "<div class=\"g\"><div class=\"t hoy\"><div><div class=\"eb\">Grow · hoy</div><div class=\"h\">4 proyectos activos</div></div><div class=\"st\"><div><small>Contratos</small><b>2</b></div><div><small>Facturas</small><b>Q 18 400</b></div></div></div><div class=\"t peach\"><span class=\"chip\">+</span><div><div class=\"hh\">Nuevo proyecto</div><div class=\"sub\">Visita o cotización</div></div></div><div class=\"t warn\"><span class=\"chip w\">!</span><div><b class=\"n\">2</b><div class=\"sub\">Necesita tu acción</div></div></div></div>",
+    "css": ".g{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-rows:118px;gap:12px;max-width:380px}.t{border-radius:20px;padding:15px;display:flex;flex-direction:column;justify-content:space-between;overflow:hidden}.hoy{grid-column:span 2;color:#FAFAFA;background:linear-gradient(to top,rgba(62,63,63,.78),rgba(62,63,63,.08) 64%),linear-gradient(135deg,#cdbba6,#9b8470 60%,#6f5f52)}.eb{font-size:10px;letter-spacing:.24em;text-transform:uppercase;opacity:.85}.h{font-family:var(--font-serif);font-size:22px;margin-top:4px}.st{display:flex;gap:14px}.st small{display:block;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;opacity:.72}.st b{font-family:var(--font-serif);font-weight:400;font-size:18px}.peach{background:var(--accent);color:#FFFFFF;box-shadow:0 6px 20px rgba(233,130,106,.28)}.warn{background:var(--color-attention-tint);color:var(--color-attention-text)}.chip{width:32px;height:32px;border-radius:11px;display:grid;place-items:center;background:rgba(255,255,255,.22);font-weight:600}.chip.w{background:var(--surface)}.n{font-family:var(--font-serif);font-weight:400;font-size:28px}.hh{font-family:var(--font-serif);font-size:18px}.sub{font-size:10.5px;letter-spacing:.01em}"
+   }
+  ]
+ }
+]
