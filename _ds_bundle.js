@@ -1,4 +1,4 @@
-/* @ds-bundle: {"format":4,"namespace":"SpacioAMDesignSystem_2c08fe","components":[{"name":"Brushstroke","sourcePath":"components/brand/Brushstroke.jsx"},{"name":"ICON_PATHS","sourcePath":"components/brand/Icon.jsx"},{"name":"Icon","sourcePath":"components/brand/Icon.jsx"},{"name":"Wordmark","sourcePath":"components/brand/Wordmark.jsx"},{"name":"Sparkle","sourcePath":"components/brand/Wordmark.jsx"},{"name":"Amount","sourcePath":"components/core/Amount.jsx"},{"name":"Button","sourcePath":"components/core/Button.jsx"},{"name":"Card","sourcePath":"components/core/Card.jsx"},{"name":"CardMedia","sourcePath":"components/core/Card.jsx"},{"name":"DOMAIN_CATEGORIES","sourcePath":"components/core/DomainBadge.jsx"},{"name":"DomainBadge","sourcePath":"components/core/DomainBadge.jsx"},{"name":"Eyebrow","sourcePath":"components/core/Eyebrow.jsx"},{"name":"SectionHead","sourcePath":"components/core/Eyebrow.jsx"},{"name":"Farol","sourcePath":"components/core/Farol.jsx"},{"name":"JobCard","sourcePath":"components/core/JobCard.jsx"},{"name":"PropertyCard","sourcePath":"components/core/PropertyCard.jsx"},{"name":"Calendar","sourcePath":"components/data/Calendar.jsx"},{"name":"Donut","sourcePath":"components/data/Donut.jsx"},{"name":"KpiCard","sourcePath":"components/data/KpiCard.jsx"},{"name":"Trend","sourcePath":"components/data/KpiCard.jsx"},{"name":"SERIES","sourcePath":"components/data/LineChart.jsx"},{"name":"LineChart","sourcePath":"components/data/LineChart.jsx"},{"name":"Gauge","sourcePath":"components/data/LineChart.jsx"},{"name":"BarChart","sourcePath":"components/data/LineChart.jsx"},{"name":"SummaryTable","sourcePath":"components/data/SummaryTable.jsx"},{"name":"EMAIL_HEX","sourcePath":"components/email/EmailLayout.jsx"},{"name":"EmailLayout","sourcePath":"components/email/EmailLayout.jsx"},{"name":"LoadingScreen","sourcePath":"components/feedback/LoadingScreen.jsx"},{"name":"Skeleton","sourcePath":"components/feedback/LoadingScreen.jsx"},{"name":"Modal","sourcePath":"components/feedback/Modal.jsx"},{"name":"Input","sourcePath":"components/forms/Input.jsx"},{"name":"Select","sourcePath":"components/forms/Select.jsx"},{"name":"Toggle","sourcePath":"components/forms/Toggle.jsx"},{"name":"Checkbox","sourcePath":"components/forms/Toggle.jsx"},{"name":"Bento","sourcePath":"components/navigation/Bento.jsx"},{"name":"BentoTile","sourcePath":"components/navigation/Bento.jsx"},{"name":"BottomNav","sourcePath":"components/navigation/BottomNav.jsx"},{"name":"Collapsible","sourcePath":"components/navigation/Collapsible.jsx"},{"name":"Segmented","sourcePath":"components/navigation/Segmented.jsx"},{"name":"TabNav","sourcePath":"components/navigation/TabNav.jsx"},{"name":"PillTabs","sourcePath":"components/navigation/TabNav.jsx"},{"name":"TopBar","sourcePath":"components/navigation/TopBar.jsx"},{"name":"PillNav","sourcePath":"components/navigation/TopBar.jsx"}],"sourceHashes":{"components/brand/Brushstroke.jsx":"3613db97fd08","components/brand/Icon.jsx":"486bdada2f4c","components/brand/Wordmark.jsx":"8774fa735912","components/core/Amount.jsx":"5064e9e9661b","components/core/Button.jsx":"2e6df3ed160d","components/core/Card.jsx":"634d09ba4f0b","components/core/DomainBadge.jsx":"41e08a668ef7","components/core/Eyebrow.jsx":"8645a86b8495","components/core/Farol.jsx":"956985602b3b","components/core/JobCard.jsx":"f8aa76a48dc8","components/core/PropertyCard.jsx":"f23f40d9436f","components/data/Calendar.jsx":"d148bc48f7c8","components/data/Donut.jsx":"91ca006504e8","components/data/KpiCard.jsx":"7a44fe7ac729","components/data/LineChart.jsx":"3e996109c6e1","components/data/SummaryTable.jsx":"c97908e11185","components/email/EmailLayout.jsx":"0f914e2cf456","components/feedback/LoadingScreen.jsx":"6733442c517b","components/feedback/Modal.jsx":"048f128723e2","components/forms/Input.jsx":"68f276abc314","components/forms/Select.jsx":"a525e465b3d8","components/forms/Toggle.jsx":"a1facaff703a","components/navigation/Bento.jsx":"f9a8f56127ff","components/navigation/BottomNav.jsx":"36d30cddf205","components/navigation/Collapsible.jsx":"25897c06acea","components/navigation/Segmented.jsx":"73999511d440","components/navigation/TabNav.jsx":"fee754abf91c","components/navigation/TopBar.jsx":"2cd13af7c947","ui_kits/epi-app/Adelantos.jsx":"0d77a2486fc8","ui_kits/epi-app/Agenda.jsx":"f4dc72d0ecbb","ui_kits/epi-app/Calidad.jsx":"b3d9309e75d3","ui_kits/epi-app/Dashboard.jsx":"8fc133964285","ui_kits/epi-app/EpiApp.jsx":"f9e768b14234","ui_kits/epi-app/Formulario.jsx":"2676a995feac","ui_kits/epi-app/JobDetail.jsx":"bc8785c5f77c","ui_kits/epi-app/data.js":"98cfdbec7148","ui_kits/guest-app/Checkin.jsx":"d584c0653403","ui_kits/guest-app/GuestApp.jsx":"47d160a09378","ui_kits/guest-app/Guide.jsx":"9c6fc8a20009","ui_kits/guest-app/Home.jsx":"8b74abe43a10","ui_kits/owner-dashboard/DashboardApp.jsx":"d55f6445ea09","ui_kits/owner-dashboard/Login.jsx":"47cb3d12ef86","ui_kits/owner-dashboard/Sections.jsx":"b1e041aa2c44","ui_kits/owner-dashboard/Summary.jsx":"de69884574e4","ui_kits/owner-dashboard/data.js":"3b20930d0ad1"},"inlinedExternals":[],"unexposedExports":[]} */
+/* @ds-bundle: {"format":4,"namespace":"SpacioAMDesignSystem_2c08fe","components":[{"name":"Brushstroke","sourcePath":"components/brand/Brushstroke.jsx"},{"name":"ICON_PATHS","sourcePath":"components/brand/Icon.jsx"},{"name":"Icon","sourcePath":"components/brand/Icon.jsx"},{"name":"Wordmark","sourcePath":"components/brand/Wordmark.jsx"},{"name":"Sparkle","sourcePath":"components/brand/Wordmark.jsx"},{"name":"Amount","sourcePath":"components/core/Amount.jsx"},{"name":"Button","sourcePath":"components/core/Button.jsx"},{"name":"Card","sourcePath":"components/core/Card.jsx"},{"name":"CardMedia","sourcePath":"components/core/Card.jsx"},{"name":"DOMAIN_CATEGORIES","sourcePath":"components/core/DomainBadge.jsx"},{"name":"DomainBadge","sourcePath":"components/core/DomainBadge.jsx"},{"name":"Eyebrow","sourcePath":"components/core/Eyebrow.jsx"},{"name":"SectionHead","sourcePath":"components/core/Eyebrow.jsx"},{"name":"Farol","sourcePath":"components/core/Farol.jsx"},{"name":"JobCard","sourcePath":"components/core/JobCard.jsx"},{"name":"PropertyCard","sourcePath":"components/core/PropertyCard.jsx"},{"name":"Calendar","sourcePath":"components/data/Calendar.jsx"},{"name":"Donut","sourcePath":"components/data/Donut.jsx"},{"name":"KpiCard","sourcePath":"components/data/KpiCard.jsx"},{"name":"Trend","sourcePath":"components/data/KpiCard.jsx"},{"name":"SERIES","sourcePath":"components/data/LineChart.jsx"},{"name":"LineChart","sourcePath":"components/data/LineChart.jsx"},{"name":"Gauge","sourcePath":"components/data/LineChart.jsx"},{"name":"BarChart","sourcePath":"components/data/LineChart.jsx"},{"name":"SummaryTable","sourcePath":"components/data/SummaryTable.jsx"},{"name":"EMAIL_HEX","sourcePath":"components/email/EmailLayout.jsx"},{"name":"EmailLayout","sourcePath":"components/email/EmailLayout.jsx"},{"name":"LoadingScreen","sourcePath":"components/feedback/LoadingScreen.jsx"},{"name":"Skeleton","sourcePath":"components/feedback/LoadingScreen.jsx"},{"name":"Modal","sourcePath":"components/feedback/Modal.jsx"},{"name":"Input","sourcePath":"components/forms/Input.jsx"},{"name":"Select","sourcePath":"components/forms/Select.jsx"},{"name":"Toggle","sourcePath":"components/forms/Toggle.jsx"},{"name":"Checkbox","sourcePath":"components/forms/Toggle.jsx"},{"name":"Bento","sourcePath":"components/navigation/Bento.jsx"},{"name":"BentoTile","sourcePath":"components/navigation/Bento.jsx"},{"name":"GlassTile","sourcePath":"components/navigation/Bento.jsx"},{"name":"BentoImage","sourcePath":"components/navigation/Bento.jsx"},{"name":"BentoTopic","sourcePath":"components/navigation/Bento.jsx"},{"name":"GifWindow","sourcePath":"components/navigation/Bento.jsx"},{"name":"bentoRepartir","sourcePath":"components/navigation/Bento.jsx"},{"name":"BentoVivo","sourcePath":"components/navigation/Bento.jsx"},{"name":"BottomNav","sourcePath":"components/navigation/BottomNav.jsx"},{"name":"Collapsible","sourcePath":"components/navigation/Collapsible.jsx"},{"name":"Segmented","sourcePath":"components/navigation/Segmented.jsx"},{"name":"TabNav","sourcePath":"components/navigation/TabNav.jsx"},{"name":"PillTabs","sourcePath":"components/navigation/TabNav.jsx"},{"name":"TopBar","sourcePath":"components/navigation/TopBar.jsx"},{"name":"PillNav","sourcePath":"components/navigation/TopBar.jsx"}],"sourceHashes":{"components/brand/Brushstroke.jsx":"3613db97fd08","components/brand/Icon.jsx":"486bdada2f4c","components/brand/Wordmark.jsx":"8774fa735912","components/core/Amount.jsx":"5064e9e9661b","components/core/Button.jsx":"2e6df3ed160d","components/core/Card.jsx":"634d09ba4f0b","components/core/DomainBadge.jsx":"41e08a668ef7","components/core/Eyebrow.jsx":"8645a86b8495","components/core/Farol.jsx":"956985602b3b","components/core/JobCard.jsx":"f8aa76a48dc8","components/core/PropertyCard.jsx":"f23f40d9436f","components/data/Calendar.jsx":"d148bc48f7c8","components/data/Donut.jsx":"91ca006504e8","components/data/KpiCard.jsx":"7a44fe7ac729","components/data/LineChart.jsx":"3e996109c6e1","components/data/SummaryTable.jsx":"c97908e11185","components/email/EmailLayout.jsx":"0f914e2cf456","components/feedback/LoadingScreen.jsx":"6733442c517b","components/feedback/Modal.jsx":"048f128723e2","components/forms/Input.jsx":"68f276abc314","components/forms/Select.jsx":"a525e465b3d8","components/forms/Toggle.jsx":"a1facaff703a","components/navigation/Bento.jsx":"4000ebf140f8","components/navigation/BottomNav.jsx":"36d30cddf205","components/navigation/Collapsible.jsx":"25897c06acea","components/navigation/Segmented.jsx":"73999511d440","components/navigation/TabNav.jsx":"fee754abf91c","components/navigation/TopBar.jsx":"2cd13af7c947","ui_kits/epi-app/Adelantos.jsx":"0d77a2486fc8","ui_kits/epi-app/Agenda.jsx":"f4dc72d0ecbb","ui_kits/epi-app/Calidad.jsx":"b3d9309e75d3","ui_kits/epi-app/Dashboard.jsx":"8fc133964285","ui_kits/epi-app/EpiApp.jsx":"f9e768b14234","ui_kits/epi-app/Formulario.jsx":"2676a995feac","ui_kits/epi-app/JobDetail.jsx":"bc8785c5f77c","ui_kits/epi-app/data.js":"98cfdbec7148","ui_kits/guest-app/Checkin.jsx":"d584c0653403","ui_kits/guest-app/GuestApp.jsx":"47d160a09378","ui_kits/guest-app/Guide.jsx":"9c6fc8a20009","ui_kits/guest-app/Home.jsx":"8b74abe43a10","ui_kits/owner-dashboard/DashboardApp.jsx":"d55f6445ea09","ui_kits/owner-dashboard/Login.jsx":"47cb3d12ef86","ui_kits/owner-dashboard/Sections.jsx":"b1e041aa2c44","ui_kits/owner-dashboard/Summary.jsx":"de69884574e4","ui_kits/owner-dashboard/data.js":"3b20930d0ad1"},"inlinedExternals":[],"unexposedExports":[]} */
 
 (() => {
 
@@ -2500,7 +2500,7 @@ Object.assign(__ds_scope, { Toggle, Checkbox });
 
 // components/navigation/Bento.jsx
 try { (() => {
-/* Bento de la Guest App: pantalla de inicio / lanzador y cara visual de marca.
+/* Bento de la Guest App: pantalla de inicio / lanzador y cara visual de marca (el bento vivo de Alma está más abajo).
    2 columnas en móvil → 4 desde --bp-md. NO es la navegación permanente. */
 function Bento({
   children,
@@ -2608,7 +2608,508 @@ function BentoTile({
     }
   }, icon, label));
 }
-Object.assign(__ds_scope, { Bento, BentoTile });
+
+/* ───────────────────────── Bento vivo · pantalla de inicio y de reposo de Alma ─────────────────────────
+   El modelo del Hub (alma/inicio.html + js/alma-bento.js, #810 y #895), para que toda app de Spacio AM lo arme igual:
+   · Siempre 1 imagen (la foto del tema; sin foto, la galería o la de la marca) y nunca un cuadro vacío: lo que falta no se
+     pinta y los demás crecen (cada tarjeta crece según su peso).
+   · La información va en vidrio líquido claro sobre el atardecer, sin oscurecerlo. El GIF nunca va en el bento: va en su
+     ventana de vidrio oscuro arriba de la roca (GifWindow).
+   · La roca no se mueve ni se achica: queda al centro y las tarjetas le dejan el hueco (subtítulos, «Chat», «Llamada»).
+   · Orden por prioridad (menor primero). Reposo: Necesita tu sí (1) · Tu agenda (1.2) · Familia (1.4) · Avisos (2) · Tus áreas (3).
+   · Reparto (repartir() del Hub): horizontal → derecha las 3 primeras, izquierda la imagen + 1, abajo del hueco 2.
+     vertical (iPad vertical) → lados angostos (mapa o galería + 1), abajo la imagen con 2 a su lado.
+     telefono → el Tablero bento: 6 columnas, la imagen arriba a lo ancho y las tarjetas debajo (en reposo, el
+     teléfono no lleva bento: el inicio de siempre). */
+
+/* Tarjeta de vidrio líquido: título chico (kicker), número o texto grande, renglones y una frase. */
+function GlassTile({
+  kicker,
+  value,
+  items,
+  more,
+  quote,
+  empty,
+  children,
+  onClick,
+  style
+}) {
+  const press = onClick ? {
+    role: "button",
+    tabIndex: 0,
+    onClick,
+    onKeyDown: e => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        onClick();
+      }
+    }
+  } : {};
+  const nada = !value && !(items && items.length) && !children && !quote;
+  return /*#__PURE__*/React.createElement("div", {
+    className: "sa-glass",
+    ...press,
+    style: {
+      padding: "16px 18px",
+      letterSpacing: "normal",
+      minWidth: 0,
+      minHeight: 0,
+      cursor: onClick ? "pointer" : "default",
+      ...style
+    }
+  }, kicker ? /*#__PURE__*/React.createElement("small", {
+    style: {
+      display: "block",
+      fontFamily: "var(--font-sans)",
+      fontSize: 9.5,
+      letterSpacing: ".14em",
+      textTransform: "uppercase",
+      color: "var(--fg-muted)",
+      whiteSpace: "nowrap",
+      overflow: "hidden",
+      textOverflow: "ellipsis"
+    }
+  }, kicker) : null, value != null && value !== "" ? /*#__PURE__*/React.createElement("b", {
+    style: {
+      display: "block",
+      marginTop: 4,
+      fontFamily: "var(--font-serif)",
+      fontWeight: 400,
+      fontSize: 30,
+      lineHeight: 1.05
+    }
+  }, value) : null, nada && empty ? /*#__PURE__*/React.createElement("b", {
+    style: {
+      display: "block",
+      marginTop: 6,
+      fontFamily: "var(--font-serif)",
+      fontWeight: 400,
+      fontSize: 22,
+      color: "var(--fg-muted)"
+    }
+  }, empty) : null, items && items.length ? /*#__PURE__*/React.createElement("ul", {
+    style: {
+      listStyle: "none",
+      margin: "8px 0 0",
+      padding: 0
+    }
+  }, items.slice(0, 4).map((x, i) => /*#__PURE__*/React.createElement("li", {
+    key: i,
+    style: {
+      display: "flex",
+      gap: 8,
+      alignItems: "baseline",
+      padding: "6px 0",
+      borderBottom: i < Math.min(items.length, 4) - 1 ? "1px solid var(--color-ink-08)" : "none",
+      fontSize: 13
+    }
+  }, x.b ? /*#__PURE__*/React.createElement("b", {
+    style: {
+      flex: "none",
+      fontWeight: 600
+    }
+  }, x.b) : null, /*#__PURE__*/React.createElement("span", {
+    style: {
+      minWidth: 0,
+      overflow: "hidden",
+      textOverflow: "ellipsis",
+      whiteSpace: "nowrap",
+      color: "var(--fg)"
+    }
+  }, x.t))), items.length > 4 || more ? /*#__PURE__*/React.createElement("li", {
+    style: {
+      paddingTop: 6,
+      fontSize: 12,
+      color: "var(--fg-muted)"
+    }
+  }, more || "y " + (items.length - 4) + " más") : null) : null, quote ? /*#__PURE__*/React.createElement("q", {
+    style: {
+      display: "block",
+      marginTop: 8,
+      quotes: "none",
+      fontSize: 13,
+      lineHeight: 1.45,
+      fontStyle: "italic",
+      color: "var(--fg-muted)"
+    }
+  }, quote) : null, children);
+}
+
+/* La imagen del bento: foto con su título en Valky sobre un degradado de protección. Sin foto, la de la marca. */
+function BentoImage({
+  src,
+  title,
+  sub,
+  avatar,
+  style
+}) {
+  return /*#__PURE__*/React.createElement("div", {
+    className: "sa-glass sa-glass--media",
+    style: {
+      minWidth: 0,
+      minHeight: 0,
+      ...style
+    }
+  }, src ? /*#__PURE__*/React.createElement("img", {
+    src: src,
+    alt: "",
+    "aria-hidden": "true",
+    style: {
+      position: "absolute",
+      inset: 0,
+      width: "100%",
+      height: "100%",
+      objectFit: "cover"
+    }
+  }) : null, avatar ? /*#__PURE__*/React.createElement("img", {
+    src: avatar,
+    alt: "",
+    "aria-hidden": "true",
+    style: {
+      position: "absolute",
+      left: 18,
+      bottom: 18,
+      zIndex: 2,
+      width: 64,
+      height: 64,
+      borderRadius: "50%",
+      objectFit: "cover",
+      boxShadow: "0 0 0 3px rgba(255,253,251,.9)"
+    }
+  }) : null, title || sub ? /*#__PURE__*/React.createElement("div", {
+    style: {
+      position: "absolute",
+      left: 0,
+      right: 0,
+      bottom: 0,
+      zIndex: 1,
+      letterSpacing: "normal",
+      padding: avatar ? "44px 18px 18px 96px" : "44px 18px 18px",
+      color: "#FFFDFB",
+      background: "linear-gradient(to top, rgba(30,22,20,.72), rgba(30,22,20,0))"
+    }
+  }, title ? /*#__PURE__*/React.createElement("b", {
+    style: {
+      display: "block",
+      fontFamily: "var(--font-serif)",
+      fontWeight: 400,
+      fontSize: 30,
+      lineHeight: 1.05,
+      textWrap: "balance"
+    }
+  }, title) : null, sub ? /*#__PURE__*/React.createElement("small", {
+    style: {
+      display: "block",
+      marginTop: 4,
+      fontSize: 13,
+      opacity: .92,
+      whiteSpace: "nowrap",
+      overflow: "hidden",
+      textOverflow: "ellipsis"
+    }
+  }, sub) : null) : null);
+}
+
+/* La píldora del tema, arriba en el hueco: «● Huésped · Valeria Ríos». Solo cuando Alma habla de algo. */
+function BentoTopic({
+  children,
+  style
+}) {
+  return /*#__PURE__*/React.createElement("div", {
+    className: "sa-glass",
+    style: {
+      display: "inline-flex",
+      alignItems: "center",
+      gap: 8,
+      maxWidth: 420,
+      padding: "9px 16px",
+      borderRadius: "var(--r-pill)",
+      fontFamily: "var(--font-sans)",
+      fontSize: 13,
+      fontWeight: 600,
+      letterSpacing: "normal",
+      whiteSpace: "nowrap",
+      ...style
+    }
+  }, /*#__PURE__*/React.createElement("i", {
+    style: {
+      flex: "none",
+      width: 7,
+      height: 7,
+      borderRadius: "50%",
+      background: "var(--color-peach)"
+    }
+  }), /*#__PURE__*/React.createElement("span", {
+    style: {
+      overflow: "hidden",
+      textOverflow: "ellipsis"
+    }
+  }, children));
+}
+
+/* La ventana del GIF: vidrio gris oscuro arriba de la roca. Asoma de vez en cuando y se va; nunca un emoji. */
+function GifWindow({
+  src,
+  alt = "GIF",
+  credit = "GIPHY",
+  width = 300,
+  height = 200,
+  style
+}) {
+  return /*#__PURE__*/React.createElement("div", {
+    className: "sa-glass-dark",
+    role: "img",
+    "aria-label": alt,
+    style: {
+      width,
+      height,
+      ...style
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      position: "relative",
+      zIndex: 1,
+      width: "100%",
+      height: "100%",
+      borderRadius: 18,
+      overflow: "hidden",
+      background: "rgba(0,0,0,.28)",
+      boxShadow: "0 0 0 1px rgba(255,255,255,.08)"
+    }
+  }, src ? /*#__PURE__*/React.createElement("img", {
+    src: src,
+    alt: "",
+    style: {
+      position: "absolute",
+      inset: 0,
+      width: "100%",
+      height: "100%",
+      objectFit: "cover"
+    }
+  }) : null), credit ? /*#__PURE__*/React.createElement("small", {
+    style: {
+      position: "absolute",
+      right: 14,
+      bottom: 11,
+      zIndex: 2,
+      fontFamily: "var(--font-sans)",
+      fontSize: 8.5,
+      fontWeight: 600,
+      letterSpacing: ".06em",
+      color: "rgba(255,255,255,.82)",
+      textShadow: "0 1px 2px rgba(0,0,0,.55)"
+    }
+  }, credit) : null);
+}
+
+/* Ordena por prioridad y reparte como el Hub. info: [{ p, peso, tipo, el }] */
+function bentoRepartir(info, layout = "horizontal") {
+  const q = info.filter(Boolean).slice().sort((a, b) => (a.p ?? 9) - (b.p ?? 9));
+  if (layout === "vertical") {
+    const k = q.findIndex(x => x.tipo === "galeria" || x.tipo === "mapa");
+    const L = k >= 0 ? q.splice(k, 1) : [];
+    return {
+      L,
+      B: q.splice(0, 2),
+      R: q.splice(0, 1)
+    };
+  }
+  if (layout === "telefono") return {
+    L: [],
+    B: q,
+    R: []
+  };
+  return {
+    R: q.splice(0, 3),
+    L: q.splice(0, 1),
+    B: q.splice(0, 2)
+  };
+}
+
+/* El bento vivo completo. image: { src, title, sub, avatar } · info: [{ p, peso, tipo, el }] · topic: texto de la píldora
+   (vacío en reposo) · center: lo que va en el hueco (la roca, sus subtítulos y botones) · gif: { src } para la ventana. */
+function BentoVivo({
+  image,
+  info = [],
+  topic,
+  center,
+  gif,
+  layout = "horizontal",
+  background,
+  height,
+  style
+}) {
+  const rep = bentoRepartir(info, layout);
+  const gap = "var(--bento-gap)";
+  const img = /*#__PURE__*/React.createElement(BentoImage, {
+    key: "img",
+    ...(image || {}),
+    style: {
+      flex: "3 1 0"
+    }
+  });
+  const cell = (x, i, extra) => /*#__PURE__*/React.createElement("div", {
+    key: i,
+    className: "sa-bento-in",
+    style: {
+      display: "flex",
+      flex: (x.peso || 2) + " 1 0",
+      minHeight: 0,
+      minWidth: 0,
+      "--i": i,
+      ...extra
+    }
+  }, /*#__PURE__*/React.cloneElement(x.el, {
+    style: {
+      flex: 1,
+      ...(x.el.props.style || {})
+    }
+  }));
+  const col = (kids, extra) => /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: "flex",
+      flexDirection: "column",
+      gap,
+      minHeight: 0,
+      minWidth: 0,
+      ...extra
+    }
+  }, kids);
+  const hole = /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center",
+      gap: 14,
+      padding: "6px 0",
+      minHeight: 0
+    }
+  }, topic ? /*#__PURE__*/React.createElement(BentoTopic, null, topic) : /*#__PURE__*/React.createElement("div", {
+    style: {
+      height: 37
+    }
+  }), gif ? /*#__PURE__*/React.createElement(GifWindow, {
+    src: gif.src,
+    alt: gif.alt,
+    width: 240,
+    height: 150
+  }) : null, center);
+  const frame = {
+    position: "relative",
+    boxSizing: "border-box",
+    overflow: "hidden",
+    background: background ? `center/cover no-repeat url(${background})` : "var(--sunset)",
+    borderRadius: "var(--r-xl)",
+    height,
+    ...style
+  };
+  if (layout === "telefono") {
+    return /*#__PURE__*/React.createElement("div", {
+      style: {
+        ...frame,
+        padding: 16,
+        display: "flex",
+        flexDirection: "column",
+        gap: 12
+      }
+    }, topic ? /*#__PURE__*/React.createElement("div", {
+      style: {
+        textAlign: "center"
+      }
+    }, /*#__PURE__*/React.createElement(BentoTopic, null, topic)) : null, /*#__PURE__*/React.createElement("div", {
+      style: {
+        display: "grid",
+        gridTemplateColumns: "repeat(6, minmax(0,1fr))",
+        gridAutoRows: "minmax(84px, auto)",
+        gap: 12,
+        flex: 1
+      }
+    }, /*#__PURE__*/React.createElement(BentoImage, {
+      ...(image || {}),
+      style: {
+        gridColumn: "span 6",
+        gridRow: "span 2",
+        borderRadius: "var(--r-bento-phone)"
+      }
+    }), rep.B.map((x, i) => /*#__PURE__*/React.createElement("div", {
+      key: i,
+      style: {
+        display: "flex",
+        gridColumn: "span " + ((x.peso || 2) >= 4 ? 6 : 3),
+        minWidth: 0
+      }
+    }, /*#__PURE__*/React.cloneElement(x.el, {
+      style: {
+        flex: 1,
+        borderRadius: "var(--r-bento-phone)",
+        ...(x.el.props.style || {})
+      }
+    })))), center);
+  }
+  if (layout === "vertical") {
+    return /*#__PURE__*/React.createElement("div", {
+      style: {
+        ...frame,
+        padding: "20px var(--bento-rail)",
+        display: "grid",
+        gridTemplateRows: "minmax(0,1.1fr) minmax(0,1fr)",
+        gap
+      }
+    }, /*#__PURE__*/React.createElement("div", {
+      style: {
+        display: "grid",
+        gridTemplateColumns: "minmax(120px,1fr) minmax(var(--bento-hole),auto) minmax(120px,1fr)",
+        gap,
+        minHeight: 0
+      }
+    }, col(rep.L.map((x, i) => cell(x, i))), hole, col(rep.R.map((x, i) => cell(x, i + 1)))), /*#__PURE__*/React.createElement("div", {
+      style: {
+        display: "grid",
+        gridTemplateColumns: "1fr 1fr",
+        gridAutoRows: "1fr",
+        gap,
+        minHeight: 0
+      }
+    }, /*#__PURE__*/React.createElement("div", {
+      style: {
+        display: "flex",
+        gridRow: "span 2",
+        minHeight: 0
+      }
+    }, img), rep.B.map((x, i) => cell(x, i + 2))));
+  }
+  return /*#__PURE__*/React.createElement("div", {
+    style: {
+      ...frame,
+      padding: "20px var(--bento-rail)",
+      display: "grid",
+      gridTemplateColumns: "minmax(200px,1fr) minmax(var(--bento-hole),1.1fr) minmax(200px,1fr)",
+      gap
+    }
+  }, col([img].concat(rep.L.map((x, i) => cell(x, i + 3)))), /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: "flex",
+      flexDirection: "column",
+      gap,
+      minHeight: 0
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      flex: "1.4 1 0",
+      minHeight: 0
+    }
+  }, hole), rep.B.length ? /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: "flex",
+      gap,
+      flex: "1 1 0",
+      minHeight: 110
+    }
+  }, rep.B.map((x, i) => cell(x, i + 4, {
+    flex: "1 1 0"
+  }))) : null), col(rep.R.map((x, i) => cell(x, i))));
+}
+Object.assign(__ds_scope, { Bento, BentoTile, GlassTile, BentoImage, BentoTopic, GifWindow, bentoRepartir, BentoVivo });
 })(); } catch (e) { __ds_ns.__errors.push({ path: "components/navigation/Bento.jsx", error: String((e && e.message) || e) }); }
 
 // components/navigation/BottomNav.jsx
@@ -6038,6 +6539,18 @@ __ds_ns.Checkbox = __ds_scope.Checkbox;
 __ds_ns.Bento = __ds_scope.Bento;
 
 __ds_ns.BentoTile = __ds_scope.BentoTile;
+
+__ds_ns.GlassTile = __ds_scope.GlassTile;
+
+__ds_ns.BentoImage = __ds_scope.BentoImage;
+
+__ds_ns.BentoTopic = __ds_scope.BentoTopic;
+
+__ds_ns.GifWindow = __ds_scope.GifWindow;
+
+__ds_ns.bentoRepartir = __ds_scope.bentoRepartir;
+
+__ds_ns.BentoVivo = __ds_scope.BentoVivo;
 
 __ds_ns.BottomNav = __ds_scope.BottomNav;
 
