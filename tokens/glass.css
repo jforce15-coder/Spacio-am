@@ -1,0 +1,45 @@
+/* VIDRIO LÍQUIDO + BENTO VIVO — el material y las medidas del bento de la pantalla de inicio y de reposo de Alma
+   (Hub, alma/inicio.html + js/alma-bento.js, #810 y #895; Juan, 19-nov-2026: «muy estilo Apple, liquid glass, el frosted
+   de Apple»). Vidrio claro para las tarjetas de información; vidrio gris oscuro solo para la ventana del GIF.
+   El blanco del vidrio claro queda en 82–90 % para que el texto ink siga pasando AA sobre cualquier atardecer. */
+:root{
+  /* vidrio claro: tarjetas del bento y píldora del tema */
+  --glass-bg:linear-gradient(150deg,rgba(255,255,255,.9) 0%,rgba(255,253,251,.82) 46%,rgba(255,251,248,.86) 100%); /* @kind other */
+  --glass-bg-solid:rgba(255,253,251,.95); /* sin backdrop-filter o con transparencia reducida */
+  --glass-blur:blur(30px) saturate(185%); /* @kind other */
+  --glass-edge:inset 0 1px 0 rgba(255,255,255,.95),inset 1px 0 0 rgba(255,255,255,.5),inset 0 -1px 0 rgba(255,255,255,.3),inset 0 0 0 1px rgba(255,255,255,.42); /* @kind shadow */
+  --glass-shadow:0 22px 46px -30px rgba(40,30,25,.55); /* @kind shadow */
+  --glass-sheen:radial-gradient(120% 60% at 0% 0%,rgba(255,255,255,.34),rgba(255,255,255,0) 58%); /* @kind other */
+  /* vidrio oscuro: solo la ventana del GIF */
+  --glass-dark-bg:rgba(28,28,32,.44);
+  --glass-dark-bg-solid:rgba(38,38,42,.86);
+  --glass-dark-blur:blur(22px) saturate(170%) brightness(.92); /* @kind other */
+  --glass-dark-edge:inset 0 1px 0 rgba(255,255,255,.28),inset 0 -1px 0 rgba(0,0,0,.22); /* @kind shadow */
+  --glass-dark-shadow:0 22px 44px -24px rgba(20,14,16,.65); /* @kind shadow */
+  /* el atardecer de Alma: el fondo sobre el que vive el bento (sin foto) */
+  --sunset:linear-gradient(165deg,#F6C9A8 0%,#EFA58A 28%,#C98A8E 56%,#7E6478 82%,#4E4256 100%); /* @kind other */
+  /* bento vivo: medidas */
+  --r-bento:22px; /* @kind radius */
+  --r-bento-phone:20px; /* @kind radius */
+  --bento-gap:16px; /* @kind spacing */
+  --bento-rail:112px; /* @kind spacing */ /* libre en cada borde: los rieles laterales */
+  --bento-hole:460px; /* @kind spacing */ /* ancho mínimo del hueco de la roca */
+}
+.sa-glass{position:relative;overflow:hidden;box-sizing:border-box;border-radius:var(--r-bento);background:var(--glass-bg);
+  -webkit-backdrop-filter:var(--glass-blur);backdrop-filter:var(--glass-blur);box-shadow:var(--glass-edge),var(--glass-shadow);color:var(--fg)}
+.sa-glass::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;background:var(--glass-sheen);mix-blend-mode:soft-light}
+.sa-glass--media{background:var(--bg-alt);-webkit-backdrop-filter:none;backdrop-filter:none}
+.sa-glass--media::after{background:linear-gradient(150deg,rgba(255,255,255,.18),rgba(255,255,255,0) 40%);mix-blend-mode:normal}
+.sa-glass-dark{position:relative;box-sizing:border-box;border-radius:24px;padding:6px;background:var(--glass-dark-bg);
+  -webkit-backdrop-filter:var(--glass-dark-blur);backdrop-filter:var(--glass-dark-blur);border:1px solid rgba(255,255,255,.14);
+  box-shadow:var(--glass-dark-edge),var(--glass-dark-shadow)}
+.sa-glass-dark::before{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;
+  background:linear-gradient(150deg,rgba(255,255,255,.26),rgba(255,255,255,.04) 34%,rgba(255,255,255,0) 62%,rgba(255,255,255,.1))}
+@supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){
+  .sa-glass:not(.sa-glass--media){background:var(--glass-bg-solid)} .sa-glass-dark{background:var(--glass-dark-bg-solid)}}
+@media (prefers-reduced-transparency:reduce){
+  .sa-glass:not(.sa-glass--media){background:var(--glass-bg-solid);-webkit-backdrop-filter:none;backdrop-filter:none}
+  .sa-glass-dark{background:var(--glass-dark-bg-solid);-webkit-backdrop-filter:none;backdrop-filter:none}}
+/* entrada: desde la roca, en orden por distancia (--i); fade + 18 px + desenfoque; con movimiento reducido, solo fade */
+@keyframes sa-bento-in{from{opacity:0;transform:translateX(var(--dx,0)) scale(.94);filter:blur(6px)}to{opacity:1;transform:none;filter:none}}
+.sa-bento-in{animation:sa-bento-in .55s var(--ease) both;animation-delay:calc(var(--i,0) * 60ms)}

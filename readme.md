@@ -224,7 +224,7 @@ selector global. Fechas en español corto (`14 ago 2026`).
 | `SKILL.md` | Envoltura de Agent Skill para usar este sistema desde Claude Code. |
 | `github.md` | Asociación con los repos fuente y registro de sincronización. |
 | `thumbnail.html` | Tile de marca del sistema. |
-| `tokens/` | `fonts` · `colors` · `typography` · `spacing` · `radius-shadow` · `motion` · `domain` · `base` |
+| `tokens/` | `fonts` · `colors` · `typography` · `spacing` · `radius-shadow` · `motion` · `domain` · `glass` (vidrio líquido y bento vivo) · `base` |
 | `fonts/` | Valky Light / Regular / Semibold / Bold (OTF, self-hosted). |
 | `assets/` | Logos (SVG/JPEG/PNG), `brushstroke.svg`, `star.svg`, `glyphs/`, `photos/`, `brand/`, fotografía lifestyle y merch. |
 | `guidelines/` | 21 tarjetas specimen de fundamentos (Colors, Type, Spacing, Brand). |
@@ -236,7 +236,7 @@ Agrupados por concern. Cada carpeta trae `<Name>.jsx`, `<Name>.d.ts`, `<Name>.pr
 **`components/core/`** — `Button`, `Card`, `CardMedia`, `PropertyCard`, `JobCard`, `Farol`, `DomainBadge` (+`DOMAIN_CATEGORIES`), `Amount`, `Eyebrow`, `SectionHead`
 **`components/forms/`** — `Input`, `Select`, `Toggle`, `Checkbox`
 **`components/feedback/`** — `Modal`, `LoadingScreen`, `Skeleton`
-**`components/navigation/`** — `TopBar`, `PillNav`, `TabNav`, `PillTabs`, `BottomNav`, `Segmented`, `Collapsible`, `Bento`, `BentoTile`
+**`components/navigation/`** — `TopBar`, `PillNav`, `TabNav`, `PillTabs`, `BottomNav`, `Segmented`, `Collapsible`, `Bento`, `BentoTile` y el **bento vivo** (`BentoVivo`, `GlassTile`, `BentoImage`, `BentoTopic`, `GifWindow`, `bentoRepartir`)
 **`components/data/`** — `KpiCard`, `Trend`, `SummaryTable`, `LineChart`, `Gauge`, `BarChart`, `Donut`, `Calendar`
 **`components/email/`** — `EmailLayout` (+`EMAIL_HEX`)
 
@@ -265,6 +265,18 @@ del catálogo), `Skeleton` (el estado `loading` que el inventario exige en casi 
 | Carpeta | Template |
 |---|---|
 | \`templates/owner-report/\` | **Reporte de propietario** — página editorial de cierre de mes (hero con brushstroke, KPIs, gráfica, tabla-resumen). Punto de partida para proyectos que consumen este sistema; edita la línea \`base\` de \`ds-base.js\` y funciona en cualquier carpeta. |
+
+### Bento vivo · pantalla de inicio y de reposo
+El modelo y el diseño del inicio de Alma en el Hub (`alma/inicio.html`, `js/alma-bento.js`; #810 y #895, noviembre 2026),
+integrado aquí para que cualquier app de Spacio AM arme su inicio o su reposo igual. Detalle y ejemplo en
+`components/navigation/Bento.prompt.md`; muestra en `components/navigation/bento-vivo.card.html`.
+- **Modelo:** siempre 1 imagen y nunca un cuadro vacío · la roca al centro, sin moverse; las tarjetas le dejan el hueco ·
+  orden por prioridad (reposo: Necesita tu sí, Tu agenda, Familia, Avisos, Tus áreas) · reparto por pantalla (computadora,
+  iPad vertical, teléfono = Tablero bento) · el GIF en su ventana, de vez en cuando, nunca dentro del bento.
+- **Diseño:** vidrio líquido claro para la información (`.sa-glass`), vidrio oscuro solo para la ventana del GIF
+  (`.sa-glass-dark`), sobre el atardecer (`--sunset`) o una foto. Tokens en `tokens/glass.css` (`--glass-*`, `--r-bento`,
+  `--bento-gap`, `--bento-rail`, `--bento-hole`), con respaldo sólido sin `backdrop-filter` o con transparencia reducida.
+- El `Bento` de la Guest App sigue siendo el **lanzador** (tiles con foto o color); el bento vivo es para lo que pasa hoy.
 
 ### Patrones de layout
 Los 8 patrones ganadores viven en la documentación de origen y se aplican en los UI kits:
