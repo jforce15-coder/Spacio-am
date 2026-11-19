@@ -236,7 +236,7 @@ Agrupados por concern. Cada carpeta trae `<Name>.jsx`, `<Name>.d.ts`, `<Name>.pr
 **`components/core/`** — `Button`, `Card`, `CardMedia`, `PropertyCard`, `JobCard`, `Farol`, `DomainBadge` (+`DOMAIN_CATEGORIES`), `Amount`, `Eyebrow`, `SectionHead`
 **`components/forms/`** — `Input`, `Select`, `Toggle`, `Checkbox`
 **`components/feedback/`** — `Modal`, `LoadingScreen`, `Skeleton`
-**`components/navigation/`** — `TopBar`, `PillNav`, `TabNav`, `PillTabs`, `BottomNav`, `Segmented`, `Collapsible`, `Bento`, `BentoTile`
+**`components/navigation/`** — `TopBar`, `PillNav`, `TabNav`, `PillTabs`, `BottomNav`, `Segmented`, `Collapsible`, `Bento`, `BentoTile` y el patrón **Bento vivo: inicio y reposo** (`bento-vivo.card.html`, tokens `--glass-*`: vidrio líquido sobre el atardecer; reglas en `Bento.prompt.md`)
 **`components/data/`** — `KpiCard`, `Trend`, `SummaryTable`, `LineChart`, `Gauge`, `BarChart`, `Donut`, `Calendar`
 **`components/email/`** — `EmailLayout` (+`EMAIL_HEX`)
 

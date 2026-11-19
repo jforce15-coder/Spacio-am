@@ -8,4 +8,15 @@
   --shadow-md:0 12px 40px rgba(62,63,63,0.07);
   --shadow-lg:0 28px 80px rgba(62,63,63,0.10);
   --icon-stroke:1.5; /* @kind other */ --icon-sm:20px; --icon-md:24px;
+  /* VIDRIO LÍQUIDO (Juan, 19-nov-2026: «muy estilo Apple… el frosted de Apple»): las tarjetas del bento vivo y del bento
+     de inicio y reposo. Vidrio claro esmerilado sobre el atardecer: el fondo pasa borroso y con más color, con un filo de
+     luz arriba y un borde fino. El blanco queda en 82–90 % para que el texto ink siga en AA. Sin backdrop-filter, usa
+     --glass-solid. Las fotos y el mapa no llevan vidrio. */
+  --glass-bg:linear-gradient(150deg,rgba(255,255,255,.9) 0%,rgba(255,253,251,.82) 46%,rgba(255,251,248,.86) 100%); /* @kind other */
+  --glass-solid:rgba(255,253,251,.95);
+  --glass-filter:blur(30px) saturate(185%); /* @kind other */
+  --glass-edge:inset 0 1px 0 rgba(255,255,255,.95),inset 1px 0 0 rgba(255,255,255,.5),inset 0 -1px 0 rgba(255,255,255,.3),inset 0 0 0 1px rgba(255,255,255,.42),0 22px 46px -30px rgba(40,30,25,.55);
+  --glass-shine:radial-gradient(120% 60% at 0% 0%,rgba(255,255,255,.34),rgba(255,255,255,0) 58%); /* @kind other */
+  --glass-dark:rgba(28,28,32,.44); /* la ventana del GIF: vidrio gris oscuro */
+  --r-bento:22px; --r-bento-band:26px;
 }

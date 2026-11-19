@@ -1,0 +1,51 @@
+<!-- @dsCard group="Components" viewport="700x690" name="Navigation · Bento vivo: inicio y reposo" subtitle="Vidrio líquido sobre el atardecer: el inicio, el reposo y el tema" -->
+<!doctype html><html lang="es"><head><meta charset="utf-8"><title>Bento vivo</title>
+<link rel="stylesheet" href="../../styles.css">
+<style>
+html,body{margin:0;background:var(--bg)}
+.wrap{width:700px;box-sizing:border-box;padding:22px 26px 26px;display:flex;flex-direction:column;gap:14px;font-family:var(--font-sans);color:var(--fg)}
+.lbl{font-size:9.5px;letter-spacing:var(--tr-eyebrow);text-transform:uppercase;color:var(--fg-muted)}
+.nota{font-size:10.5px;letter-spacing:.01em;line-height:1.55;color:var(--fg-muted)}
+/* La banda: el atardecer y la cuadrícula (2 columnas en el teléfono, 4 desde --bp-md) */
+.banda{border-radius:var(--r-bento-band);padding:12px;background:#B9ABAE url(../../assets/bento/atardecer-difuso.jpg) center/cover no-repeat;box-shadow:0 18px 50px -30px rgba(40,30,25,.55)}
+.g{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));grid-auto-rows:minmax(92px,auto);gap:10px;grid-auto-flow:dense}
+.t{position:relative;grid-column:span 2;min-width:0;overflow:hidden;border-radius:var(--r-bento);padding:11px 13px;background:var(--glass-bg);-webkit-backdrop-filter:var(--glass-filter);backdrop-filter:var(--glass-filter);box-shadow:var(--glass-edge)}
+.t::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;background:var(--glass-shine);mix-blend-mode:soft-light}
+@supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){.t{background:var(--glass-solid)}}
+.t.ancha{grid-column:1 / -1}
+.foto{padding:0;grid-row:span 2;background:#B9A493}
+.foto img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.pie{position:absolute;left:0;right:0;bottom:0;padding:30px 13px 11px;color:#FFFDFB;background:linear-gradient(to top,rgba(30,22,20,.72),rgba(30,22,20,0))}
+.pie b{display:block;font:400 19px/1.05 var(--font-serif)}.pie small{font-size:10px;opacity:.92}
+.k{font-size:8.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--fg-muted)}
+.v{display:block;margin-top:2px;font:400 21px/1.05 var(--font-serif)}
+ul{list-style:none;margin:6px 0 0;padding:0;display:flex;flex-direction:column;gap:5px}
+li{display:flex;gap:6px;align-items:center;font-size:10.5px;white-space:nowrap;overflow:hidden}
+li b{font-size:8px;font-weight:600;padding:2px 6px;border-radius:999px;background:#ECEAE7}
+.dos{display:grid;grid-template-columns:1.35fr 1fr;gap:14px;align-items:start}
+.rep{position:relative;border-radius:18px;overflow:hidden;aspect-ratio:4/3;padding:14px;box-sizing:border-box;display:flex;flex-direction:column;gap:8px;background:linear-gradient(180deg,rgba(34,26,28,.34),rgba(34,26,28,0) 42%),#B9ABAE url(../../assets/bento/atardecer-difuso.jpg) center/cover}
+.rep .hora{font:300 38px/.95 var(--font-serif);color:#FFFDFB}.rep .fecha{font-size:7.5px;letter-spacing:.24em;text-transform:uppercase;color:#FFFDFB}
+.rep .g{flex:1;gap:6px;grid-auto-rows:1fr}.rep .t{border-radius:12px;padding:6px 8px}.rep .t .k{font-size:6px}
+.rep .volver{align-self:center;font-size:7px;color:#FFFDFB;background:rgba(34,26,28,.42);padding:3px 8px;border-radius:999px}
+</style></head><body class="spacio"><div class="wrap">
+<div class="lbl">Inicio · la banda debajo del saludo</div>
+<div class="banda"><div class="g">
+  <div class="t foto"><img src="../../assets/bento/hoy.jpg" alt=""><div class="pie"><b>Jueves 19 de noviembre</b><small>Spacio AM · hoy</small></div></div>
+  <div class="t"><span class="k">Necesita tu sí</span><b class="v">3</b><ul><li><b>Finanzas</b>Aprobar reembolso parcial</li><li><b>Propósito</b>Responder a un socio</li></ul></div>
+  <div class="t"><span class="k">Tu agenda</span><b class="v">2</b><ul><li><b>Hoy 15:00</b>Reunión con el banco</li><li><b>Mañana 9:00</b>Dentista</li></ul></div>
+  <div class="t"><span class="k">Familia · hoy</span><ul><li><b>Lleva</b>Papá</li><li><b>Tarde</b>Natación</li></ul></div>
+  <div class="t"><span class="k">Avisos</span><b class="v">2</b><ul><li>Nueva reserva</li></ul></div>
+</div></div>
+<div class="dos">
+  <div class="nota"><b>Reglas</b><br>
+  · Siempre 1 imagen (la foto del tema o la de hoy con la fecha); nunca un cuadro vacío. Lo que no llega no se pinta y lo demás crece.<br>
+  · Tarjetas de vidrio líquido (<code>--glass-*</code>, radio <code>--r-bento</code>) sobre el atardecer, sin oscurecerlo. Texto ink al 82–90 % de blanco: AA.<br>
+  · Reposo: Necesita tu sí, Tu agenda, Familia, Avisos y Tus áreas. Donde caben menos (teléfono), las 3 primeras.<br>
+  · Tema: cuando Alma habla de algo, las tarjetas cambian a ese tema (bento vivo).<br>
+  · Pantalla de reposo: solo en pantalla ancha, tras 3 min sin uso; hora en Valky Light y las mismas tarjetas. Cualquier toque la quita y ese toque no abre nada.<br>
+  · Movimiento: entra con <code>--ease</code>; con «reducir movimiento», solo aparece.</div>
+  <div><div class="lbl" style="margin-bottom:8px">Pantalla de reposo</div><div class="rep"><span class="hora">15:20</span><span class="fecha">Jueves 19 de noviembre</span>
+    <div class="g"><div class="t foto"><img src="../../assets/bento/hoy.jpg" alt=""></div><div class="t"><span class="k">Necesita tu sí</span></div><div class="t"><span class="k">Tu agenda</span></div><div class="t ancha"><span class="k">Familia · hoy</span></div></div>
+    <span class="volver">Toca para volver</span></div></div>
+</div>
+</div></body></html>
