@@ -1,0 +1,412 @@
+{
+ "fecha": "2026-11-19",
+ "nuevas": [
+  {
+   "id": "P-2026-11-19-02",
+   "titulo": "Peach usado como color de texto: 85 usos en 5 apps, y el propio design system lo permite con .accent",
+   "tipo": "token",
+   "origen": "grow",
+   "apps_con_el_cambio": [
+    "grow",
+    "mi",
+    "hub",
+    "epi",
+    "docs"
+   ],
+   "apps_afectadas": [
+    "grow",
+    "mi",
+    "hub",
+    "epi",
+    "docs",
+    "hola"
+   ],
+   "estado_en_ds": "distinto",
+   "impacto": "alto",
+   "recomendacion": "revertir",
+   "motivo": "colors.css dice que el peach es «acento gráfico · nunca texto» (2.56:1), y para texto pequeño ya existe --attention-text #B54D36 (4.93:1). Aun así hay 85 textos en peach: etiquetas de 8.5 a 12 px, enlaces, descuentos del comprobante de pago de Epi y el aviso «faltan 2 días» del calendario contable de Mi (nuevo, 18 nov). La causa está en el DS: tokens/base.css trae la clase .accent{color:var(--accent)}. Propongo quitar .accent (o que use --attention-text) y cambiar esos textos a --attention-text; el peach queda para puntos, líneas e íconos grandes.",
+   "evidencia": [
+    {
+     "app": "ds",
+     "archivo": "tokens/base.css:9",
+     "detalle": ".accent{color:var(--accent)} — contradice colors.css:9 «--color-peach … nunca texto ni relleno con texto (2.56:1)»"
+    },
+    {
+     "app": "mi",
+     "archivo": "conta.jsx (#40, 18 nov)",
+     "detalle": "fontSize:11, uppercase, color: f.dias <= 2 ? \"var(--peach)\" : \"var(--fg-muted)\""
+    },
+    {
+     "app": "mi",
+     "archivo": "pedidosya-ui.jsx:147",
+     "detalle": ".pya-satcopy-kind{font-size:9.5px;…;color:var(--peach)}"
+    },
+    {
+     "app": "epi",
+     "archivo": "app.jsx:19191,20219,20239",
+     "detalle": "comprobante de pago: .elig{font-size:9.5px;color:#E9826A} · «Descuento — adelanto» font-size:11.5px;color:#E9826A"
+    },
+    {
+     "app": "grow",
+     "archivo": "index.html (paquete exportado)",
+     "detalle": "50 usos: «te mencionó» font-size:8.5px;color:var(--accent) · «Ver anuncio →» 10.5px · .field-ph{color:var(--peach)}"
+    },
+    {
+     "app": "hub",
+     "archivo": "index.html y alma/*",
+     "detalle": "8 usos de color:var(--peach)/#E9826A en texto"
+    },
+    {
+     "app": "docs",
+     "archivo": "index.html",
+     "detalle": "7 usos de color:var(--accent)/var(--peach) en texto"
+    },
+    {
+     "app": "ds",
+     "archivo": "tokens/colors.css:12",
+     "detalle": "--color-attention-text:#B54D36 «ATENCIÓN en texto pequeño · 4.93:1»"
+    }
+   ],
+   "vistas": [
+    {
+     "etiqueta": "Design system · regla y token de texto",
+     "app": "ds",
+     "alto": 200,
+     "html": "<div class='card'><div class='ey'>Calendario contable · Patricia Ruano</div><div class='t'>Retenciones del mes</div><div class='r'><span>Vence el 20 de nov</span><span class='att'>Faltan 2 días</span></div></div><p class='n'>--attention-text #B54D36 · 4.93:1 sobre alabaster</p>",
+     "css": "body{margin:0;padding:16px;font-family:Montserrat,system-ui,sans-serif;color:#3E3F3F;background:#FAFAFA}.card{background:var(--bg,#FAFAFA);border:1px solid rgba(62,63,63,.08);border-radius:16px;padding:14px 16px}.ey{font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:#6F6867}.t{font-family:var(--font-serif,Georgia,serif);font-size:18px;margin-top:6px}.r{display:flex;justify-content:space-between;margin-top:12px;font-size:13.5px;font-weight:500}.att{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--attention-text,#B54D36);font-weight:600}.n{font-size:11.5px;color:#6F6867;margin:10px 0 0}"
+    },
+    {
+     "etiqueta": "Apps hoy · Mi, Epi y Grow",
+     "app": "mi",
+     "alto": 270,
+     "html": "<div class='card'><div class='ey'>Calendario contable · Patricia Ruano</div><div class='t'>Retenciones del mes</div><div class='r'><span>Vence el 20 de nov</span><span class='pe'>Faltan 2 días</span></div></div><div class='rec'><div class='el'>Comprobante de pago · Mensualidad</div><div class='li'><span>Renta noviembre</span><b>Q 6,500.00</b></div><div class='li pe'><span>Descuento — adelanto</span><b>−Q 325.00</b></div></div><div class='gr'><span class='men'>te mencionó</span> <a>Ver anuncio →</a><small>peach sobre blanco · 2.56–2.67:1</small></div>",
+     "css": "body{margin:0;padding:16px;font-family:Montserrat,system-ui,sans-serif;color:#3E3F3F;background:#FAFAFA}.card,.rec{background:#fff;border:1px solid rgba(62,63,63,.08);border-radius:16px;padding:12px 16px;margin-bottom:10px}.ey{font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:#6F6867}.t{font-family:var(--font-serif,Georgia,serif);font-size:18px;margin-top:4px}.r{display:flex;justify-content:space-between;margin-top:8px;font-size:13.5px;font-weight:500}.pe{color:#E9826A}.r .pe{font-size:11px;letter-spacing:.08em;text-transform:uppercase}.el{font-size:9.5px;font-weight:700;letter-spacing:.26em;text-transform:uppercase;color:#E9826A;margin-bottom:6px}.li{display:flex;justify-content:space-between;font-size:11.5px;padding:2px 0}.gr{display:flex;gap:10px;align-items:baseline;flex-wrap:wrap}.men{font-size:8.5px;letter-spacing:.08em;text-transform:uppercase;color:#E9826A}a{font-size:10.5px;color:#E9826A}small{font-size:11px;color:#9E3326}"
+    }
+   ]
+  },
+  {
+   "id": "P-2026-11-19-01",
+   "titulo": "El naranja de Claudio (#FFB25E → #E66A0E) vive escrito a mano en 4 archivos y no está en los tokens",
+   "tipo": "token",
+   "origen": "hub",
+   "apps_con_el_cambio": [
+    "hub"
+   ],
+   "apps_afectadas": [
+    "hub"
+   ],
+   "estado_en_ds": "no existe",
+   "impacto": "medio",
+   "recomendacion": "estandarizar",
+   "motivo": "Claudio ya tiene color propio: un degradado naranja que pinta su página, el Modo Creator (nuevo, 18 nov), su tablero en el inicio de Alma y su halo de voz. Está copiado a mano en cuatro archivos y no existe en tokens/. Además el botón principal pone texto blanco sobre ese naranja (3.26:1 en el borde oscuro, 1.78:1 en el claro), que no pasa AA. Propongo tokens --claudio-1/-2/-texto/-tinte en colors.css (junto al halo de Alma de P-2026-10-29-03) y botón con texto tinta o fondo #9A4A0B.",
+   "evidencia": [
+    {
+     "app": "hub",
+     "archivo": "alma/claudio.html",
+     "detalle": ":root{ --c1:#FFB25E; --c2:#E66A0E; --c-t:#9A4A0B; --c-f:#FFF4EA }"
+    },
+    {
+     "app": "hub",
+     "archivo": "alma/creator.html:21",
+     "detalle": "pantalla nueva (#775, 18 nov) repite --c1:#FFB25E; --c2:#E66A0E; --c-t:#9A4A0B; --c-f:#FFF4EA; solo carga fonts.css, no colors.css"
+    },
+    {
+     "app": "hub",
+     "archivo": "alma/inicio.html:1130-1191 (.tvc-*)",
+     "detalle": "«con los colores de Claudio (#FFB25E → #E66A0E)»: 12 usos a mano en el tablero de trabajos"
+    },
+    {
+     "app": "hub",
+     "archivo": "js/alma-voz.js:124",
+     "detalle": "HALO_CLAUDIO = linear-gradient(180deg,#FFB25E 0%,#FF9A3C 34%,#F5821F 66%,#E66A0E 100%)"
+    },
+    {
+     "app": "hub",
+     "archivo": "alma/creator.html:115 · alma/inicio.html:1191",
+     "detalle": ".b.p / .tvc-acb .p { color:#fff; background:linear-gradient(160deg,#FFB25E,#E66A0E) }: 1.78–3.26:1"
+    },
+    {
+     "app": "ds",
+     "archivo": "tokens/colors.css",
+     "detalle": "solo peach #E9826A y peach-neon #F2755A; ningún color de agente (ni Alma ni Claudio)"
+    }
+   ],
+   "vistas": [
+    {
+     "etiqueta": "Design system hoy · solo peach",
+     "app": "ds",
+     "alto": 190,
+     "html": "<div class='w'><div class='row'><span class='sw' style='background:var(--color-peach,#E9826A)'></span><div><b>--color-peach</b><small>#E9826A · acento gráfico</small></div></div><div class='row'><span class='sw' style='background:var(--color-peach-neon,#F2755A)'></span><div><b>--color-peach-neon</b><small>#F2755A · glow, highlight</small></div></div><p>No hay token para el color de Claudio.</p></div>",
+     "css": "body{margin:0;padding:16px;font-family:Montserrat,system-ui,sans-serif;color:#3E3F3F;background:#FAFAFA}.w{display:grid;gap:12px}.row{display:flex;gap:12px;align-items:center}.sw{width:44px;height:44px;border-radius:14px}b{display:block;font-size:13px;font-weight:600}small{font-size:11.5px;color:#6F6867}p{margin:4px 0 0;font-size:12.5px;color:#6F6867}"
+    },
+    {
+     "etiqueta": "Hub · Claudio en Creator e inicio",
+     "app": "hub",
+     "alto": 230,
+     "html": "<div class='cab'><span class='c'>C</span><div><b>Claudio</b><small>Hub · Reservas</small></div></div><div class='falta'><b>Falta publicar 2 cambios</b><ul><li>Botón «Nueva reserva»</li><li>Tabla de Propiedades</li></ul></div><div class='pie'><button class='b s'>Preparar</button><button class='b p'>Publicar</button><span class='nota'>blanco sobre naranja · 1.78–3.26:1</span></div>",
+     "css": "body{margin:0;padding:16px;font:14px/1.5 Montserrat,system-ui,sans-serif;color:#3E3F3F;background:#F3EEE9}.cab{display:flex;gap:10px;align-items:center;margin-bottom:10px}.c{width:32px;height:32px;border-radius:11px;display:grid;place-items:center;color:#fff;font:600 13px Montserrat;background:linear-gradient(160deg,#FFB25E,#E66A0E);box-shadow:0 0 0 3px rgba(255,178,94,.3)}b{display:block;font-weight:600;font-size:14px}small{font-size:11px;color:#6F6867}.falta{padding:12px 14px;border-radius:16px;background:#FFF4EA;box-shadow:inset 0 0 0 1px rgba(230,106,14,.25)}.falta b{color:#9A4A0B;font-size:13px}.falta ul{margin:6px 0 0;padding:0;list-style:none;display:flex;gap:6px;flex-wrap:wrap}.falta li{padding:6px 10px;border-radius:999px;background:#fff;font-size:11.5px}.pie{display:flex;gap:8px;align-items:center;margin-top:12px;flex-wrap:wrap}.b{min-height:46px;padding:0 16px;border:0;border-radius:999px;font:600 13px Montserrat}.b.p{color:#fff;background:linear-gradient(160deg,#FFB25E,#E66A0E)}.b.s{background:rgba(255,255,255,.9);box-shadow:inset 0 0 0 1px rgba(62,63,63,.1)}.nota{font-size:11px;color:#9E3326}"
+    },
+    {
+     "etiqueta": "Propuesta · tokens de Claudio",
+     "app": "ds",
+     "alto": 200,
+     "html": "<div class='g'><span style='background:#FFB25E'>--claudio-1<br>#FFB25E</span><span style='background:#E66A0E;color:#fff'>--claudio-2<br>#E66A0E</span><span style='background:#9A4A0B;color:#fff'>--claudio-texto<br>#9A4A0B</span><span style='background:#FFF4EA;color:#9A4A0B'>--claudio-tinte<br>#FFF4EA</span></div><div class='pie'><button class='b'>Publicar</button><small>texto tinta sobre el degradado · 5.93:1</small></div>",
+     "css": "body{margin:0;padding:16px;font-family:Montserrat,system-ui,sans-serif;color:#3E3F3F;background:#FAFAFA}.g{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}.g span{border-radius:14px;padding:12px 8px;font-size:10.5px;line-height:1.5;font-weight:600}.pie{display:flex;gap:10px;align-items:center;margin-top:14px;flex-wrap:wrap}.b{min-height:46px;padding:0 18px;border:0;border-radius:999px;font:600 13px Montserrat;color:#3E3F3F;background:linear-gradient(160deg,#FFB25E,#F5A04A)}small{font-size:11.5px;color:#6F6867}"
+    }
+   ]
+  },
+  {
+   "id": "P-2026-11-19-03",
+   "titulo": "Sello «Borrador / En vivo»: nació en el Modo Creator con colores propios y el design system no tiene un estado de publicación",
+   "tipo": "componente",
+   "origen": "hub",
+   "apps_con_el_cambio": [
+    "hub"
+   ],
+   "apps_afectadas": [
+    "hub",
+    "epi",
+    "docs",
+    "grow"
+   ],
+   "estado_en_ds": "no existe",
+   "impacto": "medio",
+   "recomendacion": "estandarizar",
+   "motivo": "El Modo Creator (18 nov) muestra si ves el BORRADOR o lo EN VIVO con un sello en píldora (rayado naranja o verde con punto que late), un marco de color alrededor de la app y una cinta abajo. Es un buen patrón y ya hace falta en otras partes: Epi escribe «Borrador · el equipo todavía no lo ve» en texto suelto y el chat del Hub marca el borrador con #B54D36 a mano. Propongo sumarlo a Farol como estado «borrador» (tinte de atención rayado) y «en vivo» (--color-success), para que todas digan lo mismo igual.",
+   "evidencia": [
+    {
+     "app": "hub",
+     "archivo": "alma/creator.html:43-47",
+     "detalle": ".sello.borrador{color:#9A4A0B;background:repeating-linear-gradient(-45deg,#FFE9D3 0 8px,#FFF4EA 8px 16px)} · .sello.vivo{color:#2F6B4C;background:#E2F0E6}"
+    },
+    {
+     "app": "hub",
+     "archivo": "alma/creator.html:54-59",
+     "detalle": ".marco.borrador{box-shadow:0 0 0 2px rgba(230,106,14,.75)} · .cinta{font:700 10px;letter-spacing:.14em;color:#fff;background:#E66A0E}"
+    },
+    {
+     "app": "hub",
+     "archivo": "alma/creator.html:22",
+     "detalle": "--vivo:#2F6B4C; --vivo-f:#E2F0E6 — casi --color-success #3d6b52/#E8F2ED, pero no el mismo"
+    },
+    {
+     "app": "epi",
+     "archivo": "app.jsx:15794",
+     "detalle": "<div style={{fontSize:11.5,color:C.black,fontWeight:700}}>Borrador · el equipo todavía no lo ve</div>"
+    },
+    {
+     "app": "hub",
+     "archivo": "index.html:2136",
+     "detalle": "<span class=\"sa-chat-meta\" style=\"color:#B54D36\">{{ c.borradorLabel }}</span>"
+    },
+    {
+     "app": "ds",
+     "archivo": "components/core/Farol.jsx · tokens/base.css:13-20",
+     "detalle": "estados success, error, warning, info, attention, pending; ninguno de publicación"
+    }
+   ],
+   "vistas": [
+    {
+     "etiqueta": "Design system hoy · Farol",
+     "app": "ds",
+     "alto": 150,
+     "html": "<div class='f'><span class='farol farol--success'>Confirmada</span><span class='farol farol--warning'>Por cobrar</span><span class='farol farol--pending'>Pendiente</span><span class='farol farol--attention'>Falta firma</span></div><p>No hay forma de decir «esto es borrador» o «esto ya está publicado».</p>",
+     "css": "body{margin:0;padding:16px;font-family:Montserrat,system-ui,sans-serif;color:#3E3F3F;background:#FAFAFA}.f{display:flex;flex-wrap:wrap;gap:8px}.farol{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:600;letter-spacing:.02em;padding:4px 16px;border-radius:999px}.farol::before{content:'';width:8px;height:8px;border-radius:50%;background:currentColor}.farol--success{color:#3d6b52;background:#E8F2ED}.farol--warning{color:#9a5020;background:#F5EBE5}.farol--pending{color:#6F6867;background:#F0EEEB}.farol--attention{color:#B54D36;background:#FDEFEB}p{font-size:12.5px;color:#6F6867;margin:12px 0 0}"
+    },
+    {
+     "etiqueta": "Hub · Modo Creator",
+     "app": "hub",
+     "alto": 260,
+     "html": "<div class='top'><span class='sello borrador'><i></i>Borrador</span><span class='sello vivo'><i></i>En vivo</span></div><div class='marco'><div class='app'><div class='h'>Reservas</div><div class='fila'><span>Brunelo 1104</span><b>Q 1,850</b></div><div class='fila'><span>Narama 623</span><b>Q 2,400</b></div></div><span class='cinta'>Borrador</span></div>",
+     "css": "body{margin:0;padding:16px;font:14px/1.5 Montserrat,system-ui,sans-serif;color:#3E3F3F;background:#F3EEE9}.top{display:flex;gap:8px;margin-bottom:12px}.sello{display:inline-flex;align-items:center;gap:8px;min-height:34px;padding:0 14px;border-radius:999px;font:700 11px/1 Montserrat;letter-spacing:.12em;text-transform:uppercase}.sello i{width:8px;height:8px;border-radius:50%;background:currentColor}.sello.borrador{color:#9A4A0B;background:repeating-linear-gradient(-45deg,#FFE9D3 0 8px,#FFF4EA 8px 16px);box-shadow:inset 0 0 0 1.5px rgba(230,106,14,.55)}.sello.vivo{color:#2F6B4C;background:#E2F0E6;box-shadow:inset 0 0 0 1.5px rgba(47,107,76,.4)}.marco{position:relative;border-radius:22px;background:#fff;box-shadow:0 0 0 2px rgba(230,106,14,.75),0 24px 48px -32px rgba(60,40,35,.5);padding:16px 16px 44px}.h{font-family:var(--font-serif,Georgia,serif);font-size:20px;margin-bottom:8px}.fila{display:flex;justify-content:space-between;font-size:13px;padding:6px 0;border-top:1px solid #EEE}.cinta{position:absolute;left:14px;bottom:12px;padding:6px 12px;border-radius:999px;font:700 10px/1 Montserrat;letter-spacing:.14em;text-transform:uppercase;color:#fff;background:#E66A0E}"
+    },
+    {
+     "etiqueta": "Epi y Hub · borrador en texto suelto",
+     "app": "epi",
+     "alto": 180,
+     "html": "<div class='c'><div class='b'>Borrador · el equipo todavía no lo ve</div><div class='t'>Limpieza profunda · Brunelo 1104</div></div><div class='chat'><div class='burb'>Hola, su check-in es a las 3 pm.</div><span class='meta'>Borrador de Alma</span></div>",
+     "css": "body{margin:0;padding:16px;font-family:Montserrat,system-ui,sans-serif;color:#3E3F3F;background:#FAFAFA}.c{background:#fff;border-radius:14px;padding:12px 14px;border:1px solid #D8D4CE}.b{font-size:11.5px;font-weight:700;line-height:1.6}.t{font-size:13px;color:#6F6867}.chat{margin-top:12px;display:grid;justify-items:end;gap:4px}.burb{background:#EAE6E0;border-radius:16px 16px 4px 16px;padding:9px 13px;font-size:13px}.meta{font-size:10.5px;letter-spacing:.06em;color:#B54D36}"
+    },
+    {
+     "etiqueta": "Propuesta · Farol «borrador» y «en vivo»",
+     "app": "ds",
+     "alto": 130,
+     "html": "<div class='f'><span class='farol farol--borrador'>Borrador</span><span class='farol farol--vivo'>En vivo</span><span class='farol farol--borrador'>Borrador · el equipo no lo ve</span></div>",
+     "css": "body{margin:0;padding:16px;font-family:Montserrat,system-ui,sans-serif;color:#3E3F3F;background:#FAFAFA}.f{display:flex;flex-wrap:wrap;gap:8px}.farol{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:0 16px;min-height:32px;border-radius:999px}.farol::before{content:'';width:8px;height:8px;border-radius:50%;background:currentColor}.farol--borrador{color:var(--attention-text,#B54D36);background:repeating-linear-gradient(-45deg,#FBE4DC 0 8px,#FDEFEB 8px 16px);box-shadow:inset 0 0 0 1.5px rgba(181,77,54,.35)}.farol--vivo{color:#3d6b52;background:#E8F2ED;box-shadow:inset 0 0 0 1.5px rgba(61,107,82,.3)}"
+    }
+   ]
+  }
+ ],
+ "actualizadas": [
+  {
+   "id": "P-2026-11-02-04",
+   "titulo": "Pantallas nuevas de Alma con paleta propia: fondo #FAF8F6, verde y ámbar a mano, y texto suave que no pasa AA",
+   "tipo": "token",
+   "origen": "hub",
+   "apps_con_el_cambio": [
+    "hub"
+   ],
+   "apps_afectadas": [
+    "hub"
+   ],
+   "estado_en_ds": "distinto",
+   "impacto": "medio",
+   "recomendacion": "revertir",
+   "motivo": "Cinco pantallas nuevas (Uso, Correos, Agentes, Reporte de llamadas y Conexiones) y la capa de áreas del inicio de Alma se pintan con una crema que no está en el DS en lugar de --bg #FAFAFA. Cuatro ni siquiera cargan colors.css; escriben su paleta en :root. El verde y el ámbar son casi los del DS, pero no los mismos. --suave #8A8580 da 3.45:1 y --tenue #A39B93 da 2.59:1 sobre esa crema, en textos de 10 a 13 px. Propongo cargar los tokens y usarlos; si prefieres la crema para Alma, márcala «estandarizar» y va al DS como fondo de la app. Actualizado el 5 nov: se suman Lo que Alma aprendió y la tarjeta del vuelo. Actualizado el 19 nov: el Modo Creator (nuevo) solo carga fonts.css y escribe su paleta en :root (--arena #F3EEE9, --tenue #A39B93), y las órbitas dentro de cada esfera del inicio (#800) suman #8A8580 en la leyenda de 10.5 px y #F0EBE5 de fondo.",
+   "evidencia": [
+    {
+     "app": "hub",
+     "archivo": "alma/uso.html:15-16",
+     "detalle": "--suave:#8A8580 · --tenue:#A39B93 · --crema:#FAF8F6 · --verde:#2F6B47 · --ambar:#9A6B12 · --arena:#F3EFEA"
+    },
+    {
+     "app": "hub",
+     "archivo": "alma/correos.html",
+     "detalle": "#A39B93 ×7 · #FAF8F6 ×5 · #A6503C ×4 · sin colors.css"
+    },
+    {
+     "app": "hub",
+     "archivo": "alma/agentes.html · alma/reporte.html",
+     "detalle": "#FAF8F6 de fondo · sin colors.css"
+    },
+    {
+     "app": "hub",
+     "archivo": "alma/conexiones.html",
+     "detalle": "carga tokens, pero solo 5 var() y fondo #FAF8F6"
+    },
+    {
+     "app": "hub",
+     "archivo": "alma/inicio.html:172",
+     "detalle": ".areas{background:#FAF8F6} · sin colors.css"
+    },
+    {
+     "app": "ds",
+     "archivo": "tokens/colors.css:28-30,35,39",
+     "detalle": "--bg alabaster #FAFAFA · --fg-muted #6F6867 · --color-success:#3d6b52 · --color-warning:#9a5020"
+    },
+    {
+     "app": "hub",
+     "archivo": "alma/aprendio.html:16-17",
+     "detalle": "pantalla nueva (3 nov): repite --crema:#FAF8F6 · --suave:#8A8580 · --tenue:#A39B93 en su :root"
+    },
+    {
+     "app": "hub",
+     "archivo": "alma/inicio.html (.vj-*, .pp-*)",
+     "detalle": "tarjeta del vuelo y medidor: 40 usos de #8A8580 y #A39B93, en textos de 9 a 12.5 px (3.65:1 y 2.74:1 sobre blanco)"
+    },
+    {
+     "app": "hub",
+     "archivo": "alma/creator.html:10,20-22",
+     "detalle": "solo ../ds/tokens/fonts.css · :root{--suave:#6F6867;--tenue:#A39B93;--arena:#F3EEE9;--vivo:#2F6B4C;--mal:#9E3326}"
+    },
+    {
+     "app": "hub",
+     "archivo": "alma/inicio.html (.eo-*, #800, 18 nov)",
+     "detalle": ".eo-ley{font:600 10.5px;color:#8A8580} · .eo-modo{background:#F0EBE5} · .eo-det .x{color:#A39B93}"
+    }
+   ],
+   "vistas": [
+    {
+     "etiqueta": "Design system hoy · con sus tokens",
+     "app": "ds",
+     "alto": 190,
+     "html": "<div class=\"w\"><p class=\"s\">Ajustes</p><h3>Uso de hoy</h3><p class=\"d\">Queda 62 % del cupo de Google.</p><div class=\"e\"><i class=\"o\">Normal</i><i class=\"a\">En reserva</i></div><span class=\"n\">--bg · --fg-muted · --color-success · --color-warning</span></div>",
+     "css": ".w{padding:18px;background:var(--bg);font-family:var(--font-sans);color:var(--fg)}.s{font-size:10.5px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--fg-muted);margin:0}h3{font-family:var(--font-serif);font-weight:400;font-size:30px;margin:8px 0}.d{font-size:13px;color:var(--fg-muted);margin:0 0 12px}.e i{font-style:normal;font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;padding:6px 11px;border-radius:999px;margin-right:6px;background:#fff}.o{color:var(--color-success)}.a{color:var(--color-warning)}.n{display:block;margin-top:14px;font:11px monospace;color:var(--fg-muted)}"
+    },
+    {
+     "etiqueta": "Alma · Uso, Correos, Agentes, Reporte y Conexiones",
+     "app": "hub",
+     "alto": 190,
+     "html": "<div class=\"w\"><p class=\"s\">Ajustes</p><h3>Uso de hoy</h3><p class=\"d\">Queda 62 % del cupo de Google.</p><div class=\"e\"><i class=\"o\">Normal</i><i class=\"a\">En reserva</i></div><span class=\"n\">#FAF8F6 · #8A8580 · #2F6B47 · #9A6B12</span></div>",
+     "css": ".w{padding:18px;background:#FAF8F6;font-family:var(--font-sans);color:#3E3F3F}.s{font-size:10.5px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:#8A8580;margin:0}h3{font-family:var(--font-serif);font-weight:400;font-size:30px;margin:8px 0}.d{font-size:13px;color:#8A8580;margin:0 0 12px}.e i{font-style:normal;font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;padding:6px 11px;border-radius:999px;margin-right:6px;background:#fff}.o{color:#2F6B47}.a{color:#9A6B12}.n{display:block;margin-top:14px;font:11px monospace;color:#8A8580}"
+    }
+   ]
+  },
+  {
+   "id": "P-2026-11-02-05",
+   "titulo": "La píldora que viaja: el design system tiene un solo Segmented y las apps ya usan tres formas",
+   "tipo": "patrón",
+   "origen": "hub",
+   "apps_con_el_cambio": [
+    "hub",
+    "hola",
+    "epi",
+    "mi"
+   ],
+   "apps_afectadas": [
+    "hub",
+    "hola",
+    "epi",
+    "mi",
+    "docs"
+   ],
+   "estado_en_ds": "distinto",
+   "impacto": "medio",
+   "recomendacion": "estandarizar",
+   "motivo": "La regla 5 hizo que cada app armara a mano su marcador con estilos en línea: píldora blanca (como el DS), píldora negra o raya peach abajo. Son tres formas para hacer lo mismo y el mismo Hub usa dos. Propongo que Segmented lleve el marcador con variantes «claro» (filtros) y «raya» (pestañas de sección), más una regla de cuándo va cada una. La negra sobraría; si la quieres, sería una tercera variante. Actualizado el 19 nov: el Hub suma dos más, el selector de las órbitas (.eo-modo, fondo #F0EBE5) y el de vista del Modo Creator (.seg, fondo blanco al 70 %), ambos píldora blanca con sombra propia.",
+   "evidencia": [
+    {
+     "app": "hub",
+     "archivo": "index.html:641,1109,1174",
+     "detalle": "<i class=sa-pildora style=background:#FFFFFF>, radio 14px en el tercero"
+    },
+    {
+     "app": "hub",
+     "archivo": "index.html:824",
+     "detalle": "<i class=sa-pildora style=background:#3E3F3F>"
+    },
+    {
+     "app": "hola",
+     "archivo": "app/shell.jsx:16 · index.html:87",
+     "detalle": "fondo var(--ink) · .sa-tabs-inner .sa-pildora{height:2px;background:var(--peach)}"
+    },
+    {
+     "app": "epi",
+     "archivo": "app.jsx:2762,3372,10892",
+     "detalle": "fondo alabaster · transparente con borde · fondo negro"
+    },
+    {
+     "app": "docs",
+     "archivo": "panel-ui.jsx:40",
+     "detalle": "fondo --alabaster: la forma del DS"
+    },
+    {
+     "app": "mi",
+     "archivo": "main.jsx:204 · index.html:51",
+     "detalle": "sa-pildora sa-tab-raya: raya peach bajo la pestaña"
+    },
+    {
+     "app": "ds",
+     "archivo": "components/navigation/Segmented.jsx:3-21",
+     "detalle": "un solo estilo: activo --bg sobre --bg-alt, sin marcador que viaja"
+    },
+    {
+     "app": "hub",
+     "archivo": "alma/inicio.html (.eo-modo, #800)",
+     "detalle": "background:#F0EBE5 · button.ya{background:#fff;box-shadow:0 6px 14px -8px rgba(70,50,40,.45)}"
+    },
+    {
+     "app": "hub",
+     "archivo": "alma/creator.html:49-51 (.seg)",
+     "detalle": "background:rgba(255,255,255,.7) · [aria-pressed=true]{background:#fff;box-shadow:0 1px 4px rgba(60,40,35,.12)}"
+    }
+   ],
+   "vistas": [
+    {
+     "etiqueta": "Design system hoy · Segmented",
+     "app": "ds",
+     "alto": 110,
+     "html": "<div class=\"w\"><div class=\"sg\"><b class=\"on\">Programa</b><b>Registros</b></div></div>",
+     "css": ".w{padding:18px;background:var(--bg);font-family:var(--font-sans)}.et{font-size:11px;color:var(--fg-muted);margin:0 0 8px}.g{margin-bottom:16px}.sg{display:inline-flex;padding:3px;gap:2px;border-radius:var(--r-pill);background:var(--bg-alt)}.sg b{font-size:11px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;padding:9px 16px;border-radius:var(--r-pill);color:var(--fg-muted)}.sg b.on{background:var(--bg);color:var(--fg);box-shadow:var(--shadow-xs)}.n b.on{background:var(--fg);color:#fff}.r{display:inline-flex;gap:22px;border-bottom:1px solid var(--divider)}.r b{font-size:11px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;padding:0 0 8px;color:var(--fg-muted)}.r b.on{color:var(--fg);box-shadow:0 2px 0 var(--accent)}"
+    },
+    {
+     "etiqueta": "Apps · blanca, negra y raya peach",
+     "app": "hub",
+     "alto": 265,
+     "html": "<div class=\"w\"><p class=\"et\">Hub · filtros</p><div class=\"g\"><div class=\"sg\"><b class=\"on\">Programa</b><b>Registros</b></div></div><p class=\"et\">Hola · Epi · Hub</p><div class=\"g\"><div class=\"sg n\"><b class=\"on\">Reservas</b><b>Propiedades</b></div></div><p class=\"et\">Hola · Mi · Epi</p><div class=\"r\"><b class=\"on\">Resumen</b><b>Reservas</b><b>Pagos</b></div></div>",
+     "css": ".w{padding:18px;background:var(--bg);font-family:var(--font-sans)}.et{font-size:11px;color:var(--fg-muted);margin:0 0 8px}.g{margin-bottom:16px}.sg{display:inline-flex;padding:3px;gap:2px;border-radius:var(--r-pill);background:var(--bg-alt)}.sg b{font-size:11px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;padding:9px 16px;border-radius:var(--r-pill);color:var(--fg-muted)}.sg b.on{background:var(--bg);color:var(--fg);box-shadow:var(--shadow-xs)}.n b.on{background:var(--fg);color:#fff}.r{display:inline-flex;gap:22px;border-bottom:1px solid var(--divider)}.r b{font-size:11px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;padding:0 0 8px;color:var(--fg-muted)}.r b.on{color:var(--fg);box-shadow:0 2px 0 var(--accent)}"
+    }
+   ]
+  }
+ ]
+}
